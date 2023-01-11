@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "seed": "node server/db/seed/index.js",
     "build": "webpack --config webpack.prod.js",
     "start": "node server/index",
     "build:dev": "webpack --config webpack.dev.js --watch --mode=development",
@@ -18,6 +19,7 @@
     "css-loader": "^6.7.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
+    "pg": "^8.8.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.6.2",

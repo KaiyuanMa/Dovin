@@ -5,7 +5,7 @@ const { UUID, UUIDV4, STRING } = Sequelize;
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 
-const User = conn.define("edge", {
+const User = conn.define("user", {
   id: {
     type: UUID,
     defaultValue: UUIDV4,
@@ -18,6 +18,10 @@ const User = conn.define("edge", {
     validate: {
       isEmail: true,
     },
+  },
+  password: {
+    type: STRING,
+    allowNull: false,
   },
   firstName: {
     type: STRING,

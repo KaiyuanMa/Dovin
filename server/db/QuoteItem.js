@@ -2,7 +2,7 @@ const conn = require("./conn");
 const { Sequelize } = conn;
 const { UUID, UUIDV4, STRING, TEXT } = Sequelize;
 
-const QuoteItem = conn.define("edge", {
+const QuoteItem = conn.define("quoteItem", {
   id: {
     type: UUID,
     defaultValue: UUIDV4,
