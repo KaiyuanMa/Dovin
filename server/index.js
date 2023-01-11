@@ -3,12 +3,18 @@ const app = express();
 const path = require("path");
 const port = process.env.PORT || 3000;
 
+app.use(express.json());
 app.use("/dist", express.static(path.join(__dirname, "../dist")));
+app.use("/public", express.static("public"));
+app.use("/api/session", require("./routes/session"));
+app.use("/api/option", require("./routes/option"));
+app.use("/api/quote", require("./routes/quote"));
+app.use("/api/quoteItem", require("./routes/quoteItem"));
+app.use("/api/step", require("./routes/step"));
 
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });
-app.use("/public", express.static("public"));
 
 const setUp = async () => {
   app.listen(port, () => console.log(`listening on port ${port}`));
