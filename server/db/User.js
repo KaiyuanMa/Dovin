@@ -45,11 +45,12 @@ User.addHook("beforeSave", async (user) => {
   }
 });
 
-User.beforeCreate(async (user) => {
-  if (user.role === "superAdmin") {
-    throw new Error("SuperAdmin can only be assigned on existing admin");
-  }
-});
+//TODO
+// User.beforeCreate(async (user) => {
+//   if (user.role === "superAdmin") {
+//     throw new Error("SuperAdmin can only be assigned on existing admin");
+//   }
+// });
 
 User.findByToken = async function findByToken(token) {
   try {

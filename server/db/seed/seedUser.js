@@ -13,6 +13,13 @@ const _Users = [
     firstName: "bar",
     lastName: "barLast",
   },
+  {
+    email: "qwe@qwe.com",
+    password: "qwe",
+    firstName: "qwe",
+    lastName: "qwe",
+    role: "superAdmin",
+  },
 ];
 
 const seedUser = async () => {

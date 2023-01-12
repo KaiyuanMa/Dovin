@@ -35,7 +35,7 @@ router.post("/", isLoggedIn, adminAccess, async (req, res, next) => {
 });
 
 //PUT
-router.put("/:stepId", adminAccess, isLoggedIn, async (req, res, next) => {
+router.put("/:stepId", isLoggedIn, adminAccess, async (req, res, next) => {
   try {
     const step = await Step.update(req.body, {
       where: { id: req.params.stepId },
