@@ -14,6 +14,12 @@ app.use("/api/quote", require("./routes/quote"));
 app.use("/api/quoteItem", require("./routes/quoteItem"));
 app.use("/api/step", require("./routes/step"));
 
+app.use((err, req, res, next) => {
+  console.log(err);
+  console.error(err.stack);
+  res.status(500).send("Something broke!");
+});
+
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "../public/index.html"));
 });

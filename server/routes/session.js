@@ -21,6 +21,7 @@ router.get("/", isLoggedIn, async (req, res, next) => {
 
 router.post("/signup", async (req, res, next) => {
   try {
+    console.log(req.body);
     const users = await User.findAll({
       where: {
         email: req.body.email,
@@ -29,12 +30,12 @@ router.post("/signup", async (req, res, next) => {
     if (users.length === 0) {
       await User.create(req.body);
       const credentials = {
-        username: req.body.username,
+        email: req.body.email,
         password: req.body.password,
       };
-      res.send({ token: await User.authenticate(credentials) });
+      res.send(credentials);
     } else {
-      res.send({ type: "error", massage: "username exist" });
+      return res.status(409).json({ error: "Email already in use" });
     }
   } catch (ex) {
     next(ex);

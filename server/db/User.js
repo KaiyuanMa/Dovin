@@ -1,6 +1,6 @@
 const conn = require("./conn");
 const { Sequelize } = conn;
-const { UUID, UUIDV4, STRING } = Sequelize;
+const { UUID, UUIDV4, STRING, ENUM } = Sequelize;
 
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
@@ -31,11 +31,23 @@ const User = conn.define("user", {
     type: STRING,
     allowNull: false,
   },
+  role: {
+    type: ENUM,
+    values: ["superAdmin", "admin", "customer"],
+    defaultValue: "customer",
+  },
 });
 
+//Hash Before Password
 User.addHook("beforeSave", async (user) => {
   if (user.changed("password")) {
     user.password = await bcrypt.hash(user.password, 5);
+  }
+});
+
+User.beforeCreate(async (user) => {
+  if (user.role === "superAdmin") {
+    throw new Error("SuperAdmin can only be assigned on existing admin");
   }
 });
 
