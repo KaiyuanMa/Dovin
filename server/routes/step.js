@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { isLoggedIn } = require("./middleware");
+const { isLoggedIn, adminAccess } = require("./middleware");
 const { Step } = require("../db");
 
 //GET
@@ -14,8 +14,7 @@ router.get("/:stepId", isLoggedIn, async (req, res, next) => {
 });
 
 //DELETE
-//TODO: admin only
-router.delete("/:stepId", isLoggedIn, async (req, res, next) => {
+router.delete("/:stepId", isLoggedIn, adminAccess, async (req, res, next) => {
   try {
     const step = await Step.findByPk(req.params.stepId);
     step.destroy();
@@ -26,8 +25,7 @@ router.delete("/:stepId", isLoggedIn, async (req, res, next) => {
 });
 
 //POST
-//TODO: admin only
-router.post("/", isLoggedIn, async (req, res, next) => {
+router.post("/", isLoggedIn, adminAccess, async (req, res, next) => {
   try {
     const step = await Step.create(req.body);
     res.send(step);
@@ -37,8 +35,7 @@ router.post("/", isLoggedIn, async (req, res, next) => {
 });
 
 //PUT
-//TODO: admin only
-router.put("/:stepId", isLoggedIn, async (req, res, next) => {
+router.put("/:stepId", adminAccess, isLoggedIn, async (req, res, next) => {
   try {
     const step = await Step.update(req.body, {
       where: { id: req.params.stepId },
