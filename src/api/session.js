@@ -1,11 +1,7 @@
 const axios = require("axios");
 
-const apiGetSessionUser = (token) => {
-  return axios.get("/api/session", {
-    headers: {
-      authorization: token,
-    },
-  });
+const apiGetSessionUser = () => {
+  return axios.get("/api/session");
 };
 
 const apiSetSession = (credential) => {

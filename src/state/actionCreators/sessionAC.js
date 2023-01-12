@@ -9,7 +9,6 @@ const login = (credentials) => {
       Cookies.set("token", token, {
         expires: 1,
         secure: true,
-        httpOnly: true,
         path: "/",
       });
       response = await apiGetSessionUser(token);
