@@ -1,7 +1,14 @@
 import React from "react";
+import Login from "./components/Login";
+import Logout from "./components/Logout";
 
 function App() {
-  return <div>App</div>;
+  return (
+    <div>
+      <Login />
+      <Logout />
+    </div>
+  );
 }
 
 export default App;

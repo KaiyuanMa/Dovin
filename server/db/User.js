@@ -42,7 +42,9 @@ User.addHook("beforeSave", async (user) => {
 User.findByToken = async function findByToken(token) {
   try {
     const id = jwt.verify(token, process.env.JWT).id;
-    const user = await User.findByPk(id);
+    const user = await User.findByPk(id, {
+      attributes: { exclude: "password" },
+    });
     if (!user) {
       throw "error";
     }

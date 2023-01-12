@@ -16,11 +16,7 @@ router.post("/", async (req, res, next) => {
 });
 
 router.get("/", isLoggedIn, async (req, res, next) => {
-  try {
-    res.send(req.user);
-  } catch (ex) {
-    next(ex);
-  }
+  res.send(req.user);
 });
 
 router.post("/signup", async (req, res, next) => {
