@@ -26,8 +26,15 @@ function index() {
           <div>Description: {customization.description}</div>
           <div>
             Steps:
-            {customization.steps.map((step) => {
-              return <li key={step.id}>{step.name}</li>;
+            {customization.steps.map((step, index) => {
+              return (
+                <div key={step.id} onClick={() => setCurrStepIndex(index)}>
+                  <li>{step.name}</li>
+                  <div>
+                    {step.selectedOption ? step.selectedOption.name : ""}
+                  </div>
+                </div>
+              );
             })}
           </div>
           <Step

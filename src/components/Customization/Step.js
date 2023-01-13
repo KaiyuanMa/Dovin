@@ -33,7 +33,7 @@ function Step(params) {
       <div>{`Step ${steps[currStepIndex].name}`}</div>
       {options.map((option) => {
         return (
-          <li key={option.id} onClick={() => setSelectedOption(option.id)}>
+          <li key={option.id} onClick={() => setSelectedOption(option)}>
             {option.name}
           </li>
         );
