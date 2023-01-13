@@ -8,9 +8,11 @@ const Option = require("./Option");
 
 User.hasMany(Quote);
 Quote.hasMany(QuoteItem);
+StepSet.hasMany(Quote);
 StepSet.hasOne(Step);
 Step.hasMany(Option);
 Step.hasOne(Step);
+Step.hasMany(QuoteItem);
 Option.hasMany(QuoteItem);
 
 module.exports = {

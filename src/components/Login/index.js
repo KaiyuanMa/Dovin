@@ -16,13 +16,20 @@ function index() {
 
   return (
     <div>
-      <form onSubmit={handelLogin}>
-        <label>Email</label>
-        <input value={email} onChange={(e) => setEmail(e.target.value)} />
-        <label>Password</label>
-        <input value={password} onChange={(e) => setPassword(e.target.value)} />
-        <button>Login</button>
-      </form>
+      {session.id ? (
+        <div>Welcome {session.firstName}</div>
+      ) : (
+        <form onSubmit={handelLogin}>
+          <label>Email</label>
+          <input value={email} onChange={(e) => setEmail(e.target.value)} />
+          <label>Password</label>
+          <input
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <button>Login</button>
+        </form>
+      )}
       <button onClick={() => console.log(session)}>Show User</button>
     </div>
   );

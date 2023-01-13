@@ -12,12 +12,15 @@ function App() {
     <div>
       <Login />
       <Logout />
-      <SignUp />
+      {/* <SignUp /> */}
       <div className="content">
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/admin" element={<Admin />} />
-          <Route path="/customization" element={<Customization />} />
+          <Route
+            path="/customization/:customizationId"
+            element={<Customization />}
+          />
         </Routes>
       </div>
     </div>

@@ -7,6 +7,7 @@ const seedOptions = async (steps) => {
       for (let j = 0; j < 2; j++) {
         const option = await Option.create({
           name: `${steps[i].name} Option${j}`,
+          stepId: steps[i].id,
         });
         options.push(option.dataValues);
       }
