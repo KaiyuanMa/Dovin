@@ -4,7 +4,7 @@ const { isLoggedIn, adminAccess } = require("./middleware");
 const { Option } = require("../db");
 
 //GET
-router.get("/:optionId", isLoggedIn, async (req, res, next) => {
+router.get("/:optionId", async (req, res, next) => {
   try {
     const option = await Option.findByPk(req.params.optionId);
     res.send(option);

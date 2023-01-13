@@ -4,7 +4,7 @@ const { isLoggedIn, adminAccess } = require("./middleware");
 const { Step } = require("../db");
 
 //GET
-router.get("/:stepId", isLoggedIn, async (req, res, next) => {
+router.get("/:stepId", async (req, res, next) => {
   try {
     const step = await Step.findByPk(req.params.stepId);
     res.send(step);
