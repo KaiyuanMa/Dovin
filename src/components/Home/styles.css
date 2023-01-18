@@ -4,6 +4,7 @@
 
 .text-in-image > div {
   position: absolute;
+  width: 35%;
 }
 
 .text-in-image-top-left > div {
@@ -11,9 +12,9 @@
   left: 5%;
 }
 
-.text-in-image-bottom-right > div {
-  bottom: 10%;
-  right: 5%;
+.text-in-image-bottom-left > div {
+  bottom: 15%;
+  left: 5%;
 }
 
 .product-categories {

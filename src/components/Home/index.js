@@ -13,7 +13,6 @@ function index() {
           <img src={homeFaceImg} alt="" />
         </div>
       </section>
-
       <section className="padding-block-800">
         <div className="product-categories | container flex-all-center">
           <Link>
@@ -65,13 +64,16 @@ function index() {
 
       <section className="padding-block-800">
         <div className="container">
-          <div className="text-in-image text-in-image-bottom-right">
+          <div className="text-in-image text-in-image-bottom-left">
             <img src={homeFaceImg} alt="" />
-            <div>
-              <h1 className="fs-primary-heading fw-light ff-heading">Lorem</h1>
+            <div className="flow-400 absolute-center">
+              <h1 className="fs-primary-heading fw-light ff-heading">
+                Lorem ipsum dolor
+              </h1>
               <p className="fs-body fw-regular">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                mattis, sapien sollicitudin tristique egestas,
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam
               </p>
               <button className="fs-button fw-regular">lorem</button>
             </div>
@@ -82,11 +84,15 @@ function index() {
       <section className="padding-block-800">
         <div className="container">
           <div className="even-columns">
-            <div>
-              <h1 className="fs-primary-heading fw-light ff-heading">Lorem</h1>
+            <div className="home-even-column-text | flow-400">
+              <h1 className="fs-primary-heading fw-light ff-heading">
+                Lorem ipsum dolor
+              </h1>
               <p className="fs-body fw-regular">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                mattis, sapien sollicitudin tristique egestas,
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat.
               </p>
               <button className="fs-button fw-regular">lorem</button>
             </div>
