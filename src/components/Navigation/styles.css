@@ -1,0 +1,33 @@
+.primary-header {
+}
+
+.mobile-nav-toggle {
+  display: none;
+}
+
+@media (max-width: 50em) {
+  .primary-navigation {
+    display: none;
+
+    position: absolute;
+
+    width: 100vw;
+    height: 100%;
+    background-color: white;
+  }
+  .primary-navigation[data-visible] {
+    display: block;
+    position: fixed;
+  }
+  .mobile-nav-toggle {
+    display: block;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    padding: 0.5em;
+  }
+
+  .mobile-nav-toggle .icon-close {
+    display: none;
+  }
+}

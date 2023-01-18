@@ -7,7 +7,7 @@ import regImg from "../../../public/img/2000x1125.png";
 function index() {
   return (
     <main>
-      <section>
+      <section className="padding-block-800">
         <div className="container">
           <div className="text-in-image text-in-image-top-left">
             <img src={homeFaceImg} alt="" />
@@ -21,9 +21,9 @@ function index() {
         </div>
       </section>
 
-      <section className="carousel"></section>
+      <section className="carousel | padding-block-800"></section>
 
-      <section>
+      <section className="padding-block-800">
         <div className="container">
           <div className="text-in-image text-in-image-bottom-right">
             <img src={homeFaceImg} alt="" />
@@ -41,7 +41,7 @@ function index() {
         </div>
       </section>
 
-      <section>
+      <section className="padding-block-800">
         <div className="container">
           <div className="even-columns">
             <div>
@@ -59,12 +59,12 @@ function index() {
         </div>
       </section>
 
-      <section>
+      <section className="padding-block-800">
         <div className="container">
           <h1 className="fs-primary-heading fw-semi-bold ff-heading">
             Lorem ipsum
           </h1>
-          <div>
+          <div className="even-columns-rows ">
             <div>
               <img src={regImg} />
               <div>
