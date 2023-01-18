@@ -1,0 +1,43 @@
+.text-in-image {
+  position: relative;
+}
+
+.text-in-image > div {
+  position: absolute;
+}
+
+.text-in-image-top-left > div {
+  top: 10%;
+  left: 5%;
+}
+
+.text-in-image-bottom-right > div {
+  bottom: 10%;
+  right: 5%;
+}
+
+.product-categories {
+  justify-content: space-between;
+}
+
+.product-category {
+  width: 23vw;
+  transition: transform 0.4s;
+}
+
+.product-category > div > img {
+  transition: transform 0.5s ease-out;
+}
+
+.product-category:hover > div > img {
+  transform: scale(1.1);
+}
+
+@media (max-width: 50em) {
+  .product-categories {
+    flex-direction: column;
+  }
+  .product-category {
+    width: 100%;
+  }
+}

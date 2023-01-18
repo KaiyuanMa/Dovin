@@ -83,10 +83,13 @@
   --ff-heading: var(--ff-primary);
   --ff-body: var(--ff-default);
 
+  --fw-light: 300;
   --fw-regular: 400;
   --fw-semi-bold: 500;
   --fw-bold: 700;
 
+  --fs-200: 0.6rem;
+  --fs-300: 0.7rem;
   --fs-400: 0.875rem;
   --fs-500: 0.9375rem;
   --fs-600: 1rem;
@@ -130,6 +133,12 @@
 * {
   margin: 0;
   padding: 0;
+}
+
+input,
+button,
+textarea,
+select {
   font: inherit;
 }
 
@@ -154,6 +163,14 @@ body {
 /* A elements that don't have a class get default styles */
 a:not([class]) {
   text-decoration-skip-ink: auto;
+}
+
+a,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+  color: inherit;
 }
 
 /* Make images easier to work with */
@@ -193,6 +210,10 @@ svg {
   border: 0;
 }
 
+.no-scroll {
+  overflow: hidden;
+}
+
 .text-primary-400 {
   color: var(--clr-primary-400);
 }
@@ -217,6 +238,10 @@ svg {
 }
 .bg-neutral-900 {
   background-color: var(--clr-neutral-900);
+}
+
+.fw-light {
+  font-weight: var(--fw-light);
 }
 
 .fw-regular {
@@ -252,12 +277,24 @@ svg {
   font-family: var(--ff-body);
 }
 
+.padding-block-100 {
+  padding-block: var(--size-100);
+}
+
+.padding-block-200 {
+  padding-block: var(--size-200);
+}
+
+.padding-block-600 {
+  padding-block: var(--size-600);
+}
+
 .padding-block-800 {
   padding-block: var(--size-800);
 }
 
 .container {
-  --max-width: 1500px;
+  --max-width: 1800px;
   --padding: 1rem;
 
   width: min(var(--max-width), 100% - var(--padding) * 2);
@@ -302,6 +339,15 @@ svg {
 .border-top-bottom {
   border-top: 1px solid rgba(36, 34, 34, 0.15);
   border-bottom: 1px solid rgba(36, 34, 34, 0.15);
+}
+
+.border-between > * + * {
+  border-top: 1px solid rgba(36, 34, 34, 0.15);
+}
+
+.img-container {
+  overflow: hidden;
+  transition-duration: 0.5s;
 }
 
 /* General Styling */

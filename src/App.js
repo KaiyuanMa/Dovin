@@ -16,7 +16,7 @@ function App() {
       <Logout /> */}
       {/* <SignUp /> */}
       <Navigation />
-      <div className="content">
+      <main className="content">
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/admin" element={<Admin />} />
@@ -25,7 +25,7 @@ function App() {
             element={<Customization />}
           />
         </Routes>
-      </div>
+      </main>
       <Footer />
     </div>
   );
