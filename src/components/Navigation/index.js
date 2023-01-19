@@ -26,15 +26,15 @@ function index() {
         </div>
         <div className="container-full-width">
           <div className="padding-block-200 border-top">
-            <div className="user-control | container flex-v-center padding-block-600">
+            <div className="user-control | container flex-h-center padding-block-600">
               <Link className="logo">
                 <div>Dovin</div>
               </Link>
-              <Link>
-                <i className="fa-light fa-cart-shopping" />
+              <Link to="/UserControl">
+                <i className="fa-light fa-user" />
               </Link>
               <Link>
-                <i className="fa-light fa-user" />
+                <i className="fa-light fa-cart-shopping" />
               </Link>
               <div
                 className="mobile-nav-toggle"

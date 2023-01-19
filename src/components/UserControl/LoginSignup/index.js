@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../state/actionCreators/sessionAC";
+import { login } from "../../../state/actionCreators/sessionAC";
 
 function index() {
   const dispatch = useDispatch();
-  const { session } = useSelector((state) => state.session);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isLogin, setIsLogin] = useState(true);
 
   const handelLogin = (e) => {
     e.preventDefault();
@@ -15,11 +15,16 @@ function index() {
   };
 
   return (
-    <div>
-      {session.id ? (
-        <div>Welcome {session.firstName}</div>
-      ) : (
-        <form onSubmit={handelLogin}>
+    <div className="user-form-container | flow-400 ff-body fs-body">
+      <div className="user-form-control | flex-h-center">
+        <div onClick={() => setIsLogin(true)}>Login</div>
+        <div onClick={() => setIsLogin(false)}>New User</div>
+      </div>
+      {isLogin ? (
+        <form
+          onSubmit={handelLogin}
+          className="user-form flow-400 | flex-v-center"
+        >
           <label>Email</label>
           <input value={email} onChange={(e) => setEmail(e.target.value)} />
           <label>Password</label>
@@ -29,8 +34,9 @@ function index() {
           />
           <button>Login</button>
         </form>
+      ) : (
+        <form></form>
       )}
-      <button onClick={() => console.log(session)}>Show User</button>
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import Login from "./components/Login";
+import UserControl from "./components/UserControl";
 import Logout from "./components/Logout";
 import SignUp from "./components/SignUp";
 import Navigation from "./components/Navigation";
@@ -24,6 +24,7 @@ function App() {
             path="/customization/:customizationId"
             element={<Customization />}
           />
+          <Route path="/UserControl" element={<UserControl />} />
         </Routes>
       </main>
       <Footer />
