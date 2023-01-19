@@ -16,46 +16,50 @@ function index() {
       <section className="padding-block-800">
         <div className="product-categories | container flex-all-center">
           <Link>
-            <div className="product-category">
+            <div className="product-category flow-400">
               <div className="img-container">
                 <img src={squareImg} />
               </div>
               <div>
-                <h1>Lorem</h1>
-                <p>Lorem ipsum dolor sit amet</p>
+                <h1 className="fs-secondary-heading fw-light ff-heading">
+                  Lorem
+                </h1>
               </div>
             </div>
           </Link>
           <Link>
-            <div className="product-category">
+            <div className="product-category flow-400">
               <div className="img-container">
                 <img src={squareImg} />
               </div>
               <div>
-                <h1>Lorem</h1>
-                <p>Lorem ipsum dolor sit amet</p>
+                <h1 className="fs-secondary-heading fw-light ff-heading">
+                  Lorem
+                </h1>
               </div>
             </div>
           </Link>
           <Link>
-            <div className="product-category">
+            <div className="product-category flow-400">
               <div className="img-container">
                 <img src={squareImg} />
               </div>
               <div>
-                <h1>Lorem</h1>
-                <p>Lorem ipsum dolor sit amet</p>
+                <h1 className="fs-secondary-heading fw-light ff-heading">
+                  Lorem
+                </h1>
               </div>
             </div>
           </Link>
           <Link>
-            <div className="product-category">
+            <div className="product-category flow-400">
               <div className="img-container">
                 <img src={squareImg} />
               </div>
               <div>
-                <h1>Lorem</h1>
-                <p>Lorem ipsum dolor sit amet</p>
+                <h1 className="fs-secondary-heading fw-light ff-heading">
+                  Lorem
+                </h1>
               </div>
             </div>
           </Link>
@@ -88,7 +92,7 @@ function index() {
               <h1 className="fs-primary-heading fw-light ff-heading">
                 Lorem ipsum dolor
               </h1>
-              <p className="fs-body fw-regular">
+              <p className="home-text-block | fs-body fw-regular">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris
@@ -102,32 +106,34 @@ function index() {
       </section>
 
       <section className="padding-block-800">
-        <div className="container">
+        <div className="container flow-700">
           <h1 className="fs-primary-heading fw-light ff-heading">
             Lorem ipsum
           </h1>
-          <div className="home-service-feature | even-columns-rows ">
-            <div>
+          <div className="home-service-feature | even-columns-rows">
+            <div className="flow-600">
               <img src={regImg} />
               <div>
                 <h2 className="fs-secondary-heading fw-light ff-heading">
                   Lorem ipsum dolor
                 </h2>
-                <p className="fs-body fw-regular">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  mattis, sapien sollicitudin tristique egestas,
+                <p className="home-text-block | fs-body fw-light">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam
                 </p>
               </div>
             </div>
-            <div>
+            <div className="flow-600">
               <img src={regImg} />
               <div>
                 <h2 className="fs-secondary-heading fw-light ff-heading">
                   Lorem ipsum dolor
                 </h2>
-                <p className="fs-body fw-regular">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  mattis, sapien sollicitudin tristique egestas,
+                <p className="home-text-block | fs-body fw-light">
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam
                 </p>
               </div>
             </div>

@@ -22,7 +22,7 @@
 }
 
 .product-category {
-  width: 23vw;
+  width: 22vw;
   transition: transform 0.4s;
 }
 
@@ -48,7 +48,8 @@
   flex-direction: column;
   justify-content: flex-end;
 }
-.home-even-column-text > p {
+
+.home-text-block {
   max-width: 360px;
 }
 
@@ -59,7 +60,7 @@
 
 @media (max-width: 50em) {
   .home-even-column-text {
-    --max-width: 1800px;
+    --max-width: 1700px;
     --padding: 1rem;
 
     width: min(var(--max-width), 100% - var(--padding) * 2);
