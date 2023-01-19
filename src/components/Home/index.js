@@ -9,7 +9,7 @@ function index() {
   return (
     <div className="main-content ff-body">
       <section className="padding-block-800">
-        <div className="container">
+        <div className="container home-face-img">
           <img src={homeFaceImg} alt="" />
         </div>
       </section>
@@ -62,7 +62,7 @@ function index() {
         </div>
       </section>
 
-      <section className="padding-block-800">
+      {/* <section className="padding-block-800">
         <div className="container">
           <div className="text-in-image text-in-image-bottom-left">
             <img src={homeFaceImg} alt="" />
@@ -79,7 +79,7 @@ function index() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       <section className="padding-block-800">
         <div className="container">
@@ -106,7 +106,7 @@ function index() {
           <h1 className="fs-primary-heading fw-light ff-heading">
             Lorem ipsum
           </h1>
-          <div className="even-columns-rows ">
+          <div className="home-service-feature | even-columns-rows ">
             <div>
               <img src={regImg} />
               <div>
@@ -122,31 +122,7 @@ function index() {
             <div>
               <img src={regImg} />
               <div>
-                <h2 className="fs-secondary-heading fw-regular ff-heading">
-                  Lorem ipsum dolor
-                </h2>
-                <p className="fs-body fw-regular">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  mattis, sapien sollicitudin tristique egestas,
-                </p>
-              </div>
-            </div>
-            <div>
-              <img src={regImg} />
-              <div>
-                <h2 className="fs-secondary-heading fw-regular ff-heading">
-                  Lorem ipsum dolor
-                </h2>
-                <p className="fs-body fw-regular">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  mattis, sapien sollicitudin tristique egestas,
-                </p>
-              </div>
-            </div>
-            <div>
-              <img src={regImg} />
-              <div>
-                <h2 className="fs-secondary-heading fw-regular ff-heading">
+                <h2 className="fs-secondary-heading fw-light ff-heading">
                   Lorem ipsum dolor
                 </h2>
                 <p className="fs-body fw-regular">

@@ -266,9 +266,6 @@ svg {
 .fs-nav {
   font-size: var(--fs-nav);
 }
-.fs-button {
-  font-size: var(--fs-button);
-}
 
 .ff-heading {
   font-family: var(--ff-heading);
@@ -312,7 +309,6 @@ svg {
 
 .even-columns-rows {
   display: grid;
-  gap: 1rem;
 }
 
 @media (min-width: 50em) {
@@ -358,11 +354,22 @@ svg {
   margin-top: var(--size-400);
 }
 
-.home-even-column-text {
-  width: 20rem;
-}
-
 /* General Styling */
 
 /* Button */
+button {
+  font-size: var(--fs-button);
+  background-color: white;
+  border: 1px solid black;
+  cursor: pointer;
+  width: 10rem;
+  border-radius: 2.5rem;
+  padding: 0.5rem;
+  transition: color 0.3s ease-out, background-color 0.3s ease-out;
+}
+
+button:hover {
+  color: white;
+  background-color: black;
+}
 /* TODO */

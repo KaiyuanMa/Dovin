@@ -42,3 +42,29 @@
     width: 100%;
   }
 }
+
+.home-even-column-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.home-even-column-text > p {
+  max-width: 360px;
+}
+
+.home-service-feature {
+  grid-column-gap: 1rem;
+  grid-row-gap: 4rem;
+}
+
+@media (max-width: 50em) {
+  .home-even-column-text {
+    --max-width: 1800px;
+    --padding: 1rem;
+
+    width: min(var(--max-width), 100% - var(--padding) * 2);
+  }
+  .home-face-img {
+    width: 100%;
+  }
+}
