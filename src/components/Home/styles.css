@@ -22,7 +22,7 @@
 }
 
 .product-category {
-  width: 22vw;
+  width: 21vw;
   transition: transform 0.4s;
 }
 
@@ -37,6 +37,9 @@
 @media (max-width: 50em) {
   .product-categories {
     flex-direction: column;
+  }
+  .product-categories > * + * {
+    margin-top: var(--size-600);
   }
   .product-category {
     width: 100%;

@@ -24,9 +24,9 @@ function index() {
         <div className="header-ad flex-all-center padding-block-100">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </div>
-        <div className="container-full-width border-top-bottom">
-          <div className="container padding-block-200">
-            <div className="user-control | flex-v-center padding-block-600">
+        <div className="container-full-width">
+          <div className="padding-block-200 border-top">
+            <div className="user-control | container flex-v-center padding-block-600">
               <Link className="logo">
                 <div>Dovin</div>
               </Link>
@@ -36,7 +36,7 @@ function index() {
               <Link>
                 <i className="fa-light fa-user" />
               </Link>
-              <button
+              <div
                 className="mobile-nav-toggle"
                 aria-controls="primary-navigation"
                 aria-expanded="false"
@@ -50,9 +50,9 @@ function index() {
                   aria-hidden="true"
                 />
                 <span className="visually-hidden">Menu</span>
-              </button>
+              </div>
             </div>
-            <nav className="primary-navigation">
+            <nav className="primary-navigation | padding-block-300 container-full-width border-top-bottom">
               <ul
                 role="list"
                 className="nav-list flex-all-center"
