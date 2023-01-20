@@ -4,7 +4,7 @@ const seedOptions = async (steps) => {
   try {
     const options = [];
     for (let i = 0; i < steps.length; i++) {
-      for (let j = 0; j < 10; j++) {
+      for (let j = 0; j < 20; j++) {
         const option = await Option.create({
           name: `${steps[i].name} Option${j}`,
           stepId: steps[i].id,

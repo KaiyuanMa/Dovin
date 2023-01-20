@@ -29,11 +29,14 @@ function index() {
           <div className="step-option-wrapper container">
             <div className="steps | border-right">
               Steps:
-              <ul role="list">
+              <ul
+                role="list"
+                className="step-list | flex-all-center flow-700 ff-heading fs-secondary-heading"
+              >
                 {customization.steps.map((step, index) => {
                   return (
                     <li key={step.id} onClick={() => setCurrStepIndex(index)}>
-                      <h2>{step.name}</h2>
+                      <h2 className="fw-light">{step.name}</h2>
                       <div>
                         {step.selectedOption ? step.selectedOption.name : ""}
                       </div>
@@ -48,7 +51,7 @@ function index() {
               steps={steps}
               setSteps={setSteps}
             />
-            {/* <button onClick={() => console.log(steps)}>Log Steps</button> */}
+            <button onClick={() => console.log(steps)}>Log Steps</button>
           </div>
         </div>
       ) : null}

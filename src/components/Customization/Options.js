@@ -8,11 +8,12 @@ function Step(params) {
   const setSteps = params.setSteps;
   const steps = params.steps;
   const [options, setOptions] = useState([]);
-  const [selectedOption, setSelectedOption] = useState(null);
+  const [selectedOption, setSelectedOption] = useState("");
+
   useEffect(() => {
+    setSelectedOption(steps[currStepIndex].selectedOption);
     const fetchOptions = async (stepId) => {
       const response = await apiGetStepOptions(stepId);
-      console.log(response.data);
       setOptions(response.data);
     };
     fetchOptions(steps[currStepIndex].id);
@@ -28,17 +29,34 @@ function Step(params) {
     setSelectedOption(null);
     setCurrStepIndex(currStepIndex + 1);
   };
-  console.log(selectedOption);
+  const selectOption = (option) => {
+    if (selectedOption) {
+      const prevSelected = document.querySelector(
+        `#${steps[currStepIndex].name}-${selectedOption.id}`
+      );
+      prevSelected.classList.remove("selected-option");
+    }
+    setSelectedOption(option);
+    const selectedOptionHtml = document.querySelector(
+      `#${steps[currStepIndex].name}-${option.id}`
+    );
+    selectedOptionHtml.classList.add("selected-option");
+  };
   return (
     <div className="option-wrapper">
       <div>{`Step ${steps[currStepIndex].name}`}</div>
-      <ul role="list" className="option-list container">
+      <ul role="list" className="option-list | padding-block-200">
         {options.map((option) => {
           return (
             <li
               key={option.id}
-              onClick={() => setSelectedOption(option)}
-              className="option | flex-all-center"
+              id={`${steps[currStepIndex].name}-${option.id}`}
+              onClick={() => selectOption(option)}
+              className={`option ${
+                selectedOption && selectedOption.id == option.id
+                  ? "selected-option "
+                  : ""
+              }| flex-all-center`}
             >
               {option.name}
               <img src={sqrImg} />
