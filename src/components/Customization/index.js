@@ -1,4 +1,4 @@
-import Step from "./Step";
+import Option from "./Options";
 import "./styles.css";
 
 import React, { useEffect, useState } from "react";
@@ -21,29 +21,35 @@ function index() {
   return (
     <div>
       {customization ? (
-        <div>
-          <div>Name: {customization.name}</div>
-          <div>Description: {customization.description}</div>
-          <div>
-            Steps:
-            {customization.steps.map((step, index) => {
-              return (
-                <div key={step.id} onClick={() => setCurrStepIndex(index)}>
-                  <li>{step.name}</li>
-                  <div>
-                    {step.selectedOption ? step.selectedOption.name : ""}
-                  </div>
-                </div>
-              );
-            })}
+        <div className="container-full-width ff-body">
+          <div className="container-full-width flex-v-center border-bottom ">
+            <div>Name: {customization.name}</div>
+            <div>Description: {customization.description}</div>
           </div>
-          <Step
-            currStepIndex={currStepIndex}
-            setCurrStepIndex={setCurrStepIndex}
-            steps={steps}
-            setSteps={setSteps}
-          />
-          <button onClick={() => console.log(steps)}>Log Steps</button>
+          <div className="step-option-wrapper container">
+            <div className="steps | border-right">
+              Steps:
+              <ul role="list">
+                {customization.steps.map((step, index) => {
+                  return (
+                    <li key={step.id} onClick={() => setCurrStepIndex(index)}>
+                      <h2>{step.name}</h2>
+                      <div>
+                        {step.selectedOption ? step.selectedOption.name : ""}
+                      </div>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+            <Option
+              currStepIndex={currStepIndex}
+              setCurrStepIndex={setCurrStepIndex}
+              steps={steps}
+              setSteps={setSteps}
+            />
+            {/* <button onClick={() => console.log(steps)}>Log Steps</button> */}
+          </div>
         </div>
       ) : null}
     </div>

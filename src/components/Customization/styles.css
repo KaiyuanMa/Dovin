@@ -1,0 +1,27 @@
+.customization-wrapper {
+  display: flex;
+}
+
+.step-option-wrapper {
+  display: flex;
+}
+
+.steps {
+  width: 25%;
+}
+
+.option-wrapper {
+  width: 75%;
+}
+
+.option-list {
+  display: grid;
+  grid-template-rows: repeat(auto-fill, 15rem);
+  grid-template-columns: repeat(auto-fill, 15rem);
+}
+
+.option {
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+}

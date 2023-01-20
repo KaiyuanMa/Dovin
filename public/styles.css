@@ -286,6 +286,14 @@ svg {
   border-bottom: 1px solid rgba(36, 34, 34, 0.15);
 }
 
+.border-right {
+  border-right: 1px solid rgba(36, 34, 34, 0.15);
+}
+
+.border-left {
+  border-left: 1px solid rgba(36, 34, 34, 0.15);
+}
+
 .border-top-bottom {
   border-top: 1px solid rgba(36, 34, 34, 0.15);
   border-bottom: 1px solid rgba(36, 34, 34, 0.15);

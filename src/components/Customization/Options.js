@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { apiGetStepOptions } from "../../api/option";
+import sqrImg from "../../../public/img/1600x1600.png";
 
 function Step(params) {
   const setCurrStepIndex = params.setCurrStepIndex;
@@ -29,15 +30,22 @@ function Step(params) {
   };
   console.log(selectedOption);
   return (
-    <div>
+    <div className="option-wrapper">
       <div>{`Step ${steps[currStepIndex].name}`}</div>
-      {options.map((option) => {
-        return (
-          <li key={option.id} onClick={() => setSelectedOption(option)}>
-            {option.name}
-          </li>
-        );
-      })}
+      <ul role="list" className="option-list container">
+        {options.map((option) => {
+          return (
+            <li
+              key={option.id}
+              onClick={() => setSelectedOption(option)}
+              className="option | flex-all-center"
+            >
+              {option.name}
+              <img src={sqrImg} />
+            </li>
+          );
+        })}
+      </ul>
       <button disabled={selectedOption == null} onClick={nextStep}>
         Next
       </button>

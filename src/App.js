@@ -1,7 +1,5 @@
 import React from "react";
 import UserControl from "./components/UserControl";
-import Logout from "./components/Logout";
-import SignUp from "./components/SignUp";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
 import Admin from "./components/Admin";
@@ -12,9 +10,6 @@ import { Route, Routes, NavLink } from "react-router-dom";
 function App() {
   return (
     <div>
-      {/* <Login />
-      <Logout /> */}
-      {/* <SignUp /> */}
       <Navigation />
       <main className="content">
         <Routes>

@@ -27,7 +27,7 @@ function index() {
         <div className="container-full-width">
           <div className="padding-block-200 border-top">
             <div className="user-control | container flex-h-center padding-block-600">
-              <Link className="logo">
+              <Link to="/" className="logo">
                 <div>Dovin</div>
               </Link>
               <Link to="/UserControl">
@@ -59,7 +59,7 @@ function index() {
                 id="primary-navigation"
               >
                 <li>
-                  <NavLink to="/">Lorem</NavLink>
+                  <NavLink to="/customization/1">Lorem</NavLink>
                 </li>
                 <li>
                   <NavLink to="/">Lorem</NavLink>

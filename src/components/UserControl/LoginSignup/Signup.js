@@ -30,14 +30,14 @@ function SignUp() {
       className="user-form flow-400 | flex-v-center"
     >
       <div className="flex-v-center name-input">
-        <div>
+        <div className="flow-400">
           <label>First Name</label>
           <input
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
           />
         </div>
-        <div>
+        <div className="flow-400">
           <label>Last Name</label>
           <input
             value={lastName}
