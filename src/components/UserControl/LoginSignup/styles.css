@@ -25,3 +25,14 @@
   width: auto;
   margin-top: 2.5rem;
 }
+
+.name-input {
+  width: 100%;
+  margin-top: 2.5rem;
+  justify-content: space-between;
+}
+
+.name-input > div {
+  display: flex;
+  flex-direction: column;
+}
