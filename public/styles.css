@@ -352,6 +352,10 @@ button:hover {
   background-color: black;
 }
 
+button:disabled {
+  pointer-events: none;
+}
+
 input {
   border-radius: 100vw;
   border: 1px solid #a8a8a8;

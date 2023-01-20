@@ -1,11 +1,14 @@
 import Option from "./Options";
 import "./styles.css";
-
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { apiGetStepSet } from "../../api/stepSet";
+import { useDispatch, useSelector } from "react-redux";
+import { apiAddQuote } from "../../api/quote";
 
 function index() {
+  const dispatch = useDispatch();
+  const { session } = useSelector((state) => state.session);
   const [customization, setCustomization] = useState();
   const [steps, setSteps] = useState([]);
   const [currStepIndex, setCurrStepIndex] = useState(0);
@@ -18,6 +21,21 @@ function index() {
     };
     fetchCustomization();
   }, []);
+  const submitOrder = async () => {
+    const quote = {
+      costSum: 0,
+      userId: session.id,
+    };
+    const response = await apiAddQuote(quote);
+    for (let i = 0; i < steps.length; i++) {
+      const quoteItem = {
+        quoteId: response.data.id,
+        stepId: steps[i].id,
+        optionsId: steps[i].selectedOption.id,
+      };
+      // await apiAddQu
+    }
+  };
   return (
     <div>
       {customization ? (
@@ -43,6 +61,7 @@ function index() {
                     </li>
                   );
                 })}
+                <button onClick={submitOrder}>Confirm</button>
               </ul>
             </div>
             <Option
@@ -51,7 +70,7 @@ function index() {
               steps={steps}
               setSteps={setSteps}
             />
-            <button onClick={() => console.log(steps)}>Log Steps</button>
+            {/* <button onClick={() => console.log(steps)}>Log Steps</button> */}
           </div>
         </div>
       ) : null}
