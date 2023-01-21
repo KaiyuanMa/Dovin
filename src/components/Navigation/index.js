@@ -19,22 +19,22 @@ function index() {
     navToggleFunction();
   }, []);
   return (
-    <header className="primary-header ff-body">
+    <header className="primary-header ff-body bg-neutral-500">
       <div className="container-full-width">
-        <div className="header-ad flex-all-center padding-block-100">
+        <div className="header-ad flex-all-center padding-block-100 text-primary-600">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </div>
         <div className="container-full-width">
-          <div className="padding-block-200 border-top">
+          <div className="border-top">
             <div className="user-control | container flex-h-center padding-block-600">
               <Link to="/" className="logo">
                 <div>Dovin</div>
               </Link>
               <Link to="/UserControl">
-                <i className="fa-light fa-user" />
+                <i className="fa-light fa-user hover-primary-600" />
               </Link>
               <Link>
-                <i className="fa-light fa-cart-shopping" />
+                <i className="fa-light fa-cart-shopping hover-primary-600" />
               </Link>
               <div
                 className="mobile-nav-toggle"
