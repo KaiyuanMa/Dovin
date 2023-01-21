@@ -19,9 +19,9 @@ function Step(params) {
     fetchOptions(steps[currStepIndex].id);
   }, [currStepIndex]);
 
-  const saveOption = () => {
+  const saveOption = (option) => {
     const newSteps = steps;
-    newSteps[currStepIndex].selectedOption = selectedOption;
+    newSteps[currStepIndex].selectedOption = option;
     setSteps(newSteps);
   };
   const nextStep = () => {
@@ -30,6 +30,7 @@ function Step(params) {
     setCurrStepIndex(currStepIndex + 1);
   };
   const selectOption = (option) => {
+    console.log(steps);
     if (selectedOption) {
       const prevSelected = document.querySelector(
         `#${steps[currStepIndex].name}-${selectedOption.id}`
@@ -37,6 +38,7 @@ function Step(params) {
       prevSelected.classList.remove("selected-option");
     }
     setSelectedOption(option);
+    saveOption(option);
     const selectedOptionHtml = document.querySelector(
       `#${steps[currStepIndex].name}-${option.id}`
     );

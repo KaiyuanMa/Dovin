@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { apiGetStepSet } from "../../api/stepSet";
 import { useDispatch, useSelector } from "react-redux";
 import { apiAddQuote } from "../../api/quote";
+import { apiAddQuoteItem } from "../../api/quoteItem";
 
 function index() {
   const dispatch = useDispatch();
@@ -33,7 +34,7 @@ function index() {
         stepId: steps[i].id,
         optionsId: steps[i].selectedOption.id,
       };
-      // await apiAddQu
+      await apiAddQuoteItem(quoteItem);
     }
   };
   return (

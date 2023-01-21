@@ -22,4 +22,5 @@ module.exports = {
   Step,
   StepSet,
   Option,
+  QuoteItem,
 };
