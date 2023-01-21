@@ -11,7 +11,8 @@
 }
 
 .option-wrapper {
-  width: 75%;
+  width: calc(75% - 2rem);
+  margin-inline: auto;
 }
 
 .option-list {
@@ -32,6 +33,7 @@
 
 .step-list {
   flex-direction: column;
+  /* align-items: flex-start; */
 }
 
 .step-list > li {
@@ -40,4 +42,12 @@
 
 .selected-option {
   outline: 1px solid black;
+}
+
+.option-header {
+  justify-content: space-between;
+}
+
+.option-header > h2 {
+  font-size: var(--fs-550);
 }

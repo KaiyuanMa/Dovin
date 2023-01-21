@@ -41,13 +41,11 @@ function index() {
     <div>
       {customization ? (
         <div className="container-full-width ff-body">
-          <div className="container-full-width flex-v-center border-bottom ">
-            <div>Name: {customization.name}</div>
-            <div>Description: {customization.description}</div>
+          <div className="container-full-width flex-h-center border-bottom padding-block-700">
+            <h1 className="ff-heading fw-light">{customization.name}</h1>
           </div>
           <div className="step-option-wrapper container">
-            <div className="steps | border-right">
-              Steps:
+            <div className="steps | border-right padding-block-600">
               <ul
                 role="list"
                 className="step-list | flex-all-center flow-700 ff-heading fs-secondary-heading"
@@ -55,7 +53,9 @@ function index() {
                 {customization.steps.map((step, index) => {
                   return (
                     <li key={step.id} onClick={() => setCurrStepIndex(index)}>
-                      <h2 className="fw-light">{step.name}</h2>
+                      <h2 className="fw-light fs-secondary-heading">
+                        {step.name}
+                      </h2>
                       <div>
                         {step.selectedOption ? step.selectedOption.name : ""}
                       </div>

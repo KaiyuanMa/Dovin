@@ -46,7 +46,12 @@ function Step(params) {
   };
   return (
     <div className="option-wrapper">
-      <div>{`Step ${steps[currStepIndex].name}`}</div>
+      <div className="option-header | container flex-v-center padding-block-600">
+        <h2 className="ff-body fw-light">{`${steps[currStepIndex].description}`}</h2>
+        <button disabled={selectedOption == null} onClick={nextStep}>
+          Next
+        </button>
+      </div>
       <ul role="list" className="option-list | padding-block-200">
         {options.map((option) => {
           return (
@@ -66,9 +71,6 @@ function Step(params) {
           );
         })}
       </ul>
-      <button disabled={selectedOption == null} onClick={nextStep}>
-        Next
-      </button>
     </div>
   );
 }
