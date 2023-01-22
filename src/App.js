@@ -9,7 +9,7 @@ import { Route, Routes, NavLink } from "react-router-dom";
 
 function App() {
   return (
-    <div>
+    <div className="page">
       <Navigation />
       <main className="content">
         <Routes>

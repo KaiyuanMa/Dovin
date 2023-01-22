@@ -279,7 +279,7 @@ i {
 
 .container {
   --max-width: 1700px;
-  --padding: 1rem;
+  --padding: 5rem;
 
   width: min(var(--max-width), 100% - var(--padding) * 2);
   margin-inline: auto;
@@ -427,7 +427,8 @@ input:focus {
   border: 1px solid black;
 }
 
-.content {
+.page {
+  position: initial;
   padding-top: 160px;
 }
 
