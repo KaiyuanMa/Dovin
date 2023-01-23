@@ -7,12 +7,21 @@ function index() {
     const body = document.querySelector("body");
     const navToggle = document.querySelector(".mobile-nav-toggle");
     const primaryNav = document.querySelector(".primary-navigation");
-    navToggle.addEventListener("click", () => {
+    const navLinks = document.querySelectorAll(".nav-list a");
+    const toggleNav = (isLink) => {
+      if (isLink) {
+        const navList = document.querySelector(".nav-list");
+        if (getComputedStyle(navList).flexDirection !== "column") return;
+      }
       primaryNav.hasAttribute("data-visible")
         ? navToggle.setAttribute("aria-expanded", false)
         : navToggle.setAttribute("aria-expanded", true);
       primaryNav.toggleAttribute("data-visible");
       body.classList.toggle("no-scroll");
+    };
+    navToggle.addEventListener("click", () => toggleNav(false));
+    navLinks.forEach((link) => {
+      link.addEventListener("click", () => toggleNav(true));
     });
   };
   useEffect(() => {
