@@ -53,9 +53,7 @@ function index() {
                 {customization.steps.map((step, index) => {
                   return (
                     <li key={step.id} onClick={() => setCurrStepIndex(index)}>
-                      <h2 className="fw-light fs-secondary-heading ff-body">
-                        {step.name}
-                      </h2>
+                      <h2 className="ff-body">{step.name}</h2>
                       <div>
                         {step.selectedOption ? step.selectedOption.name : ""}
                       </div>

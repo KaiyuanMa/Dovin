@@ -471,7 +471,7 @@ input:focus {
 
 .page {
   position: initial;
-  padding-top: 160px;
+  padding-top: 192px;
 }
 
 @media (max-width: 48em) {
@@ -479,4 +479,5 @@ input:focus {
     padding-top: 160px;
   }
 }
+
 /* TODO */
