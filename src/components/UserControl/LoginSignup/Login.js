@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./styles.css";
 import { useDispatch } from "react-redux";
 import { login } from "../../../state/actionCreators/sessionAC";
+import { Link } from "react-router-dom";
 
 function Login() {
   const dispatch = useDispatch();
@@ -13,10 +14,18 @@ function Login() {
   };
   return (
     <form onSubmit={handelLogin} className="user-form flow-400 | flex-v-center">
-      <label>Email</label>
+      <label>Email *</label>
       <input value={email} onChange={(e) => setEmail(e.target.value)} />
-      <label>Password</label>
+      <label>Password *</label>
       <input value={password} onChange={(e) => setPassword(e.target.value)} />
+      <div className="user-form-tools | flex-v-center fs-body">
+        {/* TODO: Finish these two functions */}
+        <div className="flex-v-center">
+          <input type="checkbox" name="remember" />
+          <label for="remember"> Remember me</label>
+        </div>
+        <Link>Forgot Password</Link>
+      </div>
       <button>Login</button>
     </form>
   );

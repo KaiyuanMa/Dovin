@@ -3,7 +3,7 @@ import LoginSignup from "./LoginSignup";
 
 function index() {
   return (
-    <div className="bg-neutral-500">
+    <div className="bg-neutral-300 padding-block-900 fw-semi-bold">
       <LoginSignup />
     </div>
   );

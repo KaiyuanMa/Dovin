@@ -2,6 +2,9 @@
   --clr-primary-500: #e98074;
   --clr-primary-600: #e85a4f;
 
+  --clr-neutral-200: #f9f8f4;
+  --clr-neutral-300: #f4f3ed;
+  --clr-neutral-400: #ece9df;
   --clr-neutral-500: #eae7dc;
   --clr-neutral-600: #d8c3a5;
   --clr-neutral-700: #8e8d8a;
@@ -171,6 +174,12 @@ i {
   color: var(--clr-neutral-700);
 }
 
+.bg-neutral-300 {
+  background-color: var(--clr-neutral-300);
+}
+.bg-neutral-400 {
+  background-color: var(--clr-neutral-400);
+}
 .bg-neutral-500 {
   background-color: var(--clr-neutral-500);
 }
@@ -262,6 +271,10 @@ i {
 
 .padding-block-800 {
   padding-block: var(--size-800);
+}
+
+.padding-block-900 {
+  padding-block: var(--size-900);
 }
 
 .padding-bottom-100 {
@@ -358,6 +371,10 @@ i {
   transition-duration: 0.5s;
 }
 
+.flow-200 > * + * {
+  margin-top: var(--size-200);
+}
+
 .flow-300 > * + * {
   margin-top: var(--size-300);
 }
@@ -382,6 +399,10 @@ i {
   margin-top: var(--size-800);
 }
 
+.flow-900 > * + * {
+  margin-top: var(--size-900);
+}
+
 .wrapper-25 {
   width: 25%;
 }
@@ -395,7 +416,7 @@ i {
 button {
   font-size: var(--fs-button);
   background-color: white;
-  border: 1px solid black;
+  border: 1px solid var(--clr-dark-500);
   cursor: pointer;
   width: min(10rem, 100%);
   border-radius: 2.5rem;
@@ -406,7 +427,7 @@ button {
 
 button:hover {
   color: white;
-  background-color: black;
+  background-color: var(--clr-dark-500);
 }
 
 button:disabled {
@@ -423,7 +444,7 @@ input {
 }
 
 input:focus {
-  outline: 1px solid black;
+  outline: 1px solid var(--clr-dark-500);
   border: 1px solid black;
 }
 
