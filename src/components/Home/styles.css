@@ -34,7 +34,7 @@
   transform: scale(1.1);
 }
 
-@media (max-width: 50em) {
+@media (max-width: 80em) {
   .product-categories {
     flex-direction: column;
   }
@@ -61,7 +61,7 @@
   grid-row-gap: 4rem;
 }
 
-@media (max-width: 50em) {
+@media (max-width: 80em) {
   .home-even-column-text {
     --max-width: 1700px;
     --padding: 1rem;

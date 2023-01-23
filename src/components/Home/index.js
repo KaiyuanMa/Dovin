@@ -92,7 +92,7 @@ function index() {
               <h1 className="fs-primary-heading fw-light ff-heading">
                 Lorem ipsum dolor
               </h1>
-              <p className="home-text-block | fs-body fw-regular">
+              <p className="home-text-block | fs-body fw-light">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris

@@ -26,7 +26,7 @@ function index() {
         </div>
         <div className="container-full-width">
           <div className="border-top">
-            <div className="user-control | container flex-h-center padding-block-600">
+            <div className="user-control | container flex-h-center padding-block-700">
               <Link to="/" className="logo">
                 <div>Dovin</div>
               </Link>

@@ -19,7 +19,7 @@ function index() {
             </div>
           </div>
           <div className="footer-links-wrapper">
-            <div className="footer-links | flex-all-center">
+            <div className="footer-links | flex-v-center">
               <div className="flex-all-center flex-direction-column">
                 <Link className="hover-primary-600">link A</Link>
                 <Link className="hover-primary-600">link B</Link>

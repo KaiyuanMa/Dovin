@@ -1,10 +1,14 @@
 .user-form-container {
-  width: min(70rem, 100% - 1rem * 2);
+  width: min(90rem, 100% - 1rem * 2);
   margin: auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
   gap: 2rem;
+}
+
+.user-form-container > img {
+  width: 100%;
 }
 
 .user-form-form {
@@ -74,4 +78,23 @@
 .form-switch-active {
   background-color: var(--clr-neutral-400) !important;
   color: var(--clr-dark-500) !important;
+}
+
+@media (max-width: 48em) {
+  .user-form-container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+  }
+  .user-form-form {
+    width: 100%;
+    margin-inline: auto;
+    aspect-ratio: auto;
+    padding-bottom: 2rem;
+  }
+  .name-input {
+    flex-direction: column;
+  }
+  .name-input > div {
+    margin-top: 2.5rem;
+  }
 }
