@@ -48,7 +48,7 @@ function index() {
             <div className="steps | padding-block-600">
               <ul
                 role="list"
-                className="step-list | flex-all-center flow-700 ff-heading fs-secondary-heading"
+                className="step-list | flex-all-center ff-heading fs-secondary-heading"
               >
                 {customization.steps.map((step, index) => {
                   return (

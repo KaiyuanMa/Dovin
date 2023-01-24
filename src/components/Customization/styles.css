@@ -19,8 +19,6 @@
 
 .steps {
   width: 20%;
-  padding-left: 1vw;
-  padding-right: 1vw;
   position: sticky;
   top: 192px;
   height: fit-content;
@@ -53,6 +51,8 @@
 }
 
 .step-list > li {
+  width: 100%;
+  height: 5rem;
   cursor: pointer;
 }
 
