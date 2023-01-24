@@ -29,7 +29,7 @@ function index() {
             id="form-login-btn"
             onClick={() => switchForm(true)}
           >
-            Login
+            Sign In
           </div>
           <div
             className="padding-block-300"

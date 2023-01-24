@@ -38,7 +38,7 @@ function index() {
     }
   };
   return (
-    <div>
+    <div className="customization-page | bg-neutral-200">
       {customization ? (
         <div className="container-full-width ff-body">
           <div className="container-full-width flex-h-center border-bottom padding-block-700">

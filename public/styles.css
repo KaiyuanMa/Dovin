@@ -18,6 +18,7 @@
   --ff-heading: var(--ff-primary);
   --ff-body: var(--ff-default);
 
+  --fw-xLight: 100;
   --fw-light: 300;
   --fw-regular: 400;
   --fw-semi-bold: 500;
@@ -179,6 +180,9 @@ i {
   color: var(--clr-neutral-700);
 }
 
+.bg-neutral-200 {
+  background-color: var(--clr-neutral-200);
+}
 .bg-neutral-300 {
   background-color: var(--clr-neutral-300);
 }
@@ -210,6 +214,10 @@ i {
 
 .hover-primary-600:hover {
   color: var(--clr-primary-600);
+}
+
+.fw-xLight {
+  font-weight: var(--fw-xLight);
 }
 
 .fw-light {
@@ -432,7 +440,7 @@ i {
 /* Button */
 button {
   font-size: var(--fs-button);
-  background-color: white;
+  background-color: var(--clr-neutral-200);
   border: 1px solid var(--clr-dark-500);
   cursor: pointer;
   width: min(7rem, 100%);
@@ -443,12 +451,14 @@ button {
 }
 
 button:hover {
-  color: white;
   background-color: var(--clr-dark-500);
+  color: var(--clr-neutral-200);
 }
 
 button:disabled {
   pointer-events: none;
+  color: #a8a8a8 !important;
+  border: 1px solid #a8a8a8 !important;
 }
 
 input {

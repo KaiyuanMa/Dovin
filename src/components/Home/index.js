@@ -7,7 +7,7 @@ import regImg from "../../../public/img/2000x1125.png";
 
 function index() {
   return (
-    <div className="main-content ff-body">
+    <div className="main-content ff-body bg-neutral-200">
       <section className="padding-block-800 bg-neutral-500 ">
         <div className="container home-face-img">
           <img src={homeFaceImg} alt="" />
