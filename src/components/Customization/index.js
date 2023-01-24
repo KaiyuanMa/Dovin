@@ -45,7 +45,7 @@ function index() {
             <h1 className="ff-heading fw-light">{customization.name}</h1>
           </div>
           <div className="step-option-wrapper container">
-            <div className="steps | border-right padding-block-600">
+            <div className="steps | padding-block-600">
               <ul
                 role="list"
                 className="step-list | flex-all-center flow-700 ff-heading fs-secondary-heading"

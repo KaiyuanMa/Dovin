@@ -45,7 +45,7 @@ function Step(params) {
     selectedOptionHtml.classList.add("selected-option");
   };
   return (
-    <div className="option-wrapper">
+    <div className="option-wrapper | border-left">
       <div className="option-header | container flex-v-center padding-block-600">
         <h2 className="ff-body fw-light">{`${steps[currStepIndex].description}`}</h2>
         <button disabled={selectedOption == null} onClick={nextStep}>

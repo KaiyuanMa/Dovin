@@ -4,13 +4,16 @@
 
 .step-option-wrapper {
   display: flex;
+  position: relative;
 }
 
 .steps {
-  width: calc(20%+1rem);
+  width: 20%;
   padding-left: 1vw;
   padding-right: 1vw;
-  position: relative;
+  position: sticky;
+  top: 192px;
+  height: fit-content;
 }
 .option-wrapper {
   width: calc(85% - 2rem);

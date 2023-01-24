@@ -30,7 +30,7 @@
 .footer-links {
   margin-left: 8vw;
   gap: 9vw;
-  justify-content: space-between;
+  justify-content: center;
 }
 
 @media (max-width: 75em) {
@@ -69,6 +69,7 @@
     flex-direction: column;
   }
   .footer-links {
+    justify-content: space-between;
     margin-left: 0;
   }
 }
