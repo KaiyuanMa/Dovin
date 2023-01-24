@@ -25,22 +25,22 @@ function Step(params) {
     setSteps(newSteps);
   };
   const nextStep = () => {
-    saveOption();
+    saveOption(selectedOption);
     setSelectedOption(null);
     setCurrStepIndex(currStepIndex + 1);
   };
   const selectOption = (option) => {
     console.log(steps);
     if (selectedOption) {
-      const prevSelected = document.querySelector(
-        `#${steps[currStepIndex].name}-${selectedOption.id}`
+      const prevSelected = document.getElementById(
+        `${steps[currStepIndex].id}${selectedOption.id}`
       );
       prevSelected.classList.remove("selected-option");
     }
     setSelectedOption(option);
     saveOption(option);
-    const selectedOptionHtml = document.querySelector(
-      `#${steps[currStepIndex].name}-${option.id}`
+    const selectedOptionHtml = document.getElementById(
+      `${steps[currStepIndex].id}${option.id}`
     );
     selectedOptionHtml.classList.add("selected-option");
   };
@@ -57,7 +57,7 @@ function Step(params) {
           return (
             <li
               key={option.id}
-              id={`${steps[currStepIndex].name}-${option.id}`}
+              id={`${steps[currStepIndex].id}${option.id}`}
               onClick={() => selectOption(option)}
               className={`option ${
                 selectedOption && selectedOption.id == option.id
