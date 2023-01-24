@@ -51,12 +51,7 @@
   --fs-primary-heading: var(--fs-900);
   --fs-secondary-heading: var(--fs-600);
   --fs-nav: var(--fs-400);
-
-  /* --fs-body: var(--fs-800);
-  --fs-primary-heading: var(--fs-1300);
-  --fs-secondary-heading: var(--fs-1000);
-  --fs-nav: var(--fs-800);
-  --fs-button: var(--fs-500); */
+  --fs-button: var(--fs-500);
 }
 
 @media (max-width: 48em) {
@@ -349,6 +344,7 @@ i {
 
 .flex-v-center {
   display: flex;
+  align-items: center;
 }
 
 .flex-all-center {
@@ -439,7 +435,7 @@ button {
   background-color: white;
   border: 1px solid var(--clr-dark-500);
   cursor: pointer;
-  width: min(10rem, 100%);
+  width: min(7rem, 100%);
   border-radius: 2.5rem;
   padding: 0.5rem;
   transition: color 0.3s ease-out, background-color 0.3s ease-out;

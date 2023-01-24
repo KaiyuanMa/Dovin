@@ -25,6 +25,7 @@
   display: grid;
   grid-template-rows: repeat(auto-fill, var(--size));
   grid-template-columns: repeat(auto-fill, var(--size));
+  gap: 10px;
   overflow-y: auto;
   justify-content: center;
 }
@@ -38,8 +39,6 @@
 
 .step-list {
   flex-direction: column;
-  align-items: flex-start;
-  width: calc(max-content+1rem);
   margin-inline: auto;
 }
 
@@ -52,8 +51,16 @@
   font-weight: var(--fw-light) !important;
 }
 
-.selected-option {
-  outline: 1px solid black;
+/* .step-list > button {
+  font-size: var(--fs-600);
+} */
+
+.option > img {
+  transition: outline 0.2s ease-out;
+}
+
+.selected-option > img {
+  outline: 3.5px solid var(--clr-primary-500);
 }
 
 .option-header {
@@ -62,6 +69,10 @@
 
 .option-header > h2 {
   font-size: var(--fs-550);
+}
+
+.option-header > button {
+  width: max(10rem, 20%);
 }
 
 @media (max-width: 75em) {
@@ -79,14 +90,18 @@
   .step-list > li > h2 {
     font-size: max(1.2rem, 1.8vw);
   }
+  /* .step-list > button {
+    font-size: max(0.8rem, 1.8vw);
+  } */
   .option-wrapper {
     width: calc(75% - 2rem);
   }
   .option-header > h2 {
-    font-size: var(--fs-300);
+    font-size: var(--fs-400);
   }
   .option {
-    padding: 0.5rem;
+    padding: 0.3rem;
+    font-size: var(--fs-400);
   }
 }
 @media (max-width: 48em) {
@@ -94,9 +109,19 @@
     font-size: max(0.8rem, 1.8vw);
     font-weight: var(--fw-semi-bold) !important;
   }
+  .step-option-wrapper button {
+    font-size: max(0.8rem, 1.8vw);
+  }
   .step-option-wrapper {
     --padding: 1rem;
     width: min(var(--max-width), 100% - var(--padding) * 2);
+  }
+  .option-header {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .option-header > button {
+    width: 100%;
   }
 }
 

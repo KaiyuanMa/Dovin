@@ -5,27 +5,27 @@ const seedStep = async (StepSet) => {
     const _Steps = [
       [
         {
-          name: "Lorem ipsum",
+          name: "Lorem",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras augue est, porttitor eget ex sit amet, fringilla aliquam erat.",
         },
         {
-          name: "Dolor sit amet",
+          name: "Lorem",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras augue est, porttitor eget ex sit amet, fringilla aliquam erat.",
         },
         {
-          name: "Cras augue est",
+          name: "Lorem",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras augue est, porttitor eget ex sit amet, fringilla aliquam erat.",
         },
         {
-          name: "Fringilla aliquam",
+          name: "Lorem",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras augue est, porttitor eget ex sit amet, fringilla aliquam erat.",
         },
         {
-          name: "Nulla a ultrices",
+          name: "Lorem",
           description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras augue est, porttitor eget ex sit amet, fringilla aliquam erat.",
           stepSetId: StepSet[0].id,

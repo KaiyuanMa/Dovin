@@ -60,7 +60,9 @@ function index() {
                     </li>
                   );
                 })}
-                <button onClick={submitOrder}>Confirm</button>
+                <button className="fs-body" onClick={submitOrder}>
+                  Confirm
+                </button>
               </ul>
             </div>
             <Option
