@@ -54,7 +54,7 @@ function Step(params) {
             <li
               key={option.id}
               id={`${steps[currStepIndex].id}${option.id}`}
-              className="option | flex-all-center"
+              className="option"
             >
               <input
                 type="radio"
@@ -63,7 +63,10 @@ function Step(params) {
                 onChange={() => selectOption(option)}
                 id={`${steps[currStepIndex].id}${option.id}-input`}
               />
-              <label for={`${steps[currStepIndex].id}${option.id}-input`}>
+              <label
+                className="flex-all-center flex-direction-column"
+                for={`${steps[currStepIndex].id}${option.id}-input`}
+              >
                 {option.name}
                 <img src={sqrImg} />
               </label>

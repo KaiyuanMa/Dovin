@@ -31,24 +31,6 @@ const seedStep = async (StepSet) => {
           stepSetId: StepSet[0].id,
         },
       ],
-      [
-        {
-          name: "B5",
-        },
-        {
-          name: "B4",
-        },
-        {
-          name: "B3",
-        },
-        {
-          name: "B2",
-        },
-        {
-          name: "B1",
-          stepSetId: StepSet[1].id,
-        },
-      ],
     ];
 
     let steps = [];

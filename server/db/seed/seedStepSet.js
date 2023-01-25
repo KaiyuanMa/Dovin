@@ -4,9 +4,6 @@ const _StepSets = [
   {
     name: "Custom Drapes",
   },
-  {
-    name: "SetB",
-  },
 ];
 
 const seedStepSet = async () => {

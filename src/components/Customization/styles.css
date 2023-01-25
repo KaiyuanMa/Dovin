@@ -50,6 +50,7 @@
 
 .option > label {
   cursor: pointer;
+  font-size: var(--fs-400);
 }
 
 .step-list {
@@ -69,6 +70,9 @@
 
 .step-list > li > h2 {
   font-size: var(--fs-550);
+  font-weight: var(--fw-light) !important;
+}
+.step-list > li > p {
   font-weight: var(--fw-light) !important;
 }
 

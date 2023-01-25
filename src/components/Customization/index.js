@@ -48,7 +48,7 @@ function index() {
             <div className="steps | padding-block-600">
               <ul
                 role="list"
-                className="step-list | flex-all-center ff-heading border-between"
+                className="step-list | flex-all-center border-between"
               >
                 <h2 className="ff-heading fw-light fs-secondary-heading">
                   Steps
@@ -60,10 +60,10 @@ function index() {
                       key={step.id}
                       onClick={() => setCurrStepIndex(index)}
                     >
-                      <h2 className="ff-body">{step.name}</h2>
-                      <div>
+                      <h2>{step.name}</h2>
+                      <p>
                         {step.selectedOption ? step.selectedOption.name : ""}
-                      </div>
+                      </p>
                     </li>
                   );
                 })}
