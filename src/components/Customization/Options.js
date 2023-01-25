@@ -7,8 +7,9 @@ function Step(params) {
   const currStepIndex = params.currStepIndex;
   const setSteps = params.setSteps;
   const steps = params.steps;
+  const submitOrder = params.submitOrder;
   const [options, setOptions] = useState([]);
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState({});
 
   useEffect(() => {
     setSelectedOption(steps[currStepIndex].selectedOption);
@@ -30,27 +31,22 @@ function Step(params) {
     setCurrStepIndex(currStepIndex + 1);
   };
   const selectOption = (option) => {
-    console.log(steps);
-    if (selectedOption) {
-      const prevSelected = document.getElementById(
-        `${steps[currStepIndex].id}${selectedOption.id}`
-      );
-      prevSelected.classList.remove("selected-option");
-    }
     setSelectedOption(option);
     saveOption(option);
-    const selectedOptionHtml = document.getElementById(
-      `${steps[currStepIndex].id}${option.id}`
-    );
-    selectedOptionHtml.classList.add("selected-option");
   };
   return (
     <div className="option-wrapper | border-left">
       <div className="option-header | container flex-v-center padding-block-600">
         <h2 className="ff-body fw-light">{`${steps[currStepIndex].description}`}</h2>
-        <button disabled={selectedOption == null} onClick={nextStep}>
-          Next
-        </button>
+        {currStepIndex === steps.length - 1 ? (
+          <button disabled={selectedOption == null} onClick={submitOrder}>
+            Submit
+          </button>
+        ) : (
+          <button disabled={selectedOption == null} onClick={nextStep}>
+            Next
+          </button>
+        )}
       </div>
       <ul role="list" className="option-list | padding-block-200">
         {options.map((option) => {
@@ -58,15 +54,19 @@ function Step(params) {
             <li
               key={option.id}
               id={`${steps[currStepIndex].id}${option.id}`}
-              onClick={() => selectOption(option)}
-              className={`option ${
-                selectedOption && selectedOption.id == option.id
-                  ? "selected-option "
-                  : ""
-              }| flex-all-center`}
+              className="option | flex-all-center"
             >
-              {option.name}
-              <img src={sqrImg} />
+              <input
+                type="radio"
+                value={option}
+                checked={selectedOption && selectedOption.id === option.id}
+                onChange={() => selectOption(option)}
+                id={`${steps[currStepIndex].id}${option.id}-input`}
+              />
+              <label for={`${steps[currStepIndex].id}${option.id}-input`}>
+                {option.name}
+                <img src={sqrImg} />
+              </label>
             </li>
           );
         })}

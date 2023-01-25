@@ -42,12 +42,23 @@
   flex-direction: column;
   width: 100%;
   padding: 1rem;
+}
+
+.option > input {
+  display: none;
+}
+
+.option > label {
   cursor: pointer;
 }
 
 .step-list {
   flex-direction: column;
   margin-inline: auto;
+}
+
+.step-list > h2 {
+  width: 100%;
 }
 
 .step-list > li {
@@ -57,19 +68,15 @@
 }
 
 .step-list > li > h2 {
-  font-size: var(--fs-600);
+  font-size: var(--fs-550);
   font-weight: var(--fw-light) !important;
 }
 
-/* .step-list > button {
-  font-size: var(--fs-600);
-} */
-
-.option > img {
+.option > label > img {
   transition: outline 0.2s ease-out;
 }
 
-.selected-option > img {
+.option > input:checked + label > img {
   outline: 3.5px solid var(--clr-primary-500);
 }
 

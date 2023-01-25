@@ -48,11 +48,18 @@ function index() {
             <div className="steps | padding-block-600">
               <ul
                 role="list"
-                className="step-list | flex-all-center ff-heading fs-secondary-heading"
+                className="step-list | flex-all-center ff-heading border-between"
               >
+                <h2 className="ff-heading fw-light fs-secondary-heading">
+                  Steps
+                </h2>
                 {customization.steps.map((step, index) => {
                   return (
-                    <li key={step.id} onClick={() => setCurrStepIndex(index)}>
+                    <li
+                      className="padding-block-300"
+                      key={step.id}
+                      onClick={() => setCurrStepIndex(index)}
+                    >
                       <h2 className="ff-body">{step.name}</h2>
                       <div>
                         {step.selectedOption ? step.selectedOption.name : ""}
@@ -60,9 +67,6 @@ function index() {
                     </li>
                   );
                 })}
-                <button className="fs-body" onClick={submitOrder}>
-                  Confirm
-                </button>
               </ul>
             </div>
             <Option
@@ -70,8 +74,8 @@ function index() {
               setCurrStepIndex={setCurrStepIndex}
               steps={steps}
               setSteps={setSteps}
+              submitOrder={submitOrder}
             />
-            {/* <button onClick={() => console.log(steps)}>Log Steps</button> */}
           </div>
         </div>
       ) : null}

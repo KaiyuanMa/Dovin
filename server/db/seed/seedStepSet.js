@@ -2,7 +2,7 @@ const { StepSet } = require("../index");
 
 const _StepSets = [
   {
-    name: "SetA",
+    name: "Custom Drapes",
   },
   {
     name: "SetB",
