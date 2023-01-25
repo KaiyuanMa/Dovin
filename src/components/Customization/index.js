@@ -55,16 +55,25 @@ function index() {
                 </h2>
                 {customization.steps.map((step, index) => {
                   return (
-                    <li
-                      className="padding-block-300"
-                      key={step.id}
-                      onClick={() => setCurrStepIndex(index)}
-                    >
-                      <h2>{step.name}</h2>
-                      <p>
-                        {step.selectedOption ? step.selectedOption.name : ""}
-                      </p>
-                    </li>
+                    <>
+                      <input
+                        type="radio"
+                        value={index}
+                        checked={index === currStepIndex}
+                        onChange={() => setCurrStepIndex(index)}
+                        id={`${customizationId}_${step.id}`}
+                        key={`${customizationId}_${step.id}`}
+                      />
+                      <label
+                        className="padding-block-300"
+                        for={`${customizationId}_${step.id}`}
+                      >
+                        <h2>{step.name}</h2>
+                        <p>
+                          {step.selectedOption ? step.selectedOption.name : ""}
+                        </p>
+                      </label>
+                    </>
                   );
                 })}
               </ul>

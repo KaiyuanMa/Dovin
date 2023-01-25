@@ -62,17 +62,25 @@
   width: 100%;
 }
 
-.step-list > li {
+.step-list > label {
   width: 100%;
   height: 5rem;
   cursor: pointer;
 }
 
-.step-list > li > h2 {
+.step-list > label {
+  cursor: pointer;
+}
+
+.step-list > input {
+  display: none;
+}
+
+.step-list > label > h2 {
   font-size: var(--fs-550);
   font-weight: var(--fw-light) !important;
 }
-.step-list > li > p {
+.step-list > label > p {
   font-weight: var(--fw-light) !important;
 }
 
