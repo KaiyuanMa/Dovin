@@ -66,6 +66,8 @@
   width: 100%;
   height: 5rem;
   cursor: pointer;
+  padding: var(--size-300);
+  transition: background-color 0.3s ease-out;
 }
 
 .step-list > label {
@@ -77,11 +79,15 @@
 }
 
 .step-list > label > h2 {
-  font-size: var(--fs-550);
+  font-size: var(--fs-600);
   font-weight: var(--fw-light) !important;
 }
 .step-list > label > p {
   font-weight: var(--fw-light) !important;
+}
+
+.step-list > input:checked + label {
+  background-color: var(--clr-border);
 }
 
 .option > label > img {
@@ -97,10 +103,13 @@
 }
 
 .option-header > h2 {
+  width: 85%;
   font-size: var(--fs-550);
 }
 
 .option-header > button {
+  width: 15%;
+  margin-inline: 1rem;
   width: max(10rem, 20%);
 }
 
@@ -116,7 +125,7 @@
   .steps {
     width: 25%;
   }
-  .step-list > li > h2 {
+  .step-list > h2 {
     font-size: max(1.2rem, 1.8vw);
   }
   /* .step-list > button {
@@ -130,11 +139,13 @@
   }
   .option {
     padding: 0.3rem;
-    font-size: var(--fs-400);
+  }
+  .option > label {
+    font-size: var(--fs-200);
   }
 }
 @media (max-width: 48em) {
-  .step-list > li > h2 {
+  .step-list > h2 {
     font-size: max(0.8rem, 1.8vw);
     font-weight: var(--fw-semi-bold) !important;
   }

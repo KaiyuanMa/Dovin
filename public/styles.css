@@ -9,6 +9,8 @@
   --clr-neutral-600: #d8c3a5;
   --clr-neutral-700: #8e8d8a;
 
+  --clr-border: rgba(36, 34, 34, 0.15);
+
   --clr-dark-500: #242222;
 
   --ff-primary: "Marcellus", serif;
@@ -376,28 +378,28 @@ i {
 }
 
 .border-top {
-  border-top: 1px solid rgba(36, 34, 34, 0.15);
+  border-top: 1px solid var(--clr-border);
 }
 
 .border-bottom {
-  border-bottom: 1px solid rgba(36, 34, 34, 0.15);
+  border-bottom: 1px solid var(--clr-border);
 }
 
 .border-right {
-  border-right: 1px solid rgba(36, 34, 34, 0.15);
+  border-right: 1px solid var(--clr-border);
 }
 
 .border-left {
-  border-left: 1px solid rgba(36, 34, 34, 0.15);
+  border-left: 1px solid var(--clr-border);
 }
 
 .border-top-bottom {
-  border-top: 1px solid rgba(36, 34, 34, 0.15);
-  border-bottom: 1px solid rgba(36, 34, 34, 0.15);
+  border-top: 1px solid var(--clr-border);
+  border-bottom: 1px solid var(--clr-border);
 }
 
 .border-between > * + * {
-  border-top: 1px solid rgba(36, 34, 34, 0.15);
+  border-top: 1px solid var(--clr-border);
 }
 
 .img-container {
