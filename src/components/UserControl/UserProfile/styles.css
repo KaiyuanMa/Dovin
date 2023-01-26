@@ -1,0 +1,62 @@
+.user-dashboard {
+  display: grid;
+  grid-template: repeat(2, 18vw) / repeat(2, 50%);
+  gap: 2rem;
+  grid-template-areas:
+    "order address"
+    "order appointment";
+}
+
+.user-welcome {
+  grid-area: welcome;
+}
+
+.user-order {
+  grid-area: order;
+}
+
+.user-address {
+  grid-area: address;
+}
+
+.user-appointment {
+  grid-area: appointment;
+}
+
+.user-dashboard-item {
+  background-color: var(--clr-neutral-400);
+  padding: var(--size-300);
+}
+
+.user-dashboard-item > h2 {
+  font-size: var(--fs-700);
+  font-weight: 10;
+  margin-inline: 2rem;
+}
+
+.user-nav {
+  display: flex;
+  flex-direction: column;
+  width: 20%;
+}
+
+.user-nav > h2 {
+  font-size: var(--fs-600);
+  padding-block: var(--size-300);
+  padding-top: calc(var(--size-400) + var(--size-300));
+}
+
+.user-profile > div:nth-child(2) {
+  width: 80%;
+}
+
+.user-profile {
+  position: relative;
+}
+
+.user-nav {
+  margin-top: 10rem;
+  position: sticky;
+  top: 192px;
+  height: fit-content;
+}

@@ -21,7 +21,7 @@ function index() {
   };
 
   return (
-    <div className="user-form-container | ff-body fs-body padding-block-400">
+    <div className="user-form-container | ff-body fs-body padding-block-400 fw-semi-bold">
       <div className="user-form-form | bg-neutral-400">
         <div className="user-form-control | flex-h-center">
           <div

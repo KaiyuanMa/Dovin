@@ -6,8 +6,8 @@ import UserProfile from "./UserProfile";
 function index() {
   const { session } = useSelector((state) => state.session);
   return (
-    <div className="bg-neutral-300 padding-block-900 fw-semi-bold">
-      {session.id ? <UserProfile /> : <LoginSignup />}
+    <div className="bg-neutral-300 padding-block-900 fw-light ff-body">
+      {session.id ? <UserProfile session={session} /> : <LoginSignup />}
     </div>
   );
 }

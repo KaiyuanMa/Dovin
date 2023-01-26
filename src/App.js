@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import UserControl from "./components/UserControl";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
@@ -8,10 +8,16 @@ import Customization from "./components/Customization";
 import { Route, Routes, NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { exchangeToken } from "./state/actionCreators/sessionAC";
+import Dashboard from "./components/UserControl/UserProfile/Dashboard";
+import Appointment from "./components/UserControl/UserProfile/Appointment";
+import Address from "./components/UserControl/UserProfile/Address";
+import Order from "./components/UserControl/UserProfile/Order";
 
 function App() {
   const dispatch = useDispatch();
-  dispatch(exchangeToken());
+  useEffect(() => {
+    dispatch(exchangeToken());
+  }, []);
   return (
     <div className="page">
       <Navigation />
@@ -23,7 +29,12 @@ function App() {
             path="/customization/:customizationId"
             element={<Customization />}
           />
-          <Route path="/UserControl" element={<UserControl />} />
+          <Route path="/UserControl" element={<UserControl />}>
+            <Route path="dashboard" element={<Dashboard />} />
+            <Route path="order" element={<Order />} />
+            <Route path="appointment" element={<Appointment />} />
+            <Route path="address" element={<Address />} />
+          </Route>
         </Routes>
       </main>
       <Footer />
