@@ -1,4 +1,4 @@
-import Option from "./Options";
+import Options from "./Options";
 import "./styles.css";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -78,7 +78,7 @@ function index() {
                 })}
               </ul>
             </div>
-            <Option
+            <Options
               currStepIndex={currStepIndex}
               setCurrStepIndex={setCurrStepIndex}
               steps={steps}

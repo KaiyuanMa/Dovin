@@ -95,17 +95,20 @@
   color: var(--clr-dark-500) !important;
 }
 
-@media (max-width: 48em) {
+@media (max-width: 75em) {
   .user-form-container {
     grid-template-columns: 1fr;
     grid-template-rows: auto auto;
+    width: min(1000px, 100% - 2rem);
+    margin-inline: auto;
   }
   .user-form-form {
-    width: 100%;
-    margin-inline: auto;
     aspect-ratio: auto;
     padding-bottom: 2rem;
   }
+}
+
+@media (max-width: 48em) {
   .name-input {
     flex-direction: column;
   }

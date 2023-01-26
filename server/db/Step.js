@@ -1,6 +1,6 @@
 const conn = require("./conn");
 const { Sequelize } = conn;
-const { UUID, UUIDV4, STRING, TEXT } = Sequelize;
+const { STRING, TEXT, ENUM } = Sequelize;
 
 const Step = conn.define("step", {
   name: {
@@ -10,6 +10,11 @@ const Step = conn.define("step", {
   //TODO: length validation?
   description: {
     type: TEXT,
+  },
+  type: {
+    type: ENUM,
+    values: ["select", "measurement"],
+    allowNull: false,
   },
 });
 

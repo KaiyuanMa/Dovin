@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { apiGetStepOptions } from "../../api/option";
-import sqrImg from "../../../public/img/1600x1600.png";
+import { apiGetStepOptions } from "../../../api/option";
+import sqrImg from "../../../../public/img/1600x1600.png";
 
-function Step(params) {
+function Select(params) {
   const setCurrStepIndex = params.setCurrStepIndex;
   const currStepIndex = params.currStepIndex;
   const setSteps = params.setSteps;
@@ -78,4 +78,4 @@ function Step(params) {
   );
 }
 
-export default Step;
+export default Select;

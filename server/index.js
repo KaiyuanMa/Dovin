@@ -14,6 +14,7 @@ app.use("/api/quote", require("./routes/quote"));
 app.use("/api/quoteItem", require("./routes/quoteItem"));
 app.use("/api/step", require("./routes/step"));
 app.use("/api/stepSet", require("./routes/stepSet"));
+app.use("/api/address", require("./routes/address"));
 
 app.use((err, req, res, next) => {
   console.log(err);
