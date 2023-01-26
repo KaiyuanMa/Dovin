@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./styles.css";
 import { useDispatch } from "react-redux";
-import { login } from "../../../state/actionCreators/sessionAC";
+import { login } from "../../state/actionCreators/sessionAC";
 import { Link } from "react-router-dom";
 
 function Login() {

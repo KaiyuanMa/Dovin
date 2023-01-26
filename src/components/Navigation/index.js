@@ -39,7 +39,7 @@ function index() {
               <Link to="/" className="logo">
                 <div>Dovin</div>
               </Link>
-              <Link to="/UserControl">
+              <Link to="/UserControl/dashboard">
                 <i className="fa-light fa-user hover-primary-600" />
               </Link>
               <Link>
@@ -50,6 +50,7 @@ function index() {
                 aria-controls="primary-navigation"
                 aria-expanded="false"
               >
+                {/* TODO: Toggle Icon */}
                 <i
                   className="fa-light fa-bars icon-hamburger"
                   aria-hidden="true"

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { apiSignUp } from "../../../api/session";
+import { apiSignUp } from "../../api/session";
 import { useDispatch } from "react-redux";
+import "./styles.css";
 
 function SignUp() {
   const dispatch = useDispatch();
