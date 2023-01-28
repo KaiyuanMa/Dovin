@@ -95,6 +95,12 @@
   color: var(--clr-dark-500) !important;
 }
 
+.user-form-error {
+  margin-inline: 0.5rem;
+  color: red;
+  font-size: var(--fs-400);
+}
+
 @media (max-width: 75em) {
   .user-form-container {
     grid-template-columns: 1fr;

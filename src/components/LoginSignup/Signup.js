@@ -10,20 +10,27 @@ function SignUp() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handelSignUp = async (e) => {
     e.preventDefault();
-    try {
-      const response = await apiSignUp({
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
-      });
-      const credentials = response.data;
-      dispatch(login(credentials));
-    } catch (ex) {
-      console.log(ex);
+    setErrorMessage();
+    if (password !== passwordConfirm) {
+      setErrorMessage("Passwords do not match.");
+    } else {
+      try {
+        const response = await apiSignUp({
+          firstName: firstName,
+          lastName: lastName,
+          email: email,
+          password: password,
+        });
+        const credentials = response.data;
+        dispatch(login(credentials));
+      } catch (ex) {
+        console.log(ex);
+      }
     }
   };
   return (
@@ -43,6 +50,7 @@ function SignUp() {
           <input
             value={firstName}
             onChange={(e) => setFirstName(e.target.value)}
+            required
           />
         </div>
         <div className="flow-400">
@@ -50,16 +58,34 @@ function SignUp() {
           <input
             value={lastName}
             onChange={(e) => setLastName(e.target.value)}
+            required
           />
         </div>
       </div>
 
       <label>Email *</label>
-      <input value={email} onChange={(e) => setEmail(e.target.value)} />
+      <input
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        required
+      />
       <label>Password *</label>
-      <input value={password} onChange={(e) => setPassword(e.target.value)} />
+      <input
+        value={password}
+        type="password"
+        onChange={(e) => setPassword(e.target.value)}
+        required
+      />
       <label>Confirm Password *</label>
-      <input value={password} onChange={(e) => setPassword(e.target.value)} />
+      <input
+        value={passwordConfirm}
+        type="password"
+        onChange={(e) => setPasswordConfirm(e.target.value)}
+        required
+      />
+      {errorMessage === "Passwords do not match." ? (
+        <p className="user-form-error">{errorMessage}</p>
+      ) : null}
       <button className="sign-up">Signup</button>
     </form>
   );
