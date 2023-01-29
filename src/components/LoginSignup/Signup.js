@@ -16,7 +16,15 @@ function SignUp() {
   const handelSignUp = async (e) => {
     e.preventDefault();
     setErrorMessage();
-    if (password !== passwordConfirm) {
+    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      setErrorMessage("Please enter a valid email address.");
+    } else if (
+      password.length > 16 ||
+      password.length < 8 ||
+      !/[A-Z]/.test(password)
+    ) {
+      setErrorMessage("password constraint");
+    } else if (password !== passwordConfirm) {
       setErrorMessage("Passwords do not match.");
     } else {
       try {
@@ -62,13 +70,15 @@ function SignUp() {
           />
         </div>
       </div>
-
       <label>Email *</label>
       <input
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         required
       />
+      {errorMessage === "Please enter a valid email address." ? (
+        <p className="user-form-error">{errorMessage}</p>
+      ) : null}
       <label>Password *</label>
       <input
         value={password}
@@ -76,6 +86,14 @@ function SignUp() {
         onChange={(e) => setPassword(e.target.value)}
         required
       />
+      <p
+        className={`user-form-error ${
+          errorMessage === "password constraint" ? "" : "password-constraint"
+        }`}
+      >
+        Password must be between 8 to 16 characters and include one uppercase
+        letter.
+      </p>
       <label>Confirm Password *</label>
       <input
         value={passwordConfirm}

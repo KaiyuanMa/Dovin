@@ -99,6 +99,11 @@
   margin-inline: 0.5rem;
   color: red;
   font-size: var(--fs-400);
+  font-weight: var(--fw-light);
+}
+
+.password-constraint {
+  color: var(--clr-neutral-700);
 }
 
 @media (max-width: 75em) {
