@@ -46,6 +46,10 @@
   padding-top: calc(var(--size-400) + var(--size-300));
 }
 
+.user-nav > a {
+  color: var(--clr-neutral-700);
+}
+
 .user-profile > div:nth-child(2) {
   width: 80%;
 }

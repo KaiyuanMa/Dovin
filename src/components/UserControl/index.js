@@ -16,7 +16,7 @@ function index() {
     if (!session.id) navigate("/loginSignup");
   }, [session]);
   return (
-    <div className="user-profile | container flex-h-center">
+    <div className="user-profile | container flex-h-center ff-body">
       <div className="user-nav flow-400">
         <h2 className="ff-heading fw-light">{`Welcome ${session.firstName}`}</h2>
         <NavLink to="/UserControl/dashboard">Dashboard</NavLink>

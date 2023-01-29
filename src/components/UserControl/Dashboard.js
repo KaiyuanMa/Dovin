@@ -2,9 +2,8 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 function Dashboard() {
-  const { session } = useSelector((state) => state.session);
   return (
-    <div>
+    <div className="padding-block-700">
       <h2 className="ff-heading fw-light padding-block-800 fs-primary-heading">
         Dashboard
       </h2>

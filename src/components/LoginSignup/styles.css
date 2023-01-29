@@ -1,5 +1,5 @@
 .user-form-container {
-  width: min(85rem, 100% - 1rem * 2);
+  width: min(90rem, 100% - 1rem * 2);
   margin: auto;
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -33,6 +33,7 @@
   margin: auto;
   flex-direction: column;
   width: 90%;
+  padding-bottom: 1rem;
 }
 
 .user-form label {

@@ -7,7 +7,7 @@
   --clr-neutral-400: #ece9df;
   --clr-neutral-500: #eae7dc;
   --clr-neutral-600: #d8c3a5;
-  --clr-neutral-700: #5b5a57;
+  --clr-neutral-700: #5b5a57 !important;
 
   --clr-border: rgba(36, 34, 34, 0.15);
 
