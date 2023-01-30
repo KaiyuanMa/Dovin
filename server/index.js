@@ -17,6 +17,12 @@ app.use("/api/stepSet", require("./routes/stepSet"));
 app.use("/api/address", require("./routes/address"));
 
 app.use((err, req, res, next) => {
+  if (
+    err.status === 401 &&
+    err.message === "Email and password does not match"
+  ) {
+    res.status(401).send({ message: "Email and password does not match" });
+  }
   console.log(err);
   console.error(err.stack);
   res.status(500).send("Something broke!");

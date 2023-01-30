@@ -13,8 +13,10 @@ const login = (credentials) => {
       });
       response = await apiGetSessionUser(token);
       dispatch({ type: "SET_SESSION", session: response.data });
+      dispatch({ type: "SET_ERROR", error: "" });
     } catch (ex) {
       console.log(ex);
+      dispatch({ type: "SET_ERROR", error: ex.response.data.message });
     }
   };
 };
@@ -23,6 +25,7 @@ const logout = () => {
   return (dispatch) => {
     Cookies.remove("token");
     dispatch({ type: "SET_SESSION", session: {} });
+    dispatch({ type: "SET_ERROR", error: "" });
   };
 };
 

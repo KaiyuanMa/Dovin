@@ -79,7 +79,7 @@ User.authenticate = async function (credentials) {
   if (user && (await bcrypt.compare(credentials.password, user.password))) {
     return jwt.sign({ id: user.id }, process.env.JWT);
   }
-  const error = new Error("Bad Credentials");
+  const error = new Error("Email and password does not match");
   error.status = 401;
   throw error;
 };

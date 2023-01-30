@@ -37,7 +37,9 @@ function SignUp() {
         const credentials = response.data;
         dispatch(login(credentials));
       } catch (ex) {
-        console.log(ex);
+        if (ex.response.data.message === "Email already in use.")
+          setErrorMessage(ex.response.data.message);
+        else console.log(ex);
       }
     }
   };
@@ -76,9 +78,11 @@ function SignUp() {
         onChange={(e) => setEmail(e.target.value)}
         required
       />
-      {errorMessage === "Please enter a valid email address." ? (
+      {errorMessage === "Please enter a valid email address." ||
+      errorMessage === "Email already in use." ? (
         <p className="user-form-error">{errorMessage}</p>
       ) : null}
+
       <label>Password *</label>
       <input
         value={password}

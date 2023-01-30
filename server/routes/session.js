@@ -11,6 +11,7 @@ router.post("/", async (req, res, next) => {
     };
     res.send({ token: await User.authenticate(credentials) });
   } catch (ex) {
+    console.log(ex);
     next(ex);
   }
 });
@@ -35,7 +36,7 @@ router.post("/signup", async (req, res, next) => {
       };
       res.send(credentials);
     } else {
-      return res.status(409).json({ error: "Email already in use" });
+      return res.status(409).json({ message: "Email already in use." });
     }
   } catch (ex) {
     next(ex);
