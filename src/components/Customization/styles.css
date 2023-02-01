@@ -38,6 +38,11 @@
   justify-content: center;
 }
 
+.measurement {
+  grid-template-rows: repeat(auto-fill, min(30vw, 30rem));
+  grid-template-columns: repeat(auto-fill, min(30vw, 30rem));
+}
+
 .option {
   flex-direction: column;
   width: 100%;
@@ -111,6 +116,9 @@
   width: 15%;
   margin-inline: 1rem;
   width: max(10rem, 20%);
+}
+
+.measurement-form {
 }
 
 @media (max-width: 75em) {

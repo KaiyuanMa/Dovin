@@ -14,6 +14,7 @@ import Appointment from "./components/UserControl/Appointment";
 import Address from "./components/UserControl/Address";
 import Order from "./components/UserControl/Order";
 import LoginSignup from "./components/LoginSignup";
+import Cart from "./components/Cart";
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function App() {
             element={<Customization />}
           />
           <Route path="/loginSignup" element={<LoginSignup />} />
+          <Route path="/cart" element={<Cart />} />
           <Route path="/UserControl" element={<UserControl />}>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="order" element={<Order />} />

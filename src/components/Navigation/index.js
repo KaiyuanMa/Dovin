@@ -42,7 +42,7 @@ function index() {
               <Link to="/UserControl/dashboard">
                 <i className="fa-light fa-user hover-primary-600" />
               </Link>
-              <Link>
+              <Link to="/Cart">
                 <i className="fa-light fa-cart-shopping hover-primary-600" />
               </Link>
               <div

@@ -5,6 +5,16 @@ const seedOptions = async (steps) => {
     const _Option = [
       [
         {
+          name: "Window",
+          description: "",
+          stepId: steps[0].id,
+        },
+        {
+          name: "Door",
+          description: "",
+          stepId: steps[0].id,
+        },
+        {
           name: "Flat Panel Drapes",
           description: "",
           stepId: steps[2].id,

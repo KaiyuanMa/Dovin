@@ -8,7 +8,6 @@ import { apiAddQuote } from "../../api/quote";
 import { apiAddQuoteItem } from "../../api/quoteItem";
 
 function index() {
-  const dispatch = useDispatch();
   const { session } = useSelector((state) => state.session);
   const [customization, setCustomization] = useState();
   const [steps, setSteps] = useState([]);
@@ -26,14 +25,25 @@ function index() {
     const quote = {
       costSum: 0,
       userId: session.id,
+      isCart: true,
     };
     const response = await apiAddQuote(quote);
     for (let i = 0; i < steps.length; i++) {
-      const quoteItem = {
-        quoteId: response.data.id,
-        stepId: steps[i].id,
-        optionsId: steps[i].selectedOption.id,
-      };
+      const type = steps[i].type;
+      let quoteItem;
+      if (type === "select") {
+        quoteItem = {
+          quoteId: response.data.id,
+          stepId: steps[i].id,
+          optionsId: steps[i].selectedOption.id,
+        };
+      } else if (type === "measurement") {
+        quoteItem = {
+          quoteId: response.data.id,
+          stepId: steps[i].id,
+          measurements: steps[i].measurement,
+        };
+      }
       await apiAddQuoteItem(quoteItem);
     }
   };
