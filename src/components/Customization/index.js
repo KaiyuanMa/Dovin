@@ -98,7 +98,7 @@ function index() {
                       />
                       <label
                         className="padding-block-300"
-                        for={`${customizationId}_${step.id}`}
+                        htmlFor={`${customizationId}_${step.id}`}
                       >
                         <h2>{step.name}</h2>
                         <p>

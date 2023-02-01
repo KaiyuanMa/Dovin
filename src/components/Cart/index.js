@@ -39,7 +39,7 @@ function index() {
 
   const syncLocalToDb = async () => {
     const _cart = JSON.parse(localStorage.getItem("cart"));
-    if (_cart.length) {
+    if (_cart) {
       for (let quote of _cart) {
         const quoteItems = quote.quoteItems;
         delete quote.quoteItems;

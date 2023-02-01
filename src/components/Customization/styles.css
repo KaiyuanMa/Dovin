@@ -63,7 +63,7 @@
   margin-inline: auto;
 }
 
-.step-list > h2 {
+.step-list li > h2 {
   width: 100%;
 }
 

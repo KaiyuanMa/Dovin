@@ -66,7 +66,7 @@ function Select(params) {
               />
               <label
                 className="flex-all-center flex-direction-column"
-                for={`${steps[currStepIndex].id}${option.id}-input`}
+                htmlFor={`${steps[currStepIndex].id}${option.id}-input`}
               >
                 {option.name}
                 <img src={sqrImg} />
