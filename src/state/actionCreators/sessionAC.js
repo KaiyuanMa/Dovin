@@ -34,7 +34,6 @@ const exchangeToken = () => {
     const token = Cookies.get("token");
     if (token) {
       const response = await apiGetSessionUser(token);
-      console.log(response.data);
       dispatch({ type: "SET_SESSION", session: response.data });
     } else dispatch({ type: "SET_SESSION", session: {} });
   };

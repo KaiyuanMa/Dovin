@@ -22,6 +22,7 @@ function index() {
     fetchCustomization();
   }, []);
   const submitOrder = async () => {
+    console.log(steps);
     const quote = {
       costSum: 0,
       userId: session.id,
@@ -35,7 +36,7 @@ function index() {
         quoteItem = {
           quoteId: response.data.id,
           stepId: steps[i].id,
-          optionsId: steps[i].selectedOption.id,
+          optionId: steps[i].selectedOption.id,
         };
       } else if (type === "measurement") {
         quoteItem = {
