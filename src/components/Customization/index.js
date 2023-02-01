@@ -22,11 +22,11 @@ function index() {
     fetchCustomization();
   }, []);
   const submitOrder = async () => {
-    console.log(steps);
     const quote = {
       costSum: 0,
       userId: session.id,
       isCart: true,
+      stepSetId: customizationId,
     };
     const response = await apiAddQuote(quote);
     for (let i = 0; i < steps.length; i++) {

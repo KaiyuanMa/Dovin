@@ -1,11 +1,13 @@
 const express = require("express");
 const router = express.Router();
 const { isLoggedIn, adminAccess } = require("./middleware");
-const { Quote, QuoteItem, Step, Option } = require("../db");
+const { Quote, QuoteItem, Step, Option, StepSet } = require("../db");
 
 const getAllInfo = async (quotes) => {
   const newQuotes = [];
   for (let quote of quotes) {
+    const stepSet = await StepSet.findByPk(quote.stepSetId);
+    quote.dataValues.name = stepSet.name;
     for (let quoteItem of quote.quoteItems) {
       if (quoteItem.measurement !== null) {
         const step = await Step.findByPk(quoteItem.stepId);

@@ -7,17 +7,41 @@ function index() {
   const { session } = useSelector((state) => state.session);
   const [cart, setCart] = useState([]);
 
-  const getUserCard = async () => {
-    const carts = await apiGetUserCarts();
-    console.log(quotes);
-    console.log(carts);
+  const getUserCart = async () => {
+    const response = await apiGetUserCarts();
+    setCart(response.data);
+    console.log(response.data);
   };
 
   useEffect(() => {
-    getUserCard();
+    if (session.id) {
+      getUserCart();
+    }
   }, []);
 
-  return <div>index</div>;
+  return (
+    <div className="container">
+      <ul role="list">
+        {cart.map((quote) => (
+          <li>
+            <h2>{quote.name}</h2>
+            <ul role="list">
+              {quote.quoteItems.map((quoteItem) => {
+                if (quoteItem.measurements === null)
+                  return (
+                    <li>{`${quoteItem.step.name}: ${quoteItem.option.name}`}</li>
+                  );
+                else
+                  return (
+                    <li>{`${quoteItem.step.name}: ${quoteItem.measurements}`}</li>
+                  );
+              })}
+            </ul>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
 
 export default index;
