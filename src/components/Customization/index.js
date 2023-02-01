@@ -21,6 +21,7 @@ function index() {
     };
     fetchCustomization();
   }, []);
+
   const submitOrder = async () => {
     const quote = {
       costSum: 0,
@@ -28,26 +29,46 @@ function index() {
       isCart: true,
       stepSetId: customizationId,
     };
-    const response = await apiAddQuote(quote);
-    for (let i = 0; i < steps.length; i++) {
-      const type = steps[i].type;
+    const quoteId = null;
+    if (session.id) {
+      const response = await apiAddQuote(quote);
+      quoteId = response.data.id;
+    } else {
+      quote.quoteItems = [];
+    }
+    for (let step of steps) {
+      const type = step.type;
       let quoteItem;
       if (type === "select") {
         quoteItem = {
-          quoteId: response.data.id,
-          stepId: steps[i].id,
-          optionId: steps[i].selectedOption.id,
+          quoteId: quoteId,
+          stepId: step.id,
+          optionId: step.selectedOption.id,
         };
       } else if (type === "measurement") {
         quoteItem = {
-          quoteId: response.data.id,
-          stepId: steps[i].id,
-          measurements: steps[i].measurement,
+          quoteId: quoteId,
+          stepId: step.id,
+          measurements: step.measurement,
         };
       }
-      await apiAddQuoteItem(quoteItem);
+      if (session.id) {
+        await apiAddQuoteItem(quoteItem);
+      } else {
+        quote.quoteItems.push(quoteItem);
+      }
+    }
+    if (!session.id) {
+      if (!localStorage.getItem("cart")) {
+        localStorage.setItem("cart", JSON.stringify([quote]));
+      } else {
+        let cart = JSON.parse(localStorage.getItem("cart"));
+        cart.push(quote);
+        localStorage.setItem("myArray", JSON.stringify(cart));
+      }
     }
   };
+
   return (
     <div className="customization-page | bg-neutral-200">
       {customization ? (
