@@ -13,7 +13,7 @@ const isLoggedIn = async (req, res, next) => {
 const adminAccess = async (req, res, next) => {
   try {
     if (req.user.role !== "admin" || req.user.role !== "superAdmin")
-      return res.status(403).json({ error: "No Access" });
+      return res.status(403).json({ message: "No Access" });
     next();
   } catch (ex) {
     next(ex);

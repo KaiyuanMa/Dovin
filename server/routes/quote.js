@@ -67,7 +67,7 @@ router.get("/:quoteId", isLoggedIn, async (req, res, next) => {
   try {
     const quote = await Quote.findByPk(req.params.quoteId);
     if (quote.userId !== req.user.id)
-      return res.status(403).json({ error: "No Access" });
+      return res.status(403).json({ message: "No Access" });
     const _quotes = await getAllInfo([quote]);
     res.send(_quotes);
   } catch (ex) {
@@ -79,18 +79,37 @@ router.get("/:quoteId", isLoggedIn, async (req, res, next) => {
 router.delete("/:quoteId", isLoggedIn, adminAccess, async (req, res, next) => {
   try {
     const quote = await Quote.findByPk(req.params.quoteId);
-    quote.destroy();
-    res.sendStatus(202);
+    if (quote.userId !== req.user.id)
+      res.status(403).json({ message: "No Access" });
+    else {
+      quote.destroy();
+      res.status(202);
+    }
   } catch (ex) {
     next(ex);
   }
 });
 
+router.delete(
+  "/admin/:quoteId",
+  isLoggedIn,
+  adminAccess,
+  async (req, res, next) => {
+    try {
+      const quote = await Quote.findByPk(req.params.quoteId);
+      quote.destroy();
+      res.status(202);
+    } catch (ex) {
+      next(ex);
+    }
+  }
+);
+
 //POST
 router.post("/", isLoggedIn, async (req, res, next) => {
   try {
     if (req.body.userId !== req.user.id)
-      return res.status(403).json({ error: "No Access" });
+      return res.status(403).json({ message: "No Access" });
     const quote = await Quote.create(req.body);
     res.send(quote);
   } catch (ex) {
@@ -105,6 +124,21 @@ router.put("/:quoteId", isLoggedIn, async (req, res, next) => {
     const quote = await Quote.update(req.body, {
       where: { id: req.params.quoteId },
     });
+    res.send(quote);
+  } catch (ex) {
+    next(ex);
+  }
+});
+
+router.put("/syncGuest/:guestId", isLoggedIn, async (req, res, next) => {
+  try {
+    if (await User.findByPk(req.params.guestId)) {
+      res.status(409).send({ message: "User exist." });
+    }
+    const quote = await Quote.update(
+      { userId: req.user.id },
+      { where: { userId: req.params.guestId } }
+    );
     res.send(quote);
   } catch (ex) {
     next(ex);

@@ -6,6 +6,7 @@ import { apiGetStepSet } from "../../api/stepSet";
 import { useDispatch, useSelector } from "react-redux";
 import { apiAddQuote } from "../../api/quote";
 import { apiAddQuoteItem } from "../../api/quoteItem";
+import { uuid } from "uuidv4";
 
 function index() {
   const { session } = useSelector((state) => state.session);
@@ -23,19 +24,23 @@ function index() {
   }, []);
 
   const submitOrder = async () => {
+    const userId = session.id;
+    if (!session.id) {
+      if (localStorage.getItem("guestId")) {
+        userId = localStorage.getItem("guestId");
+      } else if (!localStorage.getItem("guestId")) {
+        userId = uuid();
+        localStorage.setItem("guestId", userId);
+      }
+    }
     const quote = {
       costSum: 0,
-      userId: session.id,
+      userId: userId,
       isCart: true,
       stepSetId: customizationId,
     };
-    const quoteId = null;
-    if (session.id) {
-      const response = await apiAddQuote(quote);
-      quoteId = response.data.id;
-    } else {
-      quote.quoteItems = [];
-    }
+    const response = await apiAddQuote(quote);
+    const quoteId = response.data.id;
     for (let step of steps) {
       const type = step.type;
       let quoteItem;
@@ -52,20 +57,7 @@ function index() {
           measurements: step.measurement,
         };
       }
-      if (session.id) {
-        await apiAddQuoteItem(quoteItem);
-      } else {
-        quote.quoteItems.push(quoteItem);
-      }
-    }
-    if (!session.id) {
-      if (!localStorage.getItem("cart")) {
-        localStorage.setItem("cart", JSON.stringify([quote]));
-      } else {
-        let cart = JSON.parse(localStorage.getItem("cart"));
-        cart.push(quote);
-        localStorage.setItem("myArray", JSON.stringify(cart));
-      }
+      await apiAddQuoteItem(quoteItem);
     }
   };
 

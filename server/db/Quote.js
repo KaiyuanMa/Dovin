@@ -15,6 +15,9 @@ const Quote = conn.define("quote", {
   isCart: {
     type: BOOLEAN,
   },
+  isGuest: {
+    type: BOOLEAN,
+  },
 });
 
 module.exports = Quote;

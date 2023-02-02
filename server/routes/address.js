@@ -43,7 +43,7 @@ router.delete("/:addressId", isLoggedIn, async (req, res, next) => {
   try {
     const address = await Address.findByPk(req.params.addressId);
     if (address.userId !== req.user.id)
-      return res.status(403).json({ error: "No Access" });
+      return res.status(403).json({ message: "No Access" });
     address.destroy();
     res.sendStatus(202);
   } catch (ex) {
@@ -55,7 +55,7 @@ router.delete("/:addressId", isLoggedIn, async (req, res, next) => {
 router.post("/", isLoggedIn, async (req, res, next) => {
   try {
     if (req.body.userId !== req.user.id)
-      return res.status(403).json({ error: "No Access" });
+      return res.status(403).json({ message: "No Access" });
     const address = await Address.create(req.body);
     res.send(address);
   } catch (ex) {
@@ -68,7 +68,7 @@ router.put("/:addressId", isLoggedIn, async (req, res, next) => {
   try {
     let address = await Address.findByPk(req.params.addressId);
     if (address.userId !== req.user.id)
-      return res.status(403).json({ error: "No Access" });
+      return res.status(403).json({ message: "No Access" });
     address = await Address.update(req.body, {
       where: { id: req.params.addressId },
     });

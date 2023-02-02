@@ -32,6 +32,10 @@ const apiUpdateQuote = (quoteId, param) => {
   return axios.put(`/api/quote/${quoteId}`, param);
 };
 
+const apiSyncQuotes = (guestId) => {
+  return axios.put(`/api/quote/syncGuest/${guestId}`);
+};
+
 export {
   apiGetUserQuotes,
   apiGetUserOrders,
@@ -40,4 +44,5 @@ export {
   apiDeleteQuote,
   apiAddQuote,
   apiUpdateQuote,
+  apiSyncQuotes,
 };
