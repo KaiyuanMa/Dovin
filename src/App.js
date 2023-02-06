@@ -24,7 +24,7 @@ function App() {
   return (
     <div className="page">
       <Navigation />
-      <main className="content">
+      <main className="content | bg-neutral-200 ff-body fs-body">
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/admin" element={<Admin />} />

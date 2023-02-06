@@ -51,7 +51,7 @@ function Login() {
         </div>
         <Link>Forgot Password</Link>
       </div>
-      <button>Login</button>
+      <button className="button-inverted">Login</button>
     </form>
   );
 }

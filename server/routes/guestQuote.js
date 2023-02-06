@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { Quote, QuoteItem, Step, Option, StepSet } = require("../db");
+const { Quote, QuoteItem, Step, Option, StepSet, User } = require("../db");
 
 const getAllInfo = async (quotes) => {
   const newQuotes = [];
@@ -33,7 +33,7 @@ router.get("/:guestId", async (req, res, next) => {
   try {
     if (checkId(req.params.guestId)) {
       const quotes = await Quote.findAll({
-        where: { userId: req.params.guestId },
+        where: { guestId: req.params.guestId },
         include: QuoteItem,
       });
       const _quotes = await getAllInfo(quotes);
@@ -47,13 +47,15 @@ router.get("/:guestId", async (req, res, next) => {
 //DELETE
 router.delete("/:guestId/:quoteId", async (req, res, next) => {
   try {
-    if (checkId(req.params.guestId)) {
+    console.log(1);
+    if (await checkId(req.params.guestId)) {
+      console.log(1);
       const quote = await Quote.findByPk(req.params.quoteId);
-      if (quote.userId !== req.params.guestId)
+      if (quote.guestId !== req.params.guestId)
         res.status(403).json({ message: "No Access" });
       else {
-        quote.destroy();
-        res.status(202);
+        await quote.destroy();
+        res.sendStatus(202);
       }
     }
   } catch (ex) {
@@ -64,8 +66,9 @@ router.delete("/:guestId/:quoteId", async (req, res, next) => {
 //POST
 //TODO: Some kind of protection is needed, limit request number? frequency?
 router.post("/:guestId", async (req, res, next) => {
+  console.log(req.body);
   try {
-    if (req.body.userId !== req.params.guestId)
+    if (req.body.guestId !== req.params.guestId)
       return res.status(403).json({ message: "No Access" });
     const quote = await Quote.create(req.body);
     res.send(quote);

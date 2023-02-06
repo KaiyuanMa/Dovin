@@ -45,17 +45,6 @@
   background-color: var(--clr-neutral-200);
 }
 
-.user-form button {
-  color: var(--clr-neutral-200);
-  background-color: var(--clr-dark-500);
-}
-
-.user-form button:hover {
-  opacity: 0.7;
-  background-color: var(--clr-dark-500);
-  color: var(--clr-neutral-200);
-}
-
 .user-form > label {
   margin-top: 2.5rem;
 }

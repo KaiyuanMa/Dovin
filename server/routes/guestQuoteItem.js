@@ -1,11 +1,10 @@
 const express = require("express");
 const router = express.Router();
-const { isLoggedIn } = require("./middleware");
 const { QuoteItem, Quote } = require("../db");
 
 const checkAccess = async (quoteId, user) => {
   const quote = await Quote.findByPk(quoteId);
-  if (quote.userId !== user.id) return false;
+  if (quote.guestId !== user.id) return false;
   return true;
 };
 

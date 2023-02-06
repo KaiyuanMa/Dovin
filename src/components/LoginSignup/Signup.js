@@ -108,7 +108,7 @@ function SignUp() {
       {errorMessage === "Passwords do not match." ? (
         <p className="user-form-error">{errorMessage}</p>
       ) : null}
-      <button className="sign-up">Signup</button>
+      <button className="sign-up button-inverted">Signup</button>
     </form>
   );
 }

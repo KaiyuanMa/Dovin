@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const { isLoggedIn, adminAccess } = require("./middleware");
-const { Quote, QuoteItem, Step, Option, StepSet } = require("../db");
+const { Quote, QuoteItem, Step, Option, StepSet, User } = require("../db");
 
 const getAllInfo = async (quotes) => {
   const newQuotes = [];
@@ -137,12 +137,27 @@ router.put("/syncGuest/:guestId", isLoggedIn, async (req, res, next) => {
     }
     const quote = await Quote.update(
       { userId: req.user.id },
-      { where: { userId: req.params.guestId } }
+      { where: { guestId: req.params.guestId } }
     );
     res.send(quote);
   } catch (ex) {
     next(ex);
   }
 });
+
+router.put(
+  "/changeQuantity/:quoteId/:quantity",
+  isLoggedIn,
+  async (req, res, next) => {
+    try {
+      const quote = await Quote.findByPk(req.params.quoteId);
+      if (quote.userId !== req.user.id)
+        return res.status(403).json({ message: "No Access" });
+      res.send(await quote.update({ quantity: req.params.quantity }));
+    } catch (ex) {
+      next(ex);
+    }
+  }
+);
 
 module.exports = router;

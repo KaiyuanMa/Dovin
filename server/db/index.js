@@ -9,7 +9,7 @@ const Option = require("./Option");
 
 User.hasMany(Quote);
 User.hasMany(Address);
-Quote.hasMany(QuoteItem);
+Quote.hasMany(QuoteItem, { onDelete: "CASCADE" });
 StepSet.hasMany(Quote);
 StepSet.hasOne(Step);
 Step.hasMany(Option);

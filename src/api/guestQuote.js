@@ -5,7 +5,8 @@ const apiGetGuestQuote = (guestId) => {
 };
 
 const apiDeleteGuestQuote = (guestId, quoteId) => {
-  return axios.get(`/api/guestQuote/${guestId}/${quoteId}`);
+  console.log(guestId, quoteId);
+  return axios.delete(`/api/guestQuote/${guestId}/${quoteId}`);
 };
 
 const apiAddGuestQuote = (guestId, quote) => {

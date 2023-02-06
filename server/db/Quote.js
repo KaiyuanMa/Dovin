@@ -1,6 +1,6 @@
 const conn = require("./conn");
 const { Sequelize } = conn;
-const { UUID, UUIDV4, STRING, TEXT, DECIMAL, BOOLEAN } = Sequelize;
+const { UUID, UUIDV4, STRING, INTEGER, DECIMAL, BOOLEAN } = Sequelize;
 
 const Quote = conn.define("quote", {
   id: {
@@ -9,14 +9,20 @@ const Quote = conn.define("quote", {
     primaryKey: true,
   },
   //TODO: allowNull for costSum?
-  costSum: {
-    type: DECIMAL,
+  cost: {
+    type: DECIMAL(10, 2),
+    //TODO: fix fake default
+    defaultValue: 1000,
   },
   isCart: {
     type: BOOLEAN,
   },
-  isGuest: {
-    type: BOOLEAN,
+  quantity: {
+    type: INTEGER,
+    defaultValue: 1,
+  },
+  guestId: {
+    type: STRING,
   },
 });
 
