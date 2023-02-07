@@ -49,7 +49,9 @@ function index() {
   };
 
   const quantityChange = (quoteId, quantity) => {
-    dispatch(changeCartItemQuantityAC(quoteId, quantity, guestId));
+    if (quantity > 0) {
+      dispatch(changeCartItemQuantityAC(quoteId, quantity, guestId));
+    }
   };
 
   return (
@@ -83,12 +85,14 @@ function index() {
                       onClick={() =>
                         quantityChange(quote.id, quote.quantity - 1)
                       }
+                      disabled={quote.quantity === 1}
                     >
                       <i class="fa-regular fa-minus"></i>
                     </button>
                     <input
                       value={quote.quantity}
                       onChange={(e) => quantityChange(quote.id, e.target.value)}
+                      min={1}
                     />
                     <button
                       onClick={() =>

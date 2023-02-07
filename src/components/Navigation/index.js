@@ -55,9 +55,11 @@ function index() {
               </Link>
               <Link className="cart-icon" to="/Cart">
                 <i className="fa-light fa-cart-shopping hover-primary-600" />
-                <span className="fs-300 fw-semi-bold">
-                  {cart.reduce((acc, cartItem) => acc + cartItem.quantity, 0)}
-                </span>
+                {cart.length > 0 ? (
+                  <span className="fs-300 fw-semi-bold">
+                    {cart.reduce((acc, cartItem) => acc + cartItem.quantity, 0)}
+                  </span>
+                ) : null}
               </Link>
               <div
                 className="mobile-nav-toggle"
