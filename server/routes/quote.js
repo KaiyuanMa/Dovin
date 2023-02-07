@@ -76,14 +76,14 @@ router.get("/:quoteId", isLoggedIn, async (req, res, next) => {
 });
 
 //DELETE
-router.delete("/:quoteId", isLoggedIn, adminAccess, async (req, res, next) => {
+router.delete("/:quoteId", isLoggedIn, async (req, res, next) => {
   try {
     const quote = await Quote.findByPk(req.params.quoteId);
     if (quote.userId !== req.user.id)
       res.status(403).json({ message: "No Access" });
     else {
-      quote.destroy();
-      res.status(202);
+      await quote.destroy();
+      res.sendStatus(202);
     }
   } catch (ex) {
     next(ex);

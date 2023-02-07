@@ -13,4 +13,15 @@ const apiAddGuestQuote = (guestId, quote) => {
   return axios.post(`/api/guestQuote/${guestId}`, quote);
 };
 
-export { apiGetGuestQuote, apiDeleteGuestQuote, apiAddGuestQuote };
+const apiGuestUpdateQuoteQuantity = (quoteId, quantity, guestId) => {
+  return axios.put(
+    `/api/guestQuote/changeQuantity/${quoteId}/${quantity}/${guestId}`
+  );
+};
+
+export {
+  apiGetGuestQuote,
+  apiDeleteGuestQuote,
+  apiAddGuestQuote,
+  apiGuestUpdateQuoteQuantity,
+};

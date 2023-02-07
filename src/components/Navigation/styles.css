@@ -44,6 +44,16 @@
   color: var(--clr-primary-600);
 }
 
+.cart-icon {
+  display: block;
+  position: relative;
+}
+
+.cart-icon > span {
+  position: absolute;
+  top: -0.5rem;
+}
+
 @media (max-width: 30em) {
   .primary-header {
     height: 10rem;

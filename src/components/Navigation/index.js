@@ -1,8 +1,19 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import {
+  apiGetUserCarts,
+  apiSyncQuotes,
+  apiDeleteQuote,
+  apiUpdateQuantity,
+} from "../../api/quote";
+import { apiGetGuestQuote, apiDeleteGuestQuote } from "../../api/guestQuote";
 import "./styles.css";
 
 function index() {
+  const { session } = useSelector((state) => state.session);
+  const { cart } = useSelector((state) => state.cart);
+
   const navToggleFunction = () => {
     const body = document.querySelector("body");
     const navToggle = document.querySelector(".mobile-nav-toggle");
@@ -42,8 +53,11 @@ function index() {
               <Link to="/UserControl/dashboard">
                 <i className="fa-light fa-user hover-primary-600" />
               </Link>
-              <Link to="/Cart">
+              <Link className="cart-icon" to="/Cart">
                 <i className="fa-light fa-cart-shopping hover-primary-600" />
+                <span className="fs-300 fw-semi-bold">
+                  {cart.reduce((acc, cartItem) => acc + cartItem.quantity, 0)}
+                </span>
               </Link>
               <div
                 className="mobile-nav-toggle"

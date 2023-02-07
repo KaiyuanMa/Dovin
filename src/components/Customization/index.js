@@ -9,8 +9,14 @@ import { apiAddQuoteItem } from "../../api/quoteItem";
 import { apiAddGuestQuote } from "../../api/guestQuote";
 import { v4 as uuidv4 } from "uuid";
 import { apiAddGuestQI } from "../../api/guestQuoteItem";
+import {
+  setUserCartAC,
+  setLocalCartAC,
+  deleteCartItemAC,
+} from "../../state/actionCreators/cartAC";
 
 function index() {
+  const dispatch = useDispatch();
   const { session } = useSelector((state) => state.session);
   const [customization, setCustomization] = useState();
   const [steps, setSteps] = useState([]);
@@ -28,7 +34,7 @@ function index() {
 
   const submitOrder = async () => {
     let userId = session.id;
-    if (!session.id) {
+    if (!userId) {
       if (localStorage.getItem("guestId")) {
         userId = localStorage.getItem("guestId");
       } else if (!localStorage.getItem("guestId")) {
@@ -36,7 +42,6 @@ function index() {
         localStorage.setItem("guestId", userId);
       }
     }
-    console.log(userId);
     const quote = {
       costSum: 0,
       userId: userId,
@@ -70,13 +75,17 @@ function index() {
           measurements: step.measurement,
         };
       }
-      if (session.id) await apiAddQuoteItem(quoteItem);
-      else {
+      if (session.id) {
+        await apiAddQuoteItem(quoteItem);
+      } else {
         quoteItem.guestId = quoteItem.userId;
         delete quoteItem.userId;
         await apiAddGuestQI(userId, quoteItem);
       }
     }
+    if (session.id) {
+      dispatch(setUserCartAC());
+    } else dispatch(setLocalCartAC(userId));
   };
 
   return (

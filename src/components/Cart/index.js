@@ -9,28 +9,20 @@ import {
 } from "../../api/quote";
 import { apiGetGuestQuote, apiDeleteGuestQuote } from "../../api/guestQuote";
 import squareImg from "../../../public/img/1600x1600.png";
+import { useDispatch } from "react-redux";
+import {
+  setUserCartAC,
+  setLocalCartAC,
+  deleteCartItemAC,
+  changeCartItemQuantityAC,
+} from "../../state/actionCreators/cartAC";
 
 function index() {
+  const dispatch = useDispatch();
   const { session } = useSelector((state) => state.session);
-  const [cart, setCart] = useState([]);
+  const { cart } = useSelector((state) => state.cart);
   const [guestId, setGuestId] = useState(localStorage.getItem("guestId"));
   const [subTotal, setSubTotal] = useState(0);
-
-  const getUserCart = async () => {
-    if (localStorage.getItem("guestId")) await syncCart();
-    const response = await apiGetUserCarts();
-    setCart(response.data);
-  };
-
-  const syncCart = async () => {
-    await apiSyncQuotes(guestId);
-    localStorage.removeItem("guestId");
-  };
-
-  const getLocalCart = async () => {
-    const response = await apiGetGuestQuote(guestId);
-    setCart(response.data);
-  };
 
   const getSubTotal = () => {
     let _subTotal = 0;
@@ -42,9 +34,9 @@ function index() {
 
   useEffect(() => {
     if (session.id) {
-      getUserCart();
+      dispatch(setUserCartAC());
     } else if (guestId) {
-      getLocalCart();
+      dispatch(setLocalCartAC(guestId));
     }
   }, [session]);
 
@@ -52,20 +44,12 @@ function index() {
     getSubTotal();
   }, [cart]);
 
-  const handelDelete = async (quoteId) => {
-    if (session.id) {
-      await apiDeleteQuote(quoteId);
-    } else {
-      await apiDeleteGuestQuote(guestId, quoteId);
-    }
-    setCart((prevCart) => prevCart.filter((item) => item.id !== quoteId));
+  const handelDelete = (quoteId) => {
+    dispatch(deleteCartItemAC(quoteId, guestId));
   };
 
-  const quantityChange = async (quoteId, quantity) => {
-    if (session.id) {
-      await apiUpdateQuantity(quoteId, quantity);
-      getUserCart();
-    }
+  const quantityChange = (quoteId, quantity) => {
+    dispatch(changeCartItemQuantityAC(quoteId, quantity, guestId));
   };
 
   return (

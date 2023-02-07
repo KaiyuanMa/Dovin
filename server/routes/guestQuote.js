@@ -47,7 +47,6 @@ router.get("/:guestId", async (req, res, next) => {
 //DELETE
 router.delete("/:guestId/:quoteId", async (req, res, next) => {
   try {
-    console.log(1);
     if (await checkId(req.params.guestId)) {
       console.log(1);
       const quote = await Quote.findByPk(req.params.quoteId);
@@ -66,7 +65,6 @@ router.delete("/:guestId/:quoteId", async (req, res, next) => {
 //POST
 //TODO: Some kind of protection is needed, limit request number? frequency?
 router.post("/:guestId", async (req, res, next) => {
-  console.log(req.body);
   try {
     if (req.body.guestId !== req.params.guestId)
       return res.status(403).json({ message: "No Access" });
@@ -76,5 +74,21 @@ router.post("/:guestId", async (req, res, next) => {
     next(ex);
   }
 });
+
+router.put(
+  "/changeQuantity/:quoteId/:quantity/:guestId",
+  async (req, res, next) => {
+    try {
+      if (await checkId(req.params.guestId)) {
+        const quote = await Quote.findByPk(req.params.quoteId);
+        if (quote.userId !== req.params.guestId)
+          return res.status(403).json({ message: "No Access" });
+        res.send(await quote.update({ quantity: req.params.quantity }));
+      }
+    } catch (ex) {
+      next(ex);
+    }
+  }
+);
 
 module.exports = router;
