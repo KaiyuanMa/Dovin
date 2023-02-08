@@ -1,7 +1,7 @@
 import Options from "./Options";
 import "./styles.css";
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { apiGetStepSet } from "../../api/stepSet";
 import { useDispatch, useSelector } from "react-redux";
 import { apiAddQuote, apiGetQuote } from "../../api/quote";
@@ -17,6 +17,7 @@ import {
 
 function index() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { session } = useSelector((state) => state.session);
   const [customization, setCustomization] = useState();
   const [steps, setSteps] = useState([]);
@@ -126,6 +127,7 @@ function index() {
         dispatch(setLocalCartAC(userId));
       }
     }
+    navigate("/Cart");
   };
 
   return (
