@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./styles.css";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../../state/actionCreators/sessionAC";
+import { setUserCartAC } from "../../state/actionCreators/cartAC";
 import { Link } from "react-router-dom";
 
 function Login() {
@@ -13,7 +14,9 @@ function Login() {
   const handelLogin = async (e) => {
     try {
       e.preventDefault();
-      dispatch(login({ email: email, password: password }));
+      dispatch(login({ email: email, password: password })).then(() =>
+        dispatch(setUserCartAC())
+      );
     } catch (ex) {
       console.log(ex);
     }

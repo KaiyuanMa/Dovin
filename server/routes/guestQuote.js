@@ -96,7 +96,7 @@ router.put(
     try {
       if (await checkId(req.params.guestId)) {
         const quote = await Quote.findByPk(req.params.quoteId);
-        if (quote.userId !== req.params.guestId)
+        if (quote.guestId !== req.params.guestId)
           return res.status(403).json({ message: "No Access" });
         res.send(await quote.update({ quantity: req.params.quantity }));
       }
