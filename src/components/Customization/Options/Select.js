@@ -10,19 +10,21 @@ function Select(params) {
   const submitOrder = params.submitOrder;
   const [options, setOptions] = useState([]);
   const [selectedOption, setSelectedOption] = useState({});
+  const quoteId = params.quoteId;
+
+  const fetchOptions = async (stepId) => {
+    const response = await apiGetStepOptions(stepId);
+    setOptions(response.data);
+  };
 
   useEffect(() => {
-    setSelectedOption(steps[currStepIndex].selectedOption);
-    const fetchOptions = async (stepId) => {
-      const response = await apiGetStepOptions(stepId);
-      setOptions(response.data);
-    };
-    fetchOptions(steps[currStepIndex].id);
+    setSelectedOption(steps[currStepIndex].option);
+    fetchOptions(steps[currStepIndex].step.id);
   }, [currStepIndex]);
 
   const saveOption = (option) => {
     const newSteps = steps;
-    newSteps[currStepIndex].selectedOption = option;
+    newSteps[currStepIndex].option = option;
     setSteps(newSteps);
   };
   const nextStep = () => {
@@ -38,11 +40,17 @@ function Select(params) {
   return (
     <div className="option-wrapper | border-left">
       <div className="option-header | container flex-v-center padding-block-600">
-        <h2 className="ff-body fw-light">{`${steps[currStepIndex].description}`}</h2>
+        <h2 className="ff-body fw-light">{`${steps[currStepIndex].step.description}`}</h2>
         {currStepIndex === steps.length - 1 ? (
-          <button disabled={selectedOption == null} onClick={submitOrder}>
-            Submit
-          </button>
+          quoteId ? (
+            <button disabled={selectedOption == null} onClick={submitOrder}>
+              Update
+            </button>
+          ) : (
+            <button disabled={selectedOption == null} onClick={submitOrder}>
+              Add to Cart
+            </button>
+          )
         ) : (
           <button disabled={selectedOption == null} onClick={nextStep}>
             Next

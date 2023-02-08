@@ -4,6 +4,10 @@ const apiGetGuestQuote = (guestId) => {
   return axios.get(`/api/guestQuote/${guestId}`);
 };
 
+const apiGetAGuestQuote = (guestId, quoteId) => {
+  return axios.get(`/api/guestQuote/${guestId}/${quoteId}`);
+};
+
 const apiDeleteGuestQuote = (guestId, quoteId) => {
   console.log(guestId, quoteId);
   return axios.delete(`/api/guestQuote/${guestId}/${quoteId}`);
@@ -21,6 +25,7 @@ const apiGuestUpdateQuoteQuantity = (quoteId, quantity, guestId) => {
 
 export {
   apiGetGuestQuote,
+  apiGetAGuestQuote,
   apiDeleteGuestQuote,
   apiAddGuestQuote,
   apiGuestUpdateQuoteQuantity,

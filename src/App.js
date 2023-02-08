@@ -32,6 +32,7 @@ function App() {
             path="/customization/:customizationId"
             element={<Customization />}
           />
+          <Route path="/editQuote/:quoteId" element={<Customization />} />
           <Route path="/loginSignup" element={<LoginSignup />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/UserControl" element={<UserControl />}>

@@ -65,7 +65,9 @@ router.get("/cart", isLoggedIn, async (req, res, next) => {
 
 router.get("/:quoteId", isLoggedIn, async (req, res, next) => {
   try {
-    const quote = await Quote.findByPk(req.params.quoteId);
+    const quote = await Quote.findByPk(req.params.quoteId, {
+      include: QuoteItem,
+    });
     if (quote.userId !== req.user.id)
       return res.status(403).json({ message: "No Access" });
     const _quotes = await getAllInfo([quote]);

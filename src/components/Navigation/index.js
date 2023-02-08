@@ -13,6 +13,10 @@ import "./styles.css";
 function index() {
   const { session } = useSelector((state) => state.session);
   const { cart } = useSelector((state) => state.cart);
+  const [cartCount, setCartCount] = useState();
+  useEffect(() => {
+    setCartCount(cart.reduce((acc, cartItem) => acc + cartItem.quantity, 0));
+  }, [cart]);
 
   const navToggleFunction = () => {
     const body = document.querySelector("body");
@@ -56,9 +60,7 @@ function index() {
               <Link className="cart-icon" to="/Cart">
                 <i className="fa-light fa-cart-shopping hover-primary-600" />
                 {cart.length > 0 ? (
-                  <span className="fs-300 fw-semi-bold">
-                    {cart.reduce((acc, cartItem) => acc + cartItem.quantity, 0)}
-                  </span>
+                  <span className="fs-300 fw-semi-bold">{cartCount}</span>
                 ) : null}
               </Link>
               <div

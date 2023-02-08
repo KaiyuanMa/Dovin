@@ -20,6 +20,7 @@ const setUserCartAC = () => {
         localStorage.removeItem("guestId");
       }
       const { data } = await apiGetUserCarts();
+      console.log(data);
       dispatch({
         type: "SET_CART",
         cart: data,
@@ -55,7 +56,6 @@ const deleteCartItemAC = (quoteId, guestId) => {
       if (guestId) {
         await apiDeleteGuestQuote(guestId, quoteId);
       } else await apiDeleteQuote(quoteId);
-      console.log(1);
       dispatch({
         type: "DEL_CART_ITEM",
         quoteId: quoteId,
@@ -85,9 +85,18 @@ const changeCartItemQuantityAC = (quoteId, quantity, guestId) => {
   };
 };
 
+const emptyCartAC = () => {
+  return (dispatch) => {
+    dispatch({
+      type: "EMPTY_CART",
+    });
+  };
+};
+
 export {
   setUserCartAC,
   setLocalCartAC,
   deleteCartItemAC,
   changeCartItemQuantityAC,
+  emptyCartAC,
 };

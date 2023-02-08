@@ -44,6 +44,21 @@ router.get("/:guestId", async (req, res, next) => {
   }
 });
 
+router.get("/:guestId/:quoteId", async (req, res, next) => {
+  try {
+    if (checkId(req.params.guestId)) {
+      const quotes = await Quote.findAll({
+        where: { guestId: req.params.guestId, id: req.params.quoteId },
+        include: QuoteItem,
+      });
+      const _quotes = await getAllInfo(quotes);
+      res.send(_quotes);
+    }
+  } catch (ex) {
+    next(ex);
+  }
+});
+
 //DELETE
 router.delete("/:guestId/:quoteId", async (req, res, next) => {
   try {

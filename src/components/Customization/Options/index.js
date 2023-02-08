@@ -6,7 +6,7 @@ function index(params) {
   const currStepIndex = params.currStepIndex;
   const setCurrStepIndex = params.setCurrStepIndex;
   const steps = params.steps;
-  const type = params.steps[params.currStepIndex].type;
+  const type = params.steps[params.currStepIndex].step.type;
   const setSteps = params.setSteps;
   const submitOrder = params.submitOrder;
   switch (type) {

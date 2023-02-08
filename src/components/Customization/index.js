@@ -4,9 +4,9 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { apiGetStepSet } from "../../api/stepSet";
 import { useDispatch, useSelector } from "react-redux";
-import { apiAddQuote } from "../../api/quote";
+import { apiAddQuote, apiGetQuote } from "../../api/quote";
 import { apiAddQuoteItem } from "../../api/quoteItem";
-import { apiAddGuestQuote } from "../../api/guestQuote";
+import { apiAddGuestQuote, apiGetAGuestQuote } from "../../api/guestQuote";
 import { v4 as uuidv4 } from "uuid";
 import { apiAddGuestQI } from "../../api/guestQuoteItem";
 import {
@@ -22,14 +22,40 @@ function index() {
   const [steps, setSteps] = useState([]);
   const [currStepIndex, setCurrStepIndex] = useState(0);
   const { customizationId } = useParams();
+  const { quoteId } = useParams();
+
+  const fetchCustomization = async () => {
+    const response = await apiGetStepSet(customizationId);
+    setCustomization(response.data);
+    const _steps = [];
+    for (let step of response.data.steps) {
+      let _step = {};
+      _step.step = step;
+      _steps.push(_step);
+    }
+    setSteps(_steps);
+  };
+
+  const fetchQuote = async () => {
+    let quote;
+    if (session.id) {
+      quote = await apiGetQuote(quoteId);
+    } else {
+      quote = await apiGetAGuestQuote(localStorage.getItem("guestId"), quoteId);
+    }
+    console.log(quote);
+    const set = await apiGetStepSet(quote.data[0].stepSetId);
+    setCustomization(set.data);
+    console.log(quote.data[0].quoteItems);
+    setSteps(quote.data[0].quoteItems);
+  };
 
   useEffect(() => {
-    const fetchCustomization = async () => {
-      const response = await apiGetStepSet(customizationId);
-      setCustomization(response.data);
-      setSteps(response.data.steps);
-    };
-    fetchCustomization();
+    if (quoteId) {
+      fetchQuote(quoteId);
+    } else {
+      fetchCustomization();
+    }
   }, []);
 
   const submitOrder = async () => {
@@ -46,33 +72,33 @@ function index() {
       costSum: 0,
       userId: userId,
       isCart: true,
-      stepSetId: customizationId,
+      stepSetId: customization.id,
     };
-    let quoteId;
+    let currQuoteId;
     if (session.id) {
       const response = await apiAddQuote(quote);
-      quoteId = response.data.id;
+      currQuoteId = response.data.id;
     } else {
       quote.guestId = quote.userId;
       delete quote.userId;
       const response = await apiAddGuestQuote(userId, quote);
-      quoteId = response.data.id;
+      currQuoteId = response.data.id;
     }
 
     for (let step of steps) {
-      const type = step.type;
+      const type = step.step.type;
       let quoteItem;
       if (type === "select") {
         quoteItem = {
-          quoteId: quoteId,
-          stepId: step.id,
-          optionId: step.selectedOption.id,
+          quoteId: currQuoteId,
+          stepId: step.step.id,
+          optionId: step.option.id,
         };
       } else if (type === "measurement") {
         quoteItem = {
-          quoteId: quoteId,
-          stepId: step.id,
-          measurements: step.measurement,
+          quoteId: currQuoteId,
+          stepId: step.step.id,
+          measurements: step.measurements,
         };
       }
       if (session.id) {
@@ -84,8 +110,22 @@ function index() {
       }
     }
     if (session.id) {
-      dispatch(setUserCartAC());
-    } else dispatch(setLocalCartAC(userId));
+      if (quoteId) {
+        dispatch(deleteCartItemAC(quoteId)).then(() => {
+          dispatch(setUserCartAC());
+        });
+      } else {
+        dispatch(setUserCartAC());
+      }
+    } else {
+      if (quoteId) {
+        dispatch(deleteCartItemAC(quoteId, userId)).then(() => {
+          dispatch(setLocalCartAC(userId));
+        });
+      } else {
+        dispatch(setLocalCartAC(userId));
+      }
+    }
   };
 
   return (
@@ -104,7 +144,7 @@ function index() {
                 <h2 className="ff-heading fw-light fs-secondary-heading">
                   Steps
                 </h2>
-                {customization.steps.map((step, index) => {
+                {steps.map((step, index) => {
                   return (
                     <>
                       <input
@@ -112,16 +152,20 @@ function index() {
                         value={index}
                         checked={index === currStepIndex}
                         onChange={() => setCurrStepIndex(index)}
-                        id={`${customizationId}_${step.id}`}
-                        key={`${customizationId}_${step.id}`}
+                        id={`${customizationId}_${step.step.id}`}
+                        key={`${customizationId}_${step.step.id}`}
                       />
                       <label
                         className="padding-block-300"
-                        htmlFor={`${customizationId}_${step.id}`}
+                        htmlFor={`${customizationId}_${step.step.id}`}
                       >
-                        <h2>{step.name}</h2>
+                        <h2>{step.step.name}</h2>
                         <p>
-                          {step.selectedOption ? step.selectedOption.name : ""}
+                          {step.option
+                            ? step.option.name
+                            : step.measurements
+                            ? step.measurements
+                            : null}
                         </p>
                       </label>
                     </>
@@ -135,6 +179,7 @@ function index() {
               steps={steps}
               setSteps={setSteps}
               submitOrder={submitOrder}
+              quoteId={quoteId}
             />
           </div>
         </div>

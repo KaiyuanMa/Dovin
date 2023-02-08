@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./styles.css";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../state/actionCreators/sessionAC";
+import { emptyCartAC } from "../../state/actionCreators/cartAC";
 
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 
@@ -11,6 +12,7 @@ function index() {
   const { session } = useSelector((state) => state.session);
   const handleLogOut = () => {
     dispatch(logout());
+    dispatch(emptyCartAC());
   };
   useEffect(() => {
     if (!session.id) navigate("/loginSignup");
