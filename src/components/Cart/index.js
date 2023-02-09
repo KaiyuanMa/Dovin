@@ -168,10 +168,20 @@ function index() {
             </div>
           </div>
         ) : (
-          <div>
+          <div className="flow-400">
             <p className="fw-light fs-550">Looks like your cart is empty</p>
-            {session.id ? null : <button>Sign in</button>}
-            <button>Home</button>
+            <div className="flow-h-300">
+              {session.id ? null : (
+                <Link to="/loginSignup">
+                  <button className="button-inverted cart-empty-btn">
+                    Sign in
+                  </button>
+                </Link>
+              )}
+              <Link to="/">
+                <button className="cart-empty-btn">Home</button>
+              </Link>
+            </div>
           </div>
         )}
       </div>

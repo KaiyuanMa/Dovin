@@ -54,8 +54,7 @@ router.delete("/:addressId", isLoggedIn, async (req, res, next) => {
 //POST
 router.post("/", isLoggedIn, async (req, res, next) => {
   try {
-    if (req.body.userId !== req.user.id)
-      return res.status(403).json({ message: "No Access" });
+    req.body.userId = req.user.id;
     const address = await Address.create(req.body);
     res.send(address);
   } catch (ex) {

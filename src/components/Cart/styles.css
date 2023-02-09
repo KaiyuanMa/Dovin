@@ -3,7 +3,7 @@
 }
 
 .cart {
-  width: 66.6666667%;
+  width: 80%;
 }
 .cart-item {
   flex-wrap: wrap;
@@ -87,7 +87,7 @@
 }
 
 .cart-ad {
-  width: 33.3333333%;
+  width: 20%;
   height: 100%;
 }
 
@@ -100,4 +100,9 @@
 
 .cart-ad-item > img {
   width: 20rem;
+}
+
+.cart-empty-btn {
+  width: 30%;
+  height: 3rem;
 }

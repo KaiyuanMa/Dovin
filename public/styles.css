@@ -587,4 +587,17 @@ input:focus {
   }
 }
 
+.calendly-badge-content {
+  border: 1px solid white;
+}
+
+.calendly-badge-widget {
+  position: fixed;
+  right: 30px !important;
+  bottom: 40px !important;
+}
+
+.calendly-badge-widget:hover {
+  opacity: 0.7;
+}
 /* TODO */

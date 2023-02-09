@@ -8,22 +8,38 @@ const Address = conn.define("address", {
     defaultValue: UUIDV4,
     primaryKey: true,
   },
-  name: {
+  NickName: {
     type: STRING,
     allowNull: false,
   },
-  streetAddress: {
+  FirstName: {
     type: STRING,
     allowNull: false,
   },
-  AptNumber: {
+  LastName: {
+    type: STRING,
+    allowNull: false,
+  },
+  Address1: {
+    type: STRING,
+    allowNull: false,
+  },
+  Address2: {
     type: STRING,
   },
   State: {
     type: STRING,
     allowNull: false,
   },
+  City: {
+    type: STRING,
+    allowNull: false,
+  },
   Zip: {
+    type: STRING,
+    allowNull: false,
+  },
+  Phone: {
     type: STRING,
     allowNull: false,
   },

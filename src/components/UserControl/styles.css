@@ -66,3 +66,19 @@
   top: 192px;
   height: fit-content;
 }
+
+.address-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.address-form > label {
+  margin-inline: 0.5rem;
+}
+.address-form > input {
+  margin-top: 0.5rem;
+}
+
+.address-form > button {
+  width: 100%;
+}

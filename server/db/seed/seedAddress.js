@@ -4,11 +4,15 @@ const seedAddress = async (users) => {
   try {
     const _Address = [
       {
-        name: "home",
-        streetAddress: "1234 E Street Dr",
-        AptNumber: "1",
+        NickName: "home",
+        FirstName: "John",
+        LastName: "Smith",
+        Address1: "1234 E Street Dr",
+        Address2: "Apt 1",
         State: "CA",
+        City: "St Anna",
         Zip: "1234",
+        Phone: "1231231234",
         userId: users[0].id,
       },
     ];
