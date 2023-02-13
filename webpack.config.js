@@ -3,11 +3,6 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 module.exports = {
   devtool: "source-map",
   entry: "./src/index.js",
-  plugins: [
-    new HtmlWebpackPlugin({
-      template: "./public/index.html",
-    }),
-  ],
   module: {
     rules: [
       {
