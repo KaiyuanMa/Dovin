@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Route, Routes, NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { exchangeToken } from "./state/actionCreators/sessionAC";
+import "./styles.css";
 
 import UserControl from "./components/UserControl";
 import Navigation from "./components/Navigation";
