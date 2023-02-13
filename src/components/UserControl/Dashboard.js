@@ -40,7 +40,7 @@ function Dashboard() {
           {addresses.length > 0 ? (
             <ul role="list">
               {addresses.map((addresses) => (
-                <li>{addresses.NickName}</li>
+                <li className="fs-600">{addresses.NickName}</li>
               ))}
             </ul>
           ) : (
