@@ -1,6 +1,7 @@
 :root {
   --clr-primary-500: #e98074;
   --clr-primary-600: #e85a4f;
+  --clr-primary-700: #e64a3e;
 
   --clr-neutral-200: #f9f8f4;
   --clr-neutral-300: #f4f3ed;
@@ -536,7 +537,8 @@ button {
   width: min(7rem, 100%);
   border-radius: 2.5rem;
   padding: 0.5rem;
-  transition: color 0.3s ease-out, background-color 0.3s ease-out;
+  transition: color 0.3s ease-out, background-color 0.3s ease-out,
+    opacity 0.3s ease-out;
   font-family: var(--ff-body);
 }
 
@@ -560,6 +562,18 @@ button:disabled {
   opacity: 0.7;
   background-color: var(--clr-dark-500);
   color: var(--clr-neutral-200);
+}
+
+.button-delete {
+  background-color: var(--clr-primary-700);
+  color: var(--clr-neutral-200);
+  border: 1px solid transparent;
+}
+
+.button-delete:hover {
+  background-color: var(--clr-neutral-200);
+  color: var(--clr-primary-700);
+  border: 1px solid var(--clr-dark-500);
 }
 
 input {

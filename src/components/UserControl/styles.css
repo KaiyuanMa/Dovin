@@ -7,6 +7,10 @@
     "order appointment";
 }
 
+.user-control-sub-page {
+  min-height: 50rem;
+}
+
 .user-welcome {
   grid-area: welcome;
 }
@@ -71,6 +75,7 @@
   display: flex;
   flex-direction: column;
   width: 50%;
+  padding-bottom: var(--size-500);
 }
 .address-form > label {
   margin-inline: 0.5rem;
@@ -81,4 +86,31 @@
 
 .address-form > button {
   width: 100%;
+}
+
+.address-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-template-rows: repeat(auto-fill, minmax(5rem, 1fr));
+  gap: 1rem;
+  color: var(--clr-neutral-700);
+  padding-bottom: var(--size-400);
+}
+
+.address-item {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--clr-neutral-400);
+  padding: 1rem;
+  position: relative;
+  cursor: pointer;
+  transition: opacity 0.5s ease;
+}
+
+.address-item:hover {
+  opacity: 0.6;
+}
+
+.user-control-sub-page > .button-delete {
+  width: 50%;
 }

@@ -42,6 +42,7 @@ function App() {
             <Route path="order" element={<Order />} />
             <Route path="appointment" element={<ViewAppointment />} />
             <Route path="address" element={<Address />} />
+            <Route path="edit-address/:addressId" element={<AddressForm />} />
             <Route path="address-form" element={<AddressForm />} />
           </Route>
         </Routes>

@@ -1,7 +1,14 @@
-import React, { useState } from "react";
-import { apiAddAddress } from "../../api/address";
+import React, { useEffect, useState } from "react";
+import {
+  apiAddAddress,
+  apiGetAAddress,
+  apiUpdateAddress,
+  apiDeleteAddress,
+} from "../../api/address";
+import { useParams, useNavigate } from "react-router-dom";
 
 function AddressForm() {
+  const navigate = useNavigate();
   const [nickName, setNickName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -11,6 +18,28 @@ function AddressForm() {
   const [city, setCity] = useState("");
   const [zip, setZip] = useState("");
   const [phone, setPhone] = useState("");
+  const { addressId } = useParams();
+
+  const fetchAddress = async () => {
+    try {
+      const { data } = await apiGetAAddress(addressId);
+      setNickName(data.NickName);
+      setFirstName(data.FirstName);
+      setLastName(data.LastName);
+      setAddress1(data.Address1);
+      setAddress2(data.Address2);
+      setProvince(data.State);
+      setCity(data.City);
+      setZip(data.Zip);
+      setPhone(data.Phone);
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
+
+  useEffect(() => {
+    if (addressId) fetchAddress();
+  }, [addressId]);
 
   const handelSubmit = async (e) => {
     try {
@@ -26,13 +55,25 @@ function AddressForm() {
         Zip: zip,
         Phone: phone,
       };
-      await apiAddAddress(address);
+      if (addressId) await apiUpdateAddress(addressId, address);
+      else await apiAddAddress(address);
+      navigate("/UserControl/address");
     } catch (ex) {
       console.log(ex);
     }
   };
+
+  const handelDelete = async () => {
+    try {
+      await apiDeleteAddress(addressId);
+      navigate("/UserControl/address");
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
+
   return (
-    <div className="container padding-block-700">
+    <div className="user-control-sub-page | container padding-block-700">
       <h2 className="ff-heading fw-light padding-block-800 fs-primary-heading">
         Address
       </h2>
@@ -88,6 +129,11 @@ function AddressForm() {
         />
         <button>Save Address</button>
       </form>
+      {addressId ? (
+        <button className="button-delete" onClick={handelDelete}>
+          Delete Address
+        </button>
+      ) : null}
     </div>
   );
 }

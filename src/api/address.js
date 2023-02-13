@@ -8,6 +8,10 @@ const apiGetAddresses = () => {
   return axios.get("/api/address/");
 };
 
+const apiGetAAddress = (addressId) => {
+  return axios.get(`/api/address/${addressId}`);
+};
+
 const apiAdminDeleteAddress = (addressId) => {
   return axios.delete(`/api/address/admin/${addressId}`);
 };
@@ -27,6 +31,7 @@ const apiUpdateAddress = (addressId, params) => {
 export {
   apiAdminGetAddresses,
   apiGetAddresses,
+  apiGetAAddress,
   apiAdminDeleteAddress,
   apiDeleteAddress,
   apiAddAddress,

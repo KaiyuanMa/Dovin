@@ -16,8 +16,22 @@ router.get("/admin", isLoggedIn, adminAccess, async (req, res, next) => {
 router.get("/", isLoggedIn, async (req, res, next) => {
   try {
     const user = req.user;
-    const addresses = await Address.findAll({ where: { userId: user.id } });
+    const addresses = await Address.findAll({
+      where: { userId: user.id },
+      order: [["createdAt", "DESC"]],
+    });
     res.send(addresses);
+  } catch (ex) {
+    next(ex);
+  }
+});
+
+router.get("/:addressId", isLoggedIn, async (req, res, next) => {
+  try {
+    const address = await Address.findByPk(req.params.addressId);
+    if (address.userId !== req.user.id)
+      return res.status(403).json({ message: "No Access" });
+    res.send(address);
   } catch (ex) {
     next(ex);
   }
@@ -71,7 +85,7 @@ router.put("/:addressId", isLoggedIn, async (req, res, next) => {
     address = await Address.update(req.body, {
       where: { id: req.params.addressId },
     });
-    return address;
+    res.send(address);
   } catch (ex) {
     next(ex);
   }
