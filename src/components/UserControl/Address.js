@@ -43,9 +43,10 @@ function Address() {
           ))}
         </ul>
       ) : (
-        <p>Looks like you haven't add any addresses.</p>
+        <p className="padding-block-300">
+          Looks like you haven't add any addresses.
+        </p>
       )}
-
       <Link to="/UserControl/address-form">
         <button>Add Address</button>
       </Link>

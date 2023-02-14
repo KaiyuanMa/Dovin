@@ -609,6 +609,7 @@ input:focus {
   position: fixed;
   right: 30px !important;
   bottom: 40px !important;
+  transition: opacity 0.3s ease-out;
 }
 
 .calendly-badge-widget:hover {

@@ -23,7 +23,7 @@ function index() {
         <h2 className="ff-heading fw-light">{`Welcome ${session.firstName}`}</h2>
         <NavLink to="/UserControl/dashboard">Dashboard</NavLink>
         <NavLink to="/UserControl/order">Orders</NavLink>
-        <NavLink to="/UserControl/appointment">Appointments</NavLink>
+        {/* <NavLink to="/UserControl/appointment">Appointments</NavLink> */}
         <NavLink to="/UserControl/address">Address Book</NavLink>
         <button onClick={handleLogOut}>Log Out</button>
       </div>

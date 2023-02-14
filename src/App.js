@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import { Route, Routes, NavLink } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { exchangeToken } from "./state/actionCreators/sessionAC";
-import "./styles.css";
 
 import UserControl from "./components/UserControl";
 import Navigation from "./components/Navigation";
@@ -41,7 +40,7 @@ function App() {
           <Route path="/UserControl" element={<UserControl />}>
             <Route path="dashboard" element={<Dashboard />} />
             <Route path="order" element={<Order />} />
-            <Route path="appointment" element={<ViewAppointment />} />
+            {/* <Route path="appointment" element={<ViewAppointment />} /> */}
             <Route path="address" element={<Address />} />
             <Route path="edit-address/:addressId" element={<AddressForm />} />
             <Route path="address-form" element={<AddressForm />} />
