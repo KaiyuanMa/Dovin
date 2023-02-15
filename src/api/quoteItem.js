@@ -18,9 +18,4 @@ const apiGetQuoteItem = (quoteItemId) => {
 //   return axios.put(`/api/quoteItem/${quoteItemId}`, params);
 // };
 
-export {
-  apiGetQuoteItem,
-  apiDeleteQuoteItem,
-  apiAddQuoteItem,
-  apiUpdateQuoteItem,
-};
+export { apiGetQuoteItem };
