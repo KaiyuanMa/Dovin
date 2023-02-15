@@ -10,4 +10,14 @@ const conn = new Sequelize(
   }
 );
 
+// const conn = new Sequelize(
+//   process.env.DATABASE_URL || "postgres://localhost/dovin",
+//   {
+//     dialect: "postgres",
+//     dialectOptions: {
+//       ssl: false,
+//     },
+//   }
+// );
+
 module.exports = conn;

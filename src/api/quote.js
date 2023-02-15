@@ -28,10 +28,6 @@ const apiAddQuote = (quote) => {
 };
 
 //PUT
-const apiUpdateQuote = (quoteId, param) => {
-  return axios.put(`/api/quote/${quoteId}`, param);
-};
-
 const apiUpdateQuantity = (quoteId, quantity) => {
   return axios.put(`/api/quote/changeQuantity/${quoteId}/${quantity}`);
 };
@@ -47,7 +43,6 @@ export {
   apiGetQuote,
   apiDeleteQuote,
   apiAddQuote,
-  apiUpdateQuote,
   apiSyncQuotes,
   apiUpdateQuantity,
 };

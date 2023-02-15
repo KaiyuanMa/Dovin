@@ -4,15 +4,6 @@ const { isLoggedIn, adminAccess } = require("./middleware");
 const { Address } = require("../db");
 
 //GET
-router.get("/admin", isLoggedIn, adminAccess, async (req, res, next) => {
-  try {
-    const addresses = await Address.findAll();
-    res.send(addresses);
-  } catch (ex) {
-    next(ex);
-  }
-});
-
 router.get("/", isLoggedIn, async (req, res, next) => {
   try {
     const user = req.user;
@@ -38,21 +29,6 @@ router.get("/:addressId", isLoggedIn, async (req, res, next) => {
 });
 
 //DELETE
-router.delete(
-  "/admin/:addressId",
-  isLoggedIn,
-  adminAccess,
-  async (req, res, next) => {
-    try {
-      const address = await Address.findByPk(req.params.addressId);
-      address.destroy();
-      res.sendStatus(202);
-    } catch (ex) {
-      next(ex);
-    }
-  }
-);
-
 router.delete("/:addressId", isLoggedIn, async (req, res, next) => {
   try {
     const address = await Address.findByPk(req.params.addressId);

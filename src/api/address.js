@@ -1,19 +1,11 @@
 const axios = require("axios");
 
-const apiAdminGetAddresses = () => {
-  return axios.get("/api/address/admin");
-};
-
 const apiGetAddresses = () => {
   return axios.get("/api/address/");
 };
 
 const apiGetAAddress = (addressId) => {
   return axios.get(`/api/address/${addressId}`);
-};
-
-const apiAdminDeleteAddress = (addressId) => {
-  return axios.delete(`/api/address/admin/${addressId}`);
 };
 
 const apiDeleteAddress = (addressId) => {
@@ -29,10 +21,8 @@ const apiUpdateAddress = (addressId, params) => {
 };
 
 export {
-  apiAdminGetAddresses,
   apiGetAddresses,
   apiGetAAddress,
-  apiAdminDeleteAddress,
   apiDeleteAddress,
   apiAddAddress,
   apiUpdateAddress,

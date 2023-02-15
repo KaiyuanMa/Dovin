@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { isLoggedIn, adminAccess } = require("./middleware");
+const { isLoggedIn } = require("./middleware");
 const { Quote, QuoteItem, Step, Option, StepSet, User } = require("../db");
 
 const getAllInfo = async (quotes) => {
@@ -82,7 +82,7 @@ router.delete("/:quoteId", isLoggedIn, async (req, res, next) => {
   try {
     const quote = await Quote.findByPk(req.params.quoteId);
     if (quote.userId !== req.user.id)
-      res.status(403).json({ message: "No Access" });
+      return res.status(403).json({ message: "No Access" });
     else {
       await quote.destroy();
       res.sendStatus(202);
@@ -91,21 +91,6 @@ router.delete("/:quoteId", isLoggedIn, async (req, res, next) => {
     next(ex);
   }
 });
-
-router.delete(
-  "/admin/:quoteId",
-  isLoggedIn,
-  adminAccess,
-  async (req, res, next) => {
-    try {
-      const quote = await Quote.findByPk(req.params.quoteId);
-      quote.destroy();
-      res.status(202);
-    } catch (ex) {
-      next(ex);
-    }
-  }
-);
 
 //POST
 router.post("/", isLoggedIn, async (req, res, next) => {
@@ -121,16 +106,16 @@ router.post("/", isLoggedIn, async (req, res, next) => {
 
 //PUT
 //TODO: what can be changed what can not?
-router.put("/:quoteId", isLoggedIn, async (req, res, next) => {
-  try {
-    const quote = await Quote.update(req.body, {
-      where: { id: req.params.quoteId },
-    });
-    res.send(quote);
-  } catch (ex) {
-    next(ex);
-  }
-});
+// router.put("/:quoteId", isLoggedIn, async (req, res, next) => {
+//   try {
+//     const quote = await Quote.update(req.body, {
+//       where: { id: req.params.quoteId },
+//     });
+//     res.send(quote);
+//   } catch (ex) {
+//     next(ex);
+//   }
+// });
 
 router.put("/syncGuest/:guestId", isLoggedIn, async (req, res, next) => {
   try {
