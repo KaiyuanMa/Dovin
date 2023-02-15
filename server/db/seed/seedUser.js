@@ -18,7 +18,7 @@ const _Users = [
     password: "qwe",
     firstName: "qwe",
     lastName: "qwe",
-    role: "superAdmin",
+    role: "admin",
   },
 ];
 
