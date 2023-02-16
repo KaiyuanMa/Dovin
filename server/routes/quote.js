@@ -1,7 +1,15 @@
 const express = require("express");
 const router = express.Router();
 const { isLoggedIn } = require("./middleware");
-const { Quote, QuoteItem, Step, Option, StepSet, User } = require("../db");
+const {
+  Quote,
+  QuoteItem,
+  Step,
+  Option,
+  StepSet,
+  User,
+  OrderStatus,
+} = require("../db");
 
 const getAllInfo = async (quotes) => {
   const newQuotes = [];
@@ -41,8 +49,12 @@ router.get("/order", isLoggedIn, async (req, res, next) => {
   try {
     const quotes = await Quote.findAll({
       where: { userId: req.user.id, isCart: false },
-      include: QuoteItem,
+      include: [
+        QuoteItem,
+        { model: OrderStatus, as: "orderState", attributes: ["name"] },
+      ],
     });
+    console.log(quotes);
     const _quotes = await getAllInfo(quotes);
     res.send(_quotes);
   } catch (ex) {
@@ -146,5 +158,16 @@ router.put(
     }
   }
 );
+
+router.put("/cart-to-order/:quoteId", isLoggedIn, async (req, res, next) => {
+  try {
+    const quote = await Quote.findByPk(req.params.quoteId);
+    if (quote.userId !== req.user.id)
+      return res.status(403).json({ message: "No Access" });
+    res.send(await quote.update({ isCart: false, orderStateId: 1 }));
+  } catch (ex) {
+    next(ex);
+  }
+});
 
 module.exports = router;

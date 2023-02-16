@@ -15,7 +15,9 @@ import {
   setLocalCartAC,
   deleteCartItemAC,
   changeCartItemQuantityAC,
+  checkOut,
 } from "../../state/actionCreators/cartAC";
+import { checkout } from "../../api/checkout";
 import { Link } from "react-router-dom";
 
 function index() {
@@ -53,6 +55,21 @@ function index() {
     if (quantity > 0) {
       dispatch(changeCartItemQuantityAC(quoteId, quantity, guestId));
     }
+  };
+
+  const handelCheckOut = async () => {
+    let products = [];
+    for (let cartItem of cart) {
+      let currProduct = {
+        name: cartItem.name,
+        price: cartItem.cost,
+        quantity: cartItem.quantity,
+      };
+      products.push(currProduct);
+    }
+    const response = await checkout({ products });
+    window.location.href = response.data.url;
+    dispatch(checkOut());
   };
 
   return (
@@ -160,7 +177,10 @@ function index() {
                       })}
                     </span>
                   </div>
-                  <button className="checkout-btn | button-inverted">
+                  <button
+                    className="checkout-btn | button-inverted"
+                    onClick={handelCheckOut}
+                  >
                     <i class="fa-light fa-lock-keyhole"></i>Check Out
                   </button>
                 </div>

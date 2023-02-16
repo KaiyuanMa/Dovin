@@ -4,6 +4,7 @@ const seedStepSet = require("./seedStepSet");
 const seedStep = require("./seedStep");
 const seedOptions = require("./seedOption");
 const seedAddress = require("./seedAddress");
+const seedOrderStatus = require("./seedOrderStatus");
 
 const syncAndSeed = async () => {
   try {
@@ -13,6 +14,7 @@ const syncAndSeed = async () => {
     const steps = await seedStep(stepSets);
     const options = await seedOptions(steps);
     const addresses = await seedAddress(users);
+    await seedOrderStatus();
   } catch (ex) {
     console.log(ex);
   }

@@ -75,10 +75,6 @@
   transition: background-color 0.3s ease-out;
 }
 
-.step-list > label {
-  cursor: pointer;
-}
-
 .step-list > input {
   display: none;
 }
@@ -122,6 +118,9 @@
 }
 
 @media (max-width: 75em) {
+  .container {
+    --padding: 2rem;
+  }
   .option-list {
     --size: 20vw;
   }
@@ -133,9 +132,9 @@
   .steps {
     width: 25%;
   }
-  .step-list > h2 {
+  /* .step-list > h2 {
     font-size: max(1.2rem, 1.8vw);
-  }
+  } */
   /* .step-list > button {
     font-size: max(0.8rem, 1.8vw);
   } */
@@ -149,14 +148,17 @@
     padding: 0.3rem;
   }
   .option > label {
-    font-size: var(--fs-200);
+    font-size: min(var(--fs-400), 1.7vw);
+  }
+  .step-list > label {
+    padding: var(--size-100);
   }
 }
 @media (max-width: 48em) {
-  .step-list > h2 {
+  /* .step-list > h2 {
     font-size: max(0.8rem, 1.8vw);
     font-weight: var(--fw-semi-bold) !important;
-  }
+  } */
   .step-option-wrapper button {
     font-size: max(0.8rem, 1.8vw);
   }
@@ -171,10 +173,23 @@
   .option-header > button {
     width: 100%;
   }
+  .option > label {
+    font-size: 2vw;
+  }
+  .option-list {
+    --size: 30vw;
+  }
+  .step-list > label > h2,
+  .step-list > h2 {
+    font-size: min(var(--fs-600), 3.4vw);
+  }
 }
 
 @media (max-width: 30em) {
+  .option > label {
+    font-size: 3vw;
+  }
   .option-list {
-    --size: 29vw;
+    --size: 50vw;
   }
 }

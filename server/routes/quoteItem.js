@@ -34,17 +34,17 @@ router.get("/:quoteItemId", isLoggedIn, async (req, res, next) => {
 //   }
 // });
 
-// //POST
-// router.post("/", isLoggedIn, async (req, res, next) => {
-//   try {
-//     if (checkAccess(req.body.quoteId, req.user)) {
-//       const quoteItem = await QuoteItem.create(req.body);
-//       res.send(quoteItem);
-//     } else return res.status(403).json({ message: "No Access" });
-//   } catch (ex) {
-//     next(ex);
-//   }
-// });
+//POST
+router.post("/", isLoggedIn, async (req, res, next) => {
+  try {
+    if (checkAccess(req.body.quoteId, req.user)) {
+      const quoteItem = await QuoteItem.create(req.body);
+      res.send(quoteItem);
+    } else return res.status(403).json({ message: "No Access" });
+  } catch (ex) {
+    next(ex);
+  }
+});
 
 // //PUT
 // router.put("/:quoteItemId", isLoggedIn, async (req, res, next) => {

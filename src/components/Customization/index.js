@@ -143,9 +143,7 @@ function index() {
                 role="list"
                 className="step-list | flex-all-center border-between"
               >
-                <h2 className="ff-heading fw-light fs-secondary-heading">
-                  Steps
-                </h2>
+                <h2 className="ff-heading fw-light">Steps</h2>
                 {steps.map((step, index) => {
                   return (
                     <>

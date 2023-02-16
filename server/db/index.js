@@ -6,10 +6,12 @@ const Step = require("./Step");
 const Quote = require("./Quote");
 const QuoteItem = require("./QuoteItem");
 const Option = require("./Option");
+const OrderStatus = require("./OrderStatus");
 
 User.hasMany(Quote);
 User.hasMany(Address);
 Quote.hasMany(QuoteItem, { onDelete: "CASCADE" });
+Quote.belongsTo(OrderStatus, { foreignKey: "orderStateId", as: "orderState" });
 StepSet.hasMany(Quote);
 StepSet.hasOne(Step);
 Step.hasMany(Option);
@@ -26,4 +28,5 @@ module.exports = {
   StepSet,
   Option,
   QuoteItem,
+  OrderStatus,
 };

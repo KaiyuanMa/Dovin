@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { apiGetAddresses } from "../../api/address";
+import { apiGetUserOrders } from "../../api/quote";
 
 function Dashboard() {
   const { session } = useSelector((state) => state.session);
@@ -11,11 +12,14 @@ function Dashboard() {
   const fetchData = async () => {
     let response = await apiGetAddresses();
     setAddresses(response.data);
+    response = await apiGetUserOrders();
+    setOrders(response.data);
   };
 
   useEffect(() => {
     fetchData();
   }, [session]);
+  console.log(orders);
 
   return (
     <div className="padding-block-700 user-control-sub-page">
@@ -26,10 +30,13 @@ function Dashboard() {
         <div className="user-order user-dashboard-item">
           <h2 className="ff-heading fw-light border-bottom">Orders</h2>
           {orders.length > 0 ? (
-            <ul role="list">
-              {orders.map((order) => {
-                <li>order.id</li>;
-              })}
+            <ul role="list" className="dashBoard-order-list">
+              {orders.map((order) => (
+                <li>
+                  <h1 className="fs-550 fw-semi-bold">{order.name}</h1>
+                  <p className="fs-500">Status: {order.orderState.name}</p>
+                </li>
+              ))}
             </ul>
           ) : (
             <p>Looks like you don't have any orders.</p>

@@ -3,6 +3,7 @@ import {
   apiSyncQuotes,
   apiDeleteQuote,
   apiUpdateQuantity,
+  apiCartToOrder,
 } from "../../api/quote";
 
 import {
@@ -85,6 +86,23 @@ const changeCartItemQuantityAC = (quoteId, quantity, guestId) => {
   };
 };
 
+const checkOut = () => {
+  return async (dispatch, getState) => {
+    try {
+      const cart = getState().cart.cart;
+      console.log(cart);
+      for (let cartItem of cart) {
+        await apiCartToOrder(cartItem.id);
+      }
+      dispatch({
+        type: "EMPTY_CART",
+      });
+    } catch (ex) {
+      console.log(ex);
+    }
+  };
+};
+
 const emptyCartAC = () => {
   return (dispatch) => {
     dispatch({
@@ -99,4 +117,5 @@ export {
   deleteCartItemAC,
   changeCartItemQuantityAC,
   emptyCartAC,
+  checkOut,
 };

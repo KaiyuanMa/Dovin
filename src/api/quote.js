@@ -36,6 +36,10 @@ const apiSyncQuotes = (guestId) => {
   return axios.put(`/api/quote/syncGuest/${guestId}`);
 };
 
+const apiCartToOrder = (quoteId) => {
+  return axios.put(`/api/quote/cart-to-order/${quoteId}`);
+};
+
 export {
   apiGetUserQuotes,
   apiGetUserOrders,
@@ -45,4 +49,5 @@ export {
   apiAddQuote,
   apiSyncQuotes,
   apiUpdateQuantity,
+  apiCartToOrder,
 };
