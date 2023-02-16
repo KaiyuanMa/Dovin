@@ -44,7 +44,10 @@ function Order() {
                     currency: "USD",
                   })}
                 </div>
-                <p className="fs-500">Status: {order.orderState.name}</p>
+                <p className="fs-500">
+                  {order.orderState.name.charAt(0).toUpperCase() +
+                    order.orderState.name.slice(1)}
+                </p>
                 <p className="text-neutral-700 fs-body">
                   Qty: {order.quantity}
                 </p>

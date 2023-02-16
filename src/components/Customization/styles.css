@@ -118,9 +118,6 @@
 }
 
 @media (max-width: 75em) {
-  .container {
-    --padding: 2rem;
-  }
   .option-list {
     --size: 20vw;
   }

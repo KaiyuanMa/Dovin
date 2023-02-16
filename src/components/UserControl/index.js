@@ -25,6 +25,9 @@ function index() {
         <NavLink to="/UserControl/order">Orders</NavLink>
         {/* <NavLink to="/UserControl/appointment">Appointments</NavLink> */}
         <NavLink to="/UserControl/address">Address Book</NavLink>
+        <a className="dashboard-logout-link" onClick={handleLogOut}>
+          Sign Out
+        </a>
         <button onClick={handleLogOut}>Log Out</button>
       </div>
       <Outlet />

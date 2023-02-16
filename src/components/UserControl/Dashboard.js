@@ -22,7 +22,7 @@ function Dashboard() {
   console.log(orders);
 
   return (
-    <div className="padding-block-700 user-control-sub-page">
+    <div className="user-control-sub-page | padding-block-700">
       <h2 className="ff-heading fw-light padding-block-800 fs-primary-heading">
         Dashboard
       </h2>

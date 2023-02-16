@@ -1,6 +1,6 @@
 .user-dashboard {
   display: grid;
-  grid-template: repeat(2, 18vw) / repeat(2, 50%);
+  grid-template: repeat(2, 18vw) / repeat(2, calc(50% - 1rem));
   gap: 2rem;
   grid-template-areas:
     "order address"
@@ -32,6 +32,7 @@
   padding: var(--size-300);
   padding-inline: 2rem;
   color: var(--clr-neutral-700);
+  overflow: scroll;
 }
 
 .user-dashboard-item > h2 {
@@ -46,6 +47,10 @@
   width: 20%;
 }
 
+.dashboard-logout-link {
+  display: none;
+}
+
 .user-nav > h2 {
   font-size: var(--fs-600);
   padding-block: var(--size-300);
@@ -57,7 +62,7 @@
 }
 
 .user-profile > div:nth-child(2) {
-  width: 80%;
+  width: 100%;
 }
 
 .user-profile {
@@ -124,7 +129,7 @@
 .order-list-item {
   display: flex;
   justify-content: space-between;
-  padding-inline: 2rem;
+  padding-inline: var(--size-500);
 }
 
 .order-list-item-header {
@@ -150,4 +155,93 @@
 
 .dashBoard-order-list > li:hover {
   opacity: 0.7;
+}
+
+@media (max-width: 75em) {
+  .user-dashboard {
+    grid-template: repeat(3, 25vw) / 1fr;
+    grid-template-areas:
+      "order"
+      "address"
+      "appointment";
+  }
+  .user-nav > button {
+    display: none;
+  }
+
+  .dashboard-logout-link {
+    display: inline;
+  }
+}
+
+@media (max-width: 48em) {
+  .user-dashboard {
+    grid-template: repeat(3, 15rem) / 1fr;
+    grid-template-areas:
+      "order"
+      "address"
+      "appointment";
+  }
+  .user-profile {
+    flex-direction: column;
+    align-items: center;
+  }
+  .user-nav {
+    display: flex;
+    margin-top: 0;
+    flex-direction: row;
+    width: 100vw;
+    padding-inline: 2rem;
+    align-items: center;
+    justify-content: space-around;
+    top: 160px;
+    background-color: var(--clr-neutral-300);
+    z-index: 999;
+    height: 3rem;
+    border-bottom: 1px solid var(--clr-border);
+  }
+  .user-nav > * + * {
+    margin-top: 0;
+  }
+
+  .user-nav > h2 {
+    display: none;
+  }
+
+  .user-control-sub-page {
+    padding-block: var(--size-400);
+  }
+
+  .user-control-sub-page > h2 {
+    padding-block: var(--size-500);
+    font-size: var(--fs-700);
+  }
+
+  .user-dashboard-item > h2 {
+    font-size: var(--fs-550);
+  }
+
+  .user-dashboard-item {
+    padding: var(--size-300);
+  }
+
+  .order-list-item {
+    padding-inline: var(--size-300);
+    padding-block: var(--size-400);
+  }
+
+  .order-list {
+    gap: var(--size-200);
+  }
+
+  .address-form {
+    width: 80%;
+    margin-inline: auto;
+  }
+}
+
+@media (max-width: 30em) {
+  .order-list-item {
+    padding-block: var(--size-300);
+  }
 }

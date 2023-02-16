@@ -370,13 +370,15 @@ i {
   margin-inline: auto;
 }
 
+@media (max-width: 75em) {
+  .container {
+    --padding: 2rem;
+  }
+}
+
 @media (max-width: 48em) {
   .container {
-    --max-width: 1700px;
     --padding: 1rem;
-
-    width: min(var(--max-width), 100% - var(--padding) * 2);
-    margin-inline: auto;
   }
 }
 
