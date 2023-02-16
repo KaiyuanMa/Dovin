@@ -194,7 +194,7 @@
     padding-inline: 2rem;
     align-items: center;
     justify-content: space-around;
-    top: 160px;
+    top: 96px;
     background-color: var(--clr-neutral-300);
     z-index: 999;
     height: 3rem;
@@ -243,5 +243,9 @@
 @media (max-width: 30em) {
   .order-list-item {
     padding-block: var(--size-300);
+  }
+
+  .user-nav {
+    font-size: var(--fs-400);
   }
 }

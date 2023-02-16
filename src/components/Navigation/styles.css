@@ -6,6 +6,10 @@
   top: 0;
 }
 
+.primary-header > div {
+  height: 100%;
+}
+
 .header-ad {
   font-size: var(--fs-300);
 }
@@ -54,12 +58,6 @@
   top: -0.5rem;
 }
 
-@media (max-width: 30em) {
-  .primary-header {
-    height: 10rem;
-  }
-}
-
 @media (max-width: 48em) {
   .primary-header {
     height: 10rem;
@@ -105,5 +103,19 @@
 
   .primary-header {
     border-bottom: 1px solid rgba(36, 34, 34, 0.15);
+  }
+}
+
+@media (max-width: 30em) {
+  .primary-header {
+    height: 6rem;
+  }
+  .user-control {
+    padding-block: 1.4rem;
+  }
+  .logo {
+    left: 5%;
+    margin-left: 0;
+    margin-right: 0;
   }
 }

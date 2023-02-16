@@ -205,20 +205,14 @@ function index() {
           </div>
         )}
       </div>
-      <div className="cart-ad">
-        <div className="padding-block-600 flow-300">
-          <div className="cart-ad-item">
-            <img src={squareImg} />
-            <p>Lorem ipsum dolor sit amet</p>
-          </div>
-          <div className="cart-ad-item">
-            <img src={squareImg} />
-            <p>Lorem ipsum dolor sit amet</p>
-          </div>
-          <div className="cart-ad-item">
-            <img src={squareImg} />
-            <p>Lorem ipsum dolor sit amet</p>
-          </div>
+      <div className="cart-ad | padding-block-600 flow-300">
+        <div className="cart-ad-item">
+          <img src={squareImg} />
+          <p>Lorem ipsum dolor sit amet</p>
+        </div>
+        <div className="cart-ad-item">
+          <img src={squareImg} />
+          <p>Lorem ipsum dolor sit amet</p>
         </div>
       </div>
     </div>

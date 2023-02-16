@@ -67,6 +67,15 @@
     --fs-secondary-heading: var(--fs-700);
     --fs-nav: var(--fs-700);
     --fs-button: var(--fs-500);
+    --fs-price: var(--fs-500);
+  }
+}
+
+@media (max-width: 30em) {
+  :root {
+    --fs-body: var(--fs-500);
+    --fs-primary-heading: var(--fs-800);
+    --fs-secondary-heading: var(--fs-600);
   }
 }
 
@@ -600,6 +609,12 @@ input:focus {
 @media (max-width: 48em) {
   .page {
     padding-top: 160px;
+  }
+}
+
+@media (max-width: 30em) {
+  .page {
+    padding-top: 96px;
   }
 }
 
