@@ -77,7 +77,7 @@ function Select(params) {
                 htmlFor={`${steps[currStepIndex].id}${option.id}-input`}
               >
                 {option.name}
-                <img src={sqrImg} />
+                <img src={option.imageUrl} />
               </label>
             </li>
           );

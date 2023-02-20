@@ -10,7 +10,10 @@ function index() {
     <div className="main-content">
       <section className="padding-block-800 bg-neutral-500 ">
         <div className="container home-face-img">
-          <img src={homeFaceImg} alt="" />
+          <img
+            src="https://dovin.s3.amazonaws.com/Static/img/homeFaceImg.png"
+            alt=""
+          />
         </div>
       </section>
       <section className="padding-block-800">

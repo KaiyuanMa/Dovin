@@ -10,6 +10,10 @@ const Option = conn.define("option", {
   description: {
     type: TEXT,
   },
+  imageUrl: {
+    type: STRING,
+    allNull: false,
+  },
   //TODO: where to store img?
 });
 
