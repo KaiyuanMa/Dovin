@@ -27,7 +27,7 @@
 }
 
 .product-category > div > img {
-  transition: transform 0.5s ease-out;
+  transition: transform 0.3s ease-out;
 }
 
 .product-category:hover > div > img {
