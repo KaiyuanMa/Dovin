@@ -6,7 +6,6 @@ import { exchangeToken } from "./state/actionCreators/sessionAC";
 import UserControl from "./components/UserControl";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
-import Admin from "./components/Admin";
 import Footer from "./components/Footer";
 import Customization from "./components/Customization";
 import Dashboard from "./components/UserControl/Dashboard";
@@ -29,7 +28,6 @@ function App() {
       <main className="content | bg-neutral-200 ff-body fs-body">
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/admin" element={<Admin />} />
           <Route
             path="/customization/:customizationId"
             element={<Customization />}
