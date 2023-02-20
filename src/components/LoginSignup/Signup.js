@@ -46,7 +46,7 @@ function SignUp() {
   return (
     <form
       onSubmit={handelSignUp}
-      className="user-form flow-200 | flex-h-center"
+      className="user-form user-form-sign-up flow-200 | flex-h-center"
     >
       <div className="ff-body border-bottom padding-block-400">
         <h2 className="ff-body fs-primary-heading fw-xLight">New Customer?</h2>
