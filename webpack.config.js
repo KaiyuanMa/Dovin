@@ -1,5 +1,6 @@
 const path = require("path");
 const webpack = require("webpack");
+const dotenv = require("dotenv").config();
 
 module.exports = {
   devtool: "source-map",
@@ -40,6 +41,7 @@ module.exports = {
       "process.env.GOOGLE_CLIENT_KEY": JSON.stringify(
         process.env.GOOGLE_CLIENT_KEY
       ),
+      "process.env": JSON.stringify(process.env),
     }),
   ],
 };

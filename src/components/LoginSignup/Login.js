@@ -22,15 +22,12 @@ function Login() {
       console.log(ex);
     }
   };
-  const googleClientKey = process.env.GOOGLE_CLIENT_KEY;
-  console.log(googleClientKey); // logs "123"
   const login = useGoogleLogin({
     onSuccess: (tokenResponse) => {
       console.log(tokenResponse);
       dispatch(googleLogin(tokenResponse.access_token));
     },
   });
-
   return (
     <form onSubmit={handelLogin} className="user-form flow-400 | flex-h-center">
       <div className="ff-body border-bottom padding-block-400">
