@@ -1,12 +1,13 @@
 const path = require("path");
+const webpack = require("webpack");
 
 module.exports = {
   devtool: "source-map",
-  entry: "./src/index.js",
-  output: {
-    filename: "[name].bundle.js",
-    path: path.resolve(__dirname, "dist"),
-  },
+  // entry: "./src/index.js",
+  // output: {
+  //   filename: "[name].bundle.js",
+  //   path: path.resolve(__dirname, "dist"),
+  // },
   module: {
     rules: [
       {
@@ -34,4 +35,11 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new webpack.DefinePlugin({
+      "process.env.GOOGLE_CLIENT_KEY": JSON.stringify(
+        process.env.GOOGLE_CLIENT_KEY
+      ),
+    }),
+  ],
 };

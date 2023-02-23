@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./styles.css";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../state/actionCreators/sessionAC";
+import { login, googleLogin } from "../../state/actionCreators/sessionAC";
 import { setUserCartAC } from "../../state/actionCreators/cartAC";
 import { Link } from "react-router-dom";
+import { useGoogleLogin } from "@react-oauth/google";
 
 function Login() {
   const dispatch = useDispatch();
@@ -21,6 +22,14 @@ function Login() {
       console.log(ex);
     }
   };
+  const googleClientKey = process.env.GOOGLE_CLIENT_KEY;
+  console.log(googleClientKey); // logs "123"
+  const login = useGoogleLogin({
+    onSuccess: (tokenResponse) => {
+      console.log(tokenResponse);
+      dispatch(googleLogin(tokenResponse.access_token));
+    },
+  });
 
   return (
     <form onSubmit={handelLogin} className="user-form flow-400 | flex-h-center">
@@ -55,6 +64,7 @@ function Login() {
         <Link>Forgot Password</Link>
       </div>
       <button className="button-inverted">Login</button>
+      <button onClick={() => login()}>Sign in with Google 🚀 </button>;
     </form>
   );
 }

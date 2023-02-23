@@ -19,7 +19,6 @@ function Dashboard() {
   useEffect(() => {
     fetchData();
   }, [session]);
-  console.log(orders);
 
   return (
     <div className="user-control-sub-page | padding-block-700">

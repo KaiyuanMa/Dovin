@@ -20,6 +20,7 @@ app.use("/api/guestQuoteItem", require("./routes/guestQuoteItem"));
 app.use("/api/step", require("./routes/step"));
 app.use("/api/stepSet", require("./routes/stepSet"));
 app.use("/api/address", require("./routes/address"));
+app.use("/api/oAuth", require("./routes/oAuth"));
 
 app.use((err, req, res, next) => {
   if (
