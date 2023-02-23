@@ -24,7 +24,6 @@ function Login() {
   };
   const login = useGoogleLogin({
     onSuccess: (tokenResponse) => {
-      console.log(tokenResponse);
       dispatch(googleLogin(tokenResponse.access_token));
     },
   });
