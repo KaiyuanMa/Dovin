@@ -4,8 +4,19 @@ import "./styles.css";
 import homeFaceImg from "../../../public/img/3200x1280.png";
 import squareImg from "../../../public/img/1600x1600.png";
 import regImg from "../../../public/img/2000x1125.png";
+import { myAnimation } from "../../animation";
 
 function index() {
+  useEffect(() => {
+    const animation = myAnimation("product-category", 0.3, 0.3);
+    const animation1 = myAnimation("service-feature", 0.3, 0.3);
+    const animation2 = myAnimation("gasp-home-1", 0.3);
+    const animation3 = myAnimation("home-even-column-text-children", 0.3, 0.3);
+    return () => {
+      animation.kill();
+      animation1.kill();
+    };
+  }, []);
   return (
     <div className="main-content">
       <section className="padding-block-800 bg-neutral-500 ">
@@ -92,18 +103,20 @@ function index() {
         <div className="container">
           <div className="even-columns">
             <div className="home-even-column-text | flow-400">
-              <h1 className="fs-primary-heading fw-light ff-heading">
+              <h1 className="home-even-column-text-children | fs-primary-heading fw-light ff-heading">
                 Lorem ipsum dolor
               </h1>
-              <p className="home-text-block | fs-body fw-light">
+              <p className="home-text-block home-even-column-text-children | fs-body fw-light">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                 enim ad minim veniam, quis nostrud exercitation ullamco laboris
                 nisi ut aliquip ex ea commodo consequat.
               </p>
-              <button className="fs-button fw-regular">lorem</button>
+              <button className="home-even-column-text-children | fs-button fw-regular">
+                lorem
+              </button>
             </div>
-            <img src={squareImg} />
+            <img className="gasp-home-1" src={squareImg} />
           </div>
         </div>
       </section>
@@ -114,7 +127,7 @@ function index() {
             Lorem ipsum
           </h1>
           <div className="home-service-feature | even-columns-rows">
-            <div className="flow-600">
+            <div className="service-feature | flow-600">
               <img src={regImg} />
               <div>
                 <h2 className="fs-secondary-heading fw-light ff-heading">
@@ -127,7 +140,7 @@ function index() {
                 </p>
               </div>
             </div>
-            <div className="flow-600">
+            <div className="service-feature | flow-600">
               <img src={regImg} />
               <div>
                 <h2 className="fs-secondary-heading fw-light ff-heading">

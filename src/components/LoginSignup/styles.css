@@ -1,3 +1,7 @@
+.login-form-wrapper {
+  flex-direction: column;
+}
+
 .user-form-container {
   width: min(90rem, 100% - 5rem * 2);
   margin: auto;
@@ -97,6 +101,20 @@
 
 .password-constraint {
   color: var(--clr-neutral-700);
+}
+
+.google-btn {
+  position: relative;
+  width: 90%;
+  margin-inline: auto;
+}
+
+.google-btn > i {
+  position: absolute;
+  top: 50%;
+  left: 5%;
+  transform: translate(-50%, -50%);
+  font-size: var(--fs-525);
 }
 
 @media (max-width: 75em) {

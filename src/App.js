@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
-import { Route, Routes, NavLink } from "react-router-dom";
+import React, { useEffect, useState, useLayoutEffect } from "react";
+import { Route, Routes, NavLink, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { exchangeToken } from "./state/actionCreators/sessionAC";
+import { PopupWidget } from "react-calendly";
+import gsap from "gsap";
 
 import UserControl from "./components/UserControl";
 import Navigation from "./components/Navigation";
@@ -15,16 +17,45 @@ import AddressForm from "./components/UserControl/AddressForm";
 import Order from "./components/UserControl/Order";
 import LoginSignup from "./components/LoginSignup";
 import Cart from "./components/Cart";
-import { PopupWidget } from "react-calendly";
 
 function App() {
   const dispatch = useDispatch();
+  const [hideNav, setHideNav] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+
   useEffect(() => {
     dispatch(exchangeToken());
   }, []);
+
+  useEffect(() => {
+    let isScrolling;
+    let yPrev = window.pageYOffset;
+    let threshold = 200;
+
+    const handleScroll = () => {
+      window.clearTimeout(isScrolling);
+      isScrolling = setTimeout(function () {
+        yPrev = window.pageYOffset;
+      }, 100);
+      if (window.pageYOffset < 40) {
+        setHideNav(false);
+      }
+      let yChanged = window.pageYOffset - yPrev;
+      if (yChanged > 0 && yChanged > threshold) {
+        setHideNav(true);
+      } else if (yChanged < 0 && yChanged < -threshold) {
+        setHideNav(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [hideNav]);
+
   return (
-    <div className="page">
-      <Navigation />
+    <div className="page | bg-neutral-500">
+      <Navigation hideNav={hideNav} />
       <main className="content | bg-neutral-200 ff-body fs-body">
         <Routes>
           <Route exact path="/" element={<Home />} />

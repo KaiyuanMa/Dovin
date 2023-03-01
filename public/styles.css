@@ -31,6 +31,7 @@
   --fs-300: 0.7rem;
   --fs-400: 0.875rem;
   --fs-500: 0.9375rem;
+  --fs-525: 1rem;
   --fs-550: 1.2rem;
   --fs-600: 1.6rem;
   --fs-700: 1.875rem;
@@ -548,8 +549,8 @@ button {
   width: min(7rem, 100%);
   border-radius: 2.5rem;
   padding: 0.5rem;
-  transition: color 0.3s ease-out, background-color 0.3s ease-out,
-    opacity 0.3s ease-out;
+  transition: color 0.3s cubic-bezier(0.215, 0.61, 0.355, 1),
+    background-color 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
   font-family: var(--ff-body);
 }
 
@@ -606,6 +607,10 @@ input:focus {
   padding-top: 192px;
 }
 
+.content {
+  min-height: calc(100vh - 296px);
+}
+
 @media (max-width: 48em) {
   .page {
     padding-top: 160px;
@@ -626,7 +631,7 @@ input:focus {
   position: fixed;
   right: 30px !important;
   bottom: 40px !important;
-  transition: opacity 0.3s ease-out;
+  transition: opacity 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 .calendly-badge-widget:hover {

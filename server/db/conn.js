@@ -5,19 +5,9 @@ const conn = new Sequelize(
   {
     dialect: "postgres",
     dialectOptions: {
-      ssl: { rejectUnauthorized: false },
+      ssl: process.env.DATABASE_URL ? { rejectUnauthorized: false } : false,
     },
   }
 );
-
-// const conn = new Sequelize(
-//   process.env.DATABASE_URL || "postgres://localhost/dovin",
-//   {
-//     dialect: "postgres",
-//     dialectOptions: {
-//       ssl: false,
-//     },
-//   }
-// );
 
 module.exports = conn;

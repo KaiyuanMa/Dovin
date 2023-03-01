@@ -4,6 +4,11 @@
   height: 12rem;
   z-index: 1000;
   top: 0;
+  transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+
+.primary-header-collapse {
+  transform: translateY(-100%);
 }
 
 .primary-header > div {

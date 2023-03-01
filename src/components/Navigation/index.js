@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { useSelector } from "react-redux";
-import {
-  apiGetUserCarts,
-  apiSyncQuotes,
-  apiDeleteQuote,
-  apiUpdateQuantity,
-} from "../../api/quote";
-import { apiGetGuestQuote, apiDeleteGuestQuote } from "../../api/guestQuote";
 import "./styles.css";
 
-function index() {
-  const { session } = useSelector((state) => state.session);
+function index(params) {
+  const hideNav = params.hideNav;
   const { cart } = useSelector((state) => state.cart);
   const [cartCount, setCartCount] = useState();
   useEffect(() => {
@@ -43,7 +36,11 @@ function index() {
     navToggleFunction();
   }, []);
   return (
-    <header className="primary-header ff-body bg-neutral-500">
+    <header
+      className={`primary-header ${
+        hideNav ? "primary-header-collapse" : ""
+      } | ff-body bg-neutral-500`}
+    >
       <div className="container-full-width">
         <div className="header-ad flex-all-center padding-block-100 text-primary-600">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
