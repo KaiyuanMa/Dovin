@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "./styles.css";
 import homeFaceImg from "../../../public/img/3200x1280.png";
@@ -11,16 +11,18 @@ import regImg1 from "../../../public/img/2000x1125-1.avif";
 import { myAnimation } from "../../animation";
 
 function index() {
-  // useEffect(() => {
-  //   const animation = myAnimation("product-category", 0.3, 0.3);
-  //   const animation1 = myAnimation("service-feature", 0.3, 0.3);
-  //   const animation2 = myAnimation("gasp-home-1", 0.3);
-  //   const animation3 = myAnimation("home-even-column-text-children", 0.3, 0.3);
-  //   return () => {
-  //     animation.kill();
-  //     animation1.kill();
-  //   };
-  // }, []);
+  useLayoutEffect(() => {
+    const animation0 = myAnimation("product-category", 0.3, 0.3);
+    const animation1 = myAnimation("service-feature", 0.3, 0.3);
+    const animation2 = myAnimation("gasp-home-1", 0.3);
+    const animation3 = myAnimation("home-even-column-text-children", 0.3, 0.3);
+    return () => {
+      animation0.kill();
+      animation1.kill();
+      animation2.kill();
+      animation3.kill();
+    };
+  }, []);
   return (
     <div className="main-content">
       <section className="padding-block-800 bg-neutral-500 ">

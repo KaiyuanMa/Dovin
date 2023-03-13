@@ -6,19 +6,28 @@ export function myAnimation(className, duration, stagger) {
   let elements = document.querySelectorAll("." + className);
   console.log(elements);
   var tl = gsap.timeline();
-  tl.from(elements, {
-    duration: duration,
-    opacity: 0,
-    y: 10,
-    stagger: stagger,
-    ease: "cubic-bezier(.215,.61,.355,1)",
-    overwrite: true,
-  });
+  tl.fromTo(
+    elements,
+    {
+      opacity: 0,
+      y: 10,
+      stagger: stagger,
+      overwrite: true,
+    },
+    {
+      opacity: 1,
+      y: 0,
+      stagger: stagger,
+      duration: duration,
+      ease: "cubic-bezier(.215,.61,.355,1)",
+    }
+  );
   ScrollTrigger.create({
     trigger: elements,
-    start: "top 90%",
+    start: "top 100%",
     animation: tl,
-    toggleActions: "play none none none",
+    markers: true,
+    toggleActions: "play none none reset",
   });
   return tl;
 }
