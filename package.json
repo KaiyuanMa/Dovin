@@ -15,12 +15,10 @@
   "license": "ISC",
   "dependencies": {
     "@react-oauth/google": "^0.7.1",
-    "aws-sdk": "^2.1318.0",
     "axios": "^1.2.2",
     "bcrypt": "^5.1.0",
     "cookie-parser": "^1.4.6",
     "copy-webpack-plugin": "^11.0.0",
-    "cors": "^2.8.5",
     "css-loader": "^6.7.3",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
