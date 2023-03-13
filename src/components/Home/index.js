@@ -3,20 +3,24 @@ import { Link } from "react-router-dom";
 import "./styles.css";
 import homeFaceImg from "../../../public/img/3200x1280.png";
 import squareImg from "../../../public/img/1600x1600.png";
+import squareImg1 from "../../../public/img/1600x1600-1.avif";
+import squareImg2 from "../../../public/img/1600x1600-2.avif";
+import squareImg3 from "../../../public/img/1600x1600-3.avif";
 import regImg from "../../../public/img/2000x1125.png";
+import regImg1 from "../../../public/img/2000x1125-1.avif";
 import { myAnimation } from "../../animation";
 
 function index() {
-  useEffect(() => {
-    const animation = myAnimation("product-category", 0.3, 0.3);
-    const animation1 = myAnimation("service-feature", 0.3, 0.3);
-    const animation2 = myAnimation("gasp-home-1", 0.3);
-    const animation3 = myAnimation("home-even-column-text-children", 0.3, 0.3);
-    return () => {
-      animation.kill();
-      animation1.kill();
-    };
-  }, []);
+  // useEffect(() => {
+  //   const animation = myAnimation("product-category", 0.3, 0.3);
+  //   const animation1 = myAnimation("service-feature", 0.3, 0.3);
+  //   const animation2 = myAnimation("gasp-home-1", 0.3);
+  //   const animation3 = myAnimation("home-even-column-text-children", 0.3, 0.3);
+  //   return () => {
+  //     animation.kill();
+  //     animation1.kill();
+  //   };
+  // }, []);
   return (
     <div className="main-content">
       <section className="padding-block-800 bg-neutral-500 ">
@@ -32,7 +36,7 @@ function index() {
           <Link>
             <div className="product-category flow-400">
               <div className="img-container">
-                <img src={squareImg} />
+                <img src={squareImg1} />
               </div>
               <div>
                 <h1 className="fs-secondary-heading fw-light ff-heading">
@@ -44,7 +48,7 @@ function index() {
           <Link>
             <div className="product-category flow-400">
               <div className="img-container">
-                <img src={squareImg} />
+                <img src={squareImg2} />
               </div>
               <div>
                 <h1 className="fs-secondary-heading fw-light ff-heading">
@@ -56,7 +60,7 @@ function index() {
           <Link>
             <div className="product-category flow-400">
               <div className="img-container">
-                <img src={squareImg} />
+                <img src={squareImg3} />
               </div>
               <div>
                 <h1 className="fs-secondary-heading fw-light ff-heading">
@@ -68,7 +72,7 @@ function index() {
           <Link>
             <div className="product-category flow-400">
               <div className="img-container">
-                <img src={squareImg} />
+                <img src={squareImg1} />
               </div>
               <div>
                 <h1 className="fs-secondary-heading fw-light ff-heading">
@@ -116,7 +120,7 @@ function index() {
                 lorem
               </button>
             </div>
-            <img className="gasp-home-1" src={squareImg} />
+            <img className="gasp-home-1" src={squareImg3} />
           </div>
         </div>
       </section>
@@ -128,7 +132,7 @@ function index() {
           </h1>
           <div className="home-service-feature | even-columns-rows">
             <div className="service-feature | flow-600">
-              <img src={regImg} />
+              <img src={regImg1} />
               <div>
                 <h2 className="fs-secondary-heading fw-light ff-heading">
                   Lorem ipsum dolor
@@ -141,7 +145,7 @@ function index() {
               </div>
             </div>
             <div className="service-feature | flow-600">
-              <img src={regImg} />
+              <img src={regImg1} />
               <div>
                 <h2 className="fs-secondary-heading fw-light ff-heading">
                   Lorem ipsum dolor

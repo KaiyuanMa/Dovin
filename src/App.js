@@ -21,7 +21,6 @@ import Cart from "./components/Cart";
 function App() {
   const dispatch = useDispatch();
   const [hideNav, setHideNav] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
     dispatch(exchangeToken());

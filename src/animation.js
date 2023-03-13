@@ -16,7 +16,7 @@ export function myAnimation(className, duration, stagger) {
   });
   ScrollTrigger.create({
     trigger: elements,
-    start: "top 80%",
+    start: "top 90%",
     animation: tl,
     toggleActions: "play none none none",
   });
