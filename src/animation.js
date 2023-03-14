@@ -25,7 +25,7 @@ export function myAnimation(className, duration, stagger) {
     trigger: elements,
     start: "top 100%",
     animation: tl,
-    markers: true,
+    // markers: true,
     toggleActions: "play none none reset",
   });
   return tl;
