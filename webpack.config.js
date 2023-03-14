@@ -20,18 +20,7 @@ module.exports = {
         },
       },
       {
-        test: /\.avif$/,
-        use: [
-          {
-            loader: "file-loader",
-            options: {
-              name: "[name].[ext]",
-            },
-          },
-        ],
-      },
-      {
-        test: /\.(png|jpe?g|svg|gif|mp4)$/i,
+        test: /\.(png|jpe?g|svg|gif|mp4|webp)$/i,
         use: [
           {
             loader: "file-loader",

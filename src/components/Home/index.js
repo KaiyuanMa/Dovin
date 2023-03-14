@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 import "./styles.css";
 import homeFaceImg from "../../../public/img/3200x1280.png";
 import squareImg from "../../../public/img/1600x1600.png";
-import squareImg1 from "../../../public/img/1600x1600-1.avif";
-import squareImg2 from "../../../public/img/1600x1600-2.avif";
-import squareImg3 from "../../../public/img/1600x1600-3.avif";
+import squareImg1 from "../../../public/img/1600x1600-1.webp";
+import squareImg2 from "../../../public/img/1600x1600-2.webp";
+import squareImg3 from "../../../public/img/1600x1600-3.webp";
 import regImg from "../../../public/img/2000x1125.png";
-import regImg1 from "../../../public/img/2000x1125-1.avif";
+import regImg1 from "../../../public/img/2000x1125-1.webp";
 import { myAnimation } from "../../animation";
 
 function index() {
