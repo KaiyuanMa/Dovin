@@ -1,6 +1,6 @@
 import Options from "./Options";
 import "./styles.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useState, useRef } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { apiGetStepSet } from "../../api/stepSet";
 import { useDispatch, useSelector } from "react-redux";
@@ -14,6 +14,8 @@ import {
   setLocalCartAC,
   deleteCartItemAC,
 } from "../../state/actionCreators/cartAC";
+import { fadeInCustomPageStarter } from "../../animation";
+import gsap from "gsap";
 
 function index() {
   const dispatch = useDispatch();
@@ -24,6 +26,7 @@ function index() {
   const [currStepIndex, setCurrStepIndex] = useState(0);
   const { customizationId } = useParams();
   const { quoteId } = useParams();
+  const main = useRef();
 
   const fetchCustomization = async () => {
     const response = await apiGetStepSet(customizationId);
@@ -58,6 +61,22 @@ function index() {
       fetchCustomization();
     }
   }, []);
+
+  useLayoutEffect(() => {
+    let ctx;
+    if (customization) {
+      ctx = gsap.context(() => {
+        console.log(1);
+        fadeInCustomPageStarter(
+          ".customization-header",
+          ".step-option-wrapper"
+        );
+      }, main);
+    }
+    return () => {
+      if (customization) ctx.revert();
+    };
+  }, [customization]);
 
   const submitOrder = async () => {
     let userId = session.id;
@@ -131,13 +150,15 @@ function index() {
   };
 
   return (
-    <div className="customization-page | bg-neutral-200">
+    <div className="customization-page | bg-neutral-200" ref={main}>
       {customization ? (
         <div className="container-full-width ff-body">
-          <div className="container-full-width flex-h-center border-bottom padding-block-700">
-            <h1 className="ff-heading fw-light">{customization.name}</h1>
+          <div className="container-full-width flex-h-center border-bottom padding-block-400">
+            <h1 className="customization-header | ff-heading fw-light">
+              {customization.name}
+            </h1>
           </div>
-          <div className="step-option-wrapper container">
+          <div className="step-option-wrapper | container">
             <div className="steps | padding-block-600">
               <ul
                 role="list"

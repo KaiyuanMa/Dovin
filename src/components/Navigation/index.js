@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
-import { Link, NavLink } from "react-router-dom";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { useSelector } from "react-redux";
 import "./styles.css";
+import gsap from "gsap";
+import { fadeInNav } from "../../animation";
 
 function index(params) {
   const hideNav = params.hideNav;
   const { cart } = useSelector((state) => state.cart);
   const [cartCount, setCartCount] = useState();
+  let location = useLocation();
+  const main = useRef();
   useEffect(() => {
     setCartCount(cart.reduce((acc, cartItem) => acc + cartItem.quantity, 0));
   }, [cart]);
@@ -35,13 +39,20 @@ function index(params) {
   useEffect(() => {
     navToggleFunction();
   }, []);
+
+  useLayoutEffect(() => {
+    let ctx = gsap.context(() => {
+      fadeInNav(".header-content");
+    }, main);
+    return () => ctx.revert();
+  }, [location]);
+
   return (
     <header
-      className={`primary-header ${
-        hideNav ? "primary-header-collapse" : ""
-      } | ff-body bg-neutral-500`}
+      className={`primary-header ${hideNav ? "primary-header-collapse" : ""}`}
+      ref={main}
     >
-      <div className="container-full-width">
+      <div className="header-content | container-full-width ff-body">
         <div className="header-ad flex-all-center padding-block-100 text-primary-600">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </div>
@@ -84,16 +95,16 @@ function index(params) {
                 id="primary-navigation"
               >
                 <li>
-                  <NavLink to="/customization/1">Lorem</NavLink>
+                  <NavLink to="/customization/1">Custom Drapes</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/">Lorem</NavLink>
+                  <NavLink to="/customization/1">Roman Shades</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/">Lorem</NavLink>
+                  <NavLink to="/customization/1">Valances</NavLink>
                 </li>
                 <li>
-                  <NavLink to="/">Lorem</NavLink>
+                  <NavLink to="/customization/1">Hardware</NavLink>
                 </li>
                 <li>
                   <NavLink to="/">Lorem</NavLink>

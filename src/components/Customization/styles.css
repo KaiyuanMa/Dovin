@@ -114,7 +114,9 @@
   width: max(10rem, 20%);
 }
 
-.measurement-form {
+.customization-header {
+  font-size: var(--fs-2000);
+  color: var(--clr-dark-500);
 }
 
 @media (max-width: 75em) {

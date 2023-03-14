@@ -53,7 +53,7 @@ function App() {
   }, [hideNav]);
 
   return (
-    <div className="page | bg-neutral-500">
+    <div className="page | bg-neutral-200">
       <Navigation hideNav={hideNav} />
       <main className="content | bg-neutral-200 ff-body fs-body">
         <Routes>

@@ -26,11 +26,11 @@
 }
 
 .product-category > div > img {
-  transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  transition: transform 0.75s cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 
 .product-category:hover > div > img {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 @media (max-width: 80em) {
@@ -48,7 +48,7 @@
 .home-even-column-text {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
 .home-text-block {

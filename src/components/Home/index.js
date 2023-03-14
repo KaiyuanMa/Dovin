@@ -9,28 +9,23 @@ import squareImg2 from "../../../public/img/1600x1600-2.webp";
 import squareImg3 from "../../../public/img/1600x1600-3.webp";
 import regImg from "../../../public/img/2000x1125.png";
 import regImg1 from "../../../public/img/2000x1125-1.webp";
-import { myAnimation } from "../../animation";
+import { fadeInStagger, fadeIn } from "../../animation";
 
 function index() {
   const main = useRef();
   useLayoutEffect(() => {
     let ctx = gsap.context(() => {
-      const animation0 = myAnimation("product-category", 0.3, 0.3);
-      const animation1 = myAnimation("service-feature", 0.3, 0.3);
-      const animation2 = myAnimation("gasp-home-1", 0.3);
-      const animation3 = myAnimation(
-        "home-even-column-text-children",
-        0.3,
-        0.3
-      );
+      fadeIn(".home-front-page", 0.5);
+      fadeInStagger("product-category", 0.3, 0.3);
+      fadeInStagger("service-feature", 0.3, 0.3);
+      fadeInStagger("gasp-home-1", 0.3);
+      fadeInStagger("home-even-column-text-children", 0.3, 0.3);
     }, main);
-    return () => {
-      ctx.revert();
-    };
+    return () => ctx.revert();
   }, []);
   return (
     <div className="main-content" ref={main}>
-      <section className="padding-block-800 bg-neutral-500 ">
+      <section className="home-front-page | padding-block-800 bg-neutral-500 ">
         <div className="container home-face-img">
           <img
             src="https://dovin.s3.amazonaws.com/Static/img/homeFaceImg.png"
