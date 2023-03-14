@@ -4,18 +4,17 @@ gsap.registerPlugin(ScrollTrigger);
 
 export function myAnimation(className, duration, stagger) {
   let elements = document.querySelectorAll("." + className);
-  console.log(elements);
   var tl = gsap.timeline();
   tl.fromTo(
     elements,
     {
-      opacity: 0,
+      autoAlpha: 0.01,
       y: 10,
       stagger: stagger,
       overwrite: true,
     },
     {
-      opacity: 1,
+      autoAlpha: 1,
       y: 0,
       stagger: stagger,
       duration: duration,

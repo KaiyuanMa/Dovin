@@ -1,4 +1,5 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react";
+import gsap from "gsap";
 import { Link } from "react-router-dom";
 import "./styles.css";
 import homeFaceImg from "../../../public/img/3200x1280.png";
@@ -11,20 +12,24 @@ import regImg1 from "../../../public/img/2000x1125-1.avif";
 import { myAnimation } from "../../animation";
 
 function index() {
+  const main = useRef();
   useLayoutEffect(() => {
-    const animation0 = myAnimation("product-category", 0.3, 0.3);
-    const animation1 = myAnimation("service-feature", 0.3, 0.3);
-    const animation2 = myAnimation("gasp-home-1", 0.3);
-    const animation3 = myAnimation("home-even-column-text-children", 0.3, 0.3);
+    let ctx = gsap.context(() => {
+      const animation0 = myAnimation("product-category", 0.3, 0.3);
+      const animation1 = myAnimation("service-feature", 0.3, 0.3);
+      const animation2 = myAnimation("gasp-home-1", 0.3);
+      const animation3 = myAnimation(
+        "home-even-column-text-children",
+        0.3,
+        0.3
+      );
+    }, main);
     return () => {
-      animation0.kill();
-      animation1.kill();
-      animation2.kill();
-      animation3.kill();
+      ctx.revert();
     };
   }, []);
   return (
-    <div className="main-content">
+    <div className="main-content" ref={main}>
       <section className="padding-block-800 bg-neutral-500 ">
         <div className="container home-face-img">
           <img
